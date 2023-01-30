@@ -50,6 +50,11 @@
   margin-bottom: 0;
 }
 
+.logo h2 img{
+  width: 42px;
+  height: auto;
+}
+
 .nav__right .btn {
   padding: 7px 25px;
   border: 1px solid #ad3232;

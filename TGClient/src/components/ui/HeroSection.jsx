@@ -13,8 +13,9 @@ const HeroSection = () => {
           <Col lg="6" md="6">
             <div className="hero__content">
               <h2>
-                Discover rare digital art and collect
-                <span>sell extraordinary</span> NFTs
+                Your Health, Your Ownership: <br />
+                Secure it with
+                <span>MedSecure</span>
               </h2>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.

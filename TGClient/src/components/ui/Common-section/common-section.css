@@ -1,5 +1,5 @@
 .common__section {
-  background: url("../../../assets/images/bg.jpg");
+  /* background: url("../../../assets/images/bg.jpg"); */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -7,5 +7,7 @@
 }
 
 .common__section h2 {
-  color: #fff;
+  color: #2666BA;
+  font-weight: 700;
+  font-size: 48px;
 }

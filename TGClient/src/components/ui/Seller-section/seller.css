@@ -1,5 +1,6 @@
 .seller__section-title h3 {
-  color: #fff;
+  color: #2666BA;
+  font-weight: 700;
 }
 
 .seller__img {
@@ -9,7 +10,7 @@
 
 .seller__content h6 {
   font-size: 1rem;
-  color: #fff;
+  color: #00337C;
 }
 
 @media only screen and (max-width: 992px) {

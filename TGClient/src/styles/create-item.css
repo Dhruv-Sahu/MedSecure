@@ -2,13 +2,19 @@
 .form__input textarea {
   width: 100%;
   padding: 7px 25px;
-  color: #fff;
+  color: rgb(169, 34, 34);
   font-size: 0.8rem;
   background: transparent;
-  border: 1px solid rgba(221, 221, 221, 0.171);
+  border: 1px solid rgba(221, 221, 221, 0.506);
   outline: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder
+{
+  color: #004cb683;
 }
 
 .form__input {
@@ -16,7 +22,7 @@
 }
 
 .form__input label {
-  color: #fff;
+  color: #00337C;
   margin-bottom: 10px;
 }
 
