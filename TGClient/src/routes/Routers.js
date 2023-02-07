@@ -9,6 +9,8 @@ import Contact from "../pages/Contact";
 
 import Wallet from "../pages/Wallet";
 import NftDetails from "../pages/NftDetails";
+import Login from "../pages/Login";
+import SignUp from "../pages/Signup";
 
 const Routers = () => {
   return (
@@ -19,6 +21,8 @@ const Routers = () => {
       <Route path="/create" element={<Create />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/wallet" element={<Wallet />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/Signup" element={<SignUp />} />
       <Route path="/market/:id" element={<NftDetails />} />
     </Routes>
   );

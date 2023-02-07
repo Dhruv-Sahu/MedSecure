@@ -1,4 +1,6 @@
-import React from "react";
+
+import React, { Component } from "react";
+import { exportComponentAsPNG } from "react-component-export-image";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -12,7 +14,7 @@ const item = {
   id: "01",
   title: "Guard",
   desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam adipisci cupiditate officia, nostrum et deleniti vero corrupti facilis minima laborum nesciunt nulla error natus saepe illum quasi ratione suscipit tempore dolores. Recusandae, similique modi voluptates dolore repellat eum earum sint.",
-  imgUrl: img,
+  imgUrl: `https://i.imgur.com/9YpzuMkh.png`,
   creator: "Trista Francis",
   creatorImg: avatar,
   currentBid: 7.89,
@@ -34,10 +36,10 @@ const Create = () => {
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
                 <form>
-                  <div className="form__input">
+                  {/* <div className="form__input">
                     <label htmlFor="">Upload File</label>
                     <input type="file" className="upload__input" />
-                  </div>
+                  </div> */}
 
                   <div className="form__input">
                     <label htmlFor="">Price</label>
