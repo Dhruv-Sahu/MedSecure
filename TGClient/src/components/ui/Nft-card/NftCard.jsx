@@ -23,19 +23,21 @@ const NftCard = (props) => {
         </h5>
 
         <div className="creator__info-wrapper d-flex gap-3">
-          <div className="creator__img">
+          {/* <div className="creator__img">
             <img src={creatorImg} alt="" className="w-100" />
-          </div>
+          </div> */}
 
           <div className="creator__info w-100 d-flex align-items-center justify-content-between">
-            <div>
-              <h6>Created By</h6>
-              <p>{creator}</p>
+
+
+          <div>
+              <h6>Last Updated On: </h6>
+              <p>12-10-2002</p>
             </div>
 
             <div>
-              <h6>Current Bid</h6>
-              <p>{currentBid} ETH</p>
+              <h6>Expiration Date</h6>
+              <p>23-12-2004</p>
             </div>
           </div>
         </div>
@@ -52,7 +54,7 @@ const NftCard = (props) => {
           {showModal && <Modal setShowModal={setShowModal} />}
 
           <span className="history__link">
-            <Link to="#">View History</Link>
+            <Link to="#">Amount: <span style={{"fontWeight":600}} >{currentBid} ETH </span></Link>
           </span>
         </div>
       </div>

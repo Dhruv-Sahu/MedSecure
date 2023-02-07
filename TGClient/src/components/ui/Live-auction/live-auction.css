@@ -18,9 +18,12 @@
 }
 
 .nft__title a {
+  display: block;
+  width: 90% !important;
   color: #2666BA;
   font-size: 1rem;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .nft__title a:hover {
