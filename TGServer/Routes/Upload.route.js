@@ -6,7 +6,7 @@ const { ipfsClient, saveText } = require('../Web3_Storage/web3_storage')
 router.post("/uploadIpfs", async (req, res) => {
 
 let data = {
-  name: "rohan",
+  name: "Dhruv",
   age: "31"
 }
 
@@ -21,10 +21,6 @@ res.status(200).json({
 });
 
 
-
-
-
-
 router.get("/getFilesIpfs", async (req, res) => {
 
  
@@ -36,7 +32,9 @@ router.get("/getFilesIpfs", async (req, res) => {
 
     for await (const itr of asyncitr){
       let data = Buffer.from(itr).toString()
-      console.log(data)
+      let jsonData = JSON.parse(data)
+      console.log(jsonData)
+      res.status(400).json(jsonData)
     }
   }
 
