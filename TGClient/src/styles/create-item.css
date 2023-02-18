@@ -35,6 +35,17 @@ textarea::placeholder
   cursor: pointer;
 }
 
+#issue{
+  color: black;
+  z-index: 2;
+  font-family: "Staatliches", cursive;
+  margin: 0;
+  position: absolute;
+  left: 220px;
+  top: 505px;
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 576px) {
   .create__item {
     margin-top: 15px;

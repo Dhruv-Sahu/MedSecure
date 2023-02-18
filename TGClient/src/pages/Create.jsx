@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import { exportComponentAsPNG } from "react-component-export-image";
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from "react-component-export-image";
 
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -10,6 +10,111 @@ import avatar from "../assets/images/ava-01.png";
 
 import "../styles/create-item.css";
 
+class Create extends Component {
+
+
+  certificateWrapper = React.createRef();
+
+
+  state = {
+    Medical: "",
+    Uid: "",
+    Date: "",
+    Gender: ""
+  };
+
+
+
+  render() {
+    return (
+      <>
+        <CommonSection title="Create Item" />
+        <section>
+          <Container>
+            <Row>
+              <Col lg="3" md="4" sm="6">
+                <h5 className="mb-4 text-light">Preview Item</h5>
+                <NftCard item={item} />
+              </Col>
+              <Col lg="9" md="8" sm="6">
+                <div className="create__item">
+                  <form>
+                    {/* <div className="form__input">
+                    <label htmlFor="">Upload File</label>
+                    <input type="file" className="upload__input" />
+                  </div> */}
+
+                    <div className="form__input">
+                      <label htmlFor="">Medical Issues</label>
+                      <input
+                        type="text"
+                        placeholder="Please enter your Disease..."
+                        value={this.state.Medical}
+                        onChange={(e) => {
+                          this.setState({ Medical: e.target.value });
+
+                        }}
+                      />
+                    </div>
+
+                    <div className="form__input">
+                      <label htmlFor="">Minimum Bid</label>
+                      <input type="number" placeholder="Enter minimum bid" />
+                    </div>
+
+                    <div className=" d-flex align-items-center gap-4">
+                      <div className="form__input w-50">
+                        <label htmlFor="">Starting Date</label>
+                        <input type="date" />
+                      </div>
+
+                      <div className="form__input w-50">
+                        <label htmlFor="">Expiration Date</label>
+                        <input type="date" />
+                      </div>
+                    </div>
+
+                    <div className="form__input">
+                      <label htmlFor="">Title</label>
+                      <input type="text" placeholder="Enter title" />
+                    </div>
+
+                    <div className="form__input">
+                      <label htmlFor="">Description</label>
+                      <textarea
+                        name=""
+                        id=""
+                        rows="7"
+                        placeholder="Enter description"
+                        className="w-100"
+                      ></textarea>
+                    </div>
+                  </form>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    exportComponentAsPNG(this.certificateWrapper, {
+                      html2CanvasOptions: { backgroundColor: null }
+                    });
+                  }}
+                >
+                  Download
+                </button>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+        <div id="downloadWrapper" ref={this.certificateWrapper}>
+          <div id="certificateWrapper">
+            <p id="issue">{this.state.Medical}</p>
+          </div>
+        </div>
+
+      </>
+    );
+  }
+}
 const item = {
   id: "01",
   title: "Guard",
@@ -20,75 +125,75 @@ const item = {
   currentBid: 7.89,
 };
 
-const Create = () => {
-  return (
-    <>
-      <CommonSection title="Create Item" />
+// const Create = () => {
+//   return (
+//     <>
+//       <CommonSection title="Create Item" />
 
-      <section>
-        <Container>
-          <Row>
-            <Col lg="3" md="4" sm="6">
-              <h5 className="mb-4 text-light">Preview Item</h5>
-              <NftCard item={item} />
-            </Col>
+//       <section>
+//         <Container>
+//           <Row>
+//             <Col lg="3" md="4" sm="6">
+//               <h5 className="mb-4 text-light">Preview Item</h5>
+//               <NftCard item={item} />
+//             </Col>
 
-            <Col lg="9" md="8" sm="6">
-              <div className="create__item">
-                <form>
-                  {/* <div className="form__input">
-                    <label htmlFor="">Upload File</label>
-                    <input type="file" className="upload__input" />
-                  </div> */}
+//             <Col lg="9" md="8" sm="6">
+//               <div className="create__item">
+//                 <form>
+//                   {/* <div className="form__input">
+//                     <label htmlFor="">Upload File</label>
+//                     <input type="file" className="upload__input" />
+//                   </div> */}
 
-                  <div className="form__input">
-                    <label htmlFor="">Price</label>
-                    <input
-                      type="number"
-                      placeholder="Enter price for one item (ETH)"
-                    />
-                  </div>
+//                   <div className="form__input">
+//                     <label htmlFor="">Price</label>
+//                     <input
+//                       type="number"
+//                       placeholder="Enter price for one item (ETH)"
+//                     />
+//                   </div>
 
-                  <div className="form__input">
-                    <label htmlFor="">Minimum Bid</label>
-                    <input type="number" placeholder="Enter minimum bid" />
-                  </div>
+//                   <div className="form__input">
+//                     <label htmlFor="">Minimum Bid</label>
+//                     <input type="number" placeholder="Enter minimum bid" />
+//                   </div>
 
-                  <div className=" d-flex align-items-center gap-4">
-                    <div className="form__input w-50">
-                      <label htmlFor="">Starting Date</label>
-                      <input type="date" />
-                    </div>
+//                   <div className=" d-flex align-items-center gap-4">
+//                     <div className="form__input w-50">
+//                       <label htmlFor="">Starting Date</label>
+//                       <input type="date" />
+//                     </div>
 
-                    <div className="form__input w-50">
-                      <label htmlFor="">Expiration Date</label>
-                      <input type="date" />
-                    </div>
-                  </div>
+//                     <div className="form__input w-50">
+//                       <label htmlFor="">Expiration Date</label>
+//                       <input type="date" />
+//                     </div>
+//                   </div>
 
-                  <div className="form__input">
-                    <label htmlFor="">Title</label>
-                    <input type="text" placeholder="Enter title" />
-                  </div>
+//                   <div className="form__input">
+//                     <label htmlFor="">Title</label>
+//                     <input type="text" placeholder="Enter title" />
+//                   </div>
 
-                  <div className="form__input">
-                    <label htmlFor="">Description</label>
-                    <textarea
-                      name=""
-                      id=""
-                      rows="7"
-                      placeholder="Enter description"
-                      className="w-100"
-                    ></textarea>
-                  </div>
-                </form>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-    </>
-  );
-};
+//                   <div className="form__input">
+//                     <label htmlFor="">Description</label>
+//                     <textarea
+//                       name=""
+//                       id=""
+//                       rows="7"
+//                       placeholder="Enter description"
+//                       className="w-100"
+//                     ></textarea>
+//                   </div>
+//                 </form>
+//               </div>
+//             </Col>
+//           </Row>
+//         </Container>
+//       </section>
+//     </>
+//   );
+// };
 
 export default Create;

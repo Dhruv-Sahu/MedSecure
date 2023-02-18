@@ -1,104 +1,132 @@
-import { Link } from "react-router-dom";
-import google from "../assets/images/google.png";
-
-import { useState } from "react";
-
+import React, { useState } from 'react'
 import "../styles/login.css";
-import { useContext } from "react";
+import 'font-awesome/css/font-awesome.min.css';
+import log from "../assets/images/log.svg"
+import reg from "../assets/images/reg.svg"
+{ <script src="https://kit.fontawesome.com/64d58efce2.js"
+  crossorigin="anonymous"></script>}
 
-// import akshayLok from "../../assets/img/AkshayLok.png";
+// const sign_in_btn = document.querySelector("#sign-in-btn");
+// const sign_up_btn = document.querySelector("#sign-up-btn");
+// const con = document.querySelector(".con");
+
+
+// sign_up_btn.addEventListener("click", () => {
+//   con.classList.add("sign-up-mode");
+// });
+
+// sign_in_btn.addEventListener("click", () => {
+//     con.classList.remove("sign-up-mode");
+  // });
+  // { <script src="app.js"></script> }
+
 
 function Login() {
-
-  const [email, setEmail] = useState(" ");
-  const [password, setPassword] = useState(" ");
-
+  const [isActive, setIsActive] = useState(false);
+  const handleClick = event => {
+    // 👇️ toggle isActive state on click
+    setIsActive(true);
+  };
   return (
     <div className="login">
-      {/* <Navbar login={false} /> */}
-      <div className="img">
-        {/* <img src={google} alt="logo" /> */}
-        <h3>
-          <span className="h3Span" >Distributing Energy</span>
-          <span>Empowering People</span>
-        </h3>
-      </div>
-      <main class="main">
-        <div class="container">
-          <section class="wrapper">
-            <div class="heading">
-              <h1 class="text text-large">Sign In</h1>
-              <p class="text text-normal">
-                New user?{" "}
-                <span>
-                  <Link to="/signup" class="text text-links">
-                    Create an account
-                  </Link>
-                </span>
-              </p>
+    <div className="con">
+      <div className="forms-con">
+        <div className="signin-signup">
+          <form action="#" className="sign-in-form">
+            <h2 className="title">Sign in</h2>
+            <div className="input-field">
+              <i className="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
             </div>
-            <form name="signin" class="form">
-              <div class="input-control">
-                <label for="email" class="input-label" hidden>
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="input-field"
-                  placeholder="Email Address"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </div>
-              <div class="input-control">
-                <label for="password" class="input-label" hidden>
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  class="input-field"
-                  placeholder="Password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
-              <div class="input-control">
-                <a href="#" class="text text-links">
-                  Forgot Password
-                </a>
-                <input
-                  type="submit"
-                  name="submit"
-                  class="input-submit"
-                  value="Sign In"
-                  // disabled
-                />
-              </div>
-            </form>
-            <div class="striped">
-              <span class="striped-line"></span>
-              <span class="striped-text">Or</span>
-              <span class="striped-line"></span>
+            <div className="input-field">
+              <i className="fa fa-lock"></i>
+              <input type="password" placeholder="Password" />
             </div>
-
-            <div className="button">
-              <button
-              >
-                <img src={google} alt="" />
-                <span>Google</span>
-              </button>
+            <input type="submit" value="Login" className="btn solid" />
+            <p className="social-text">Or Sign in with social platforms</p>
+            <div className="social-media">
+              <a href="#" className="social-icon">
+                <i className="fa fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-twitter"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-google"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-linkedin"></i>
+              </a>
             </div>
-          </section>
+          </form>
+          <form action="#" className="sign-up-form">
+            <h2 className="title">Sign up</h2>
+            <div className="input-field">
+              <i className="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div className="input-field">
+              <i className="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <input type="submit" className="btn" value="Sign up" />
+            <p className="social-text">Or Sign up with social platforms</p>
+            <div className="social-media">
+              <a href="#" className="social-icon">
+                <i className="fa fa-facebook-f"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-twitter"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-google"></i>
+              </a>
+              <a href="#" className="social-icon">
+                <i className="fa fa-instagram"></i>
+              </a>
+            </div>
+          </form>
         </div>
-      </main>
+      </div>
+      <div className="panels-con">
+        <div className="panel left-panel">
+          <div className="content">
+            <h3>New here ?</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+            </p>
+            <button className={isActive ? 'btn transparent sign-up-mode' : 'btn transparent'} onClick={handleClick} id="sign-up-btn">
+            {/* className={isActive ? 'btn transparent bg-salmon' : 'btn transparent'} onClick={handleClick} */}
+              Sign up
+            </button>
+          </div>
+          <img src= "log" className="image" alt="" />
+          <img src={log} className= "image "alt="" />
+        </div>
+        <div className="panel right-panel">
+          <div className="content">
+            <h3>One of us ?</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              laboriosam ad deleniti.
+            </p>
+            <button className="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="reg" className="image" alt="" />
+          <img src={reg} className= "image "alt="" />
+        </div>
+      </div>
     </div>
-  );
+
+    </div>
+  )
 }
 
-export default Login;
+export default Login

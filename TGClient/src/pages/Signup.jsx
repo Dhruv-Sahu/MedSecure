@@ -20,30 +20,30 @@ function SignUp() {
           <span>Empowering People</span>
         </h3>
         </div>
-        <main class="main">
-          <div class="container">
-            <section class="wrapper">
-              <div class="heading">
-                <h1 class="text text-large">Sign Up</h1>
-                <p class="text text-normal">
+        <main className="main">
+          <div className="container">
+            <section className="wrapper">
+              <div className="heading">
+                <h1 className="text text-large">Sign Up</h1>
+                <p className="text text-normal">
                   Existing User?
                   <span>
-                    <Link to="/login" class="text text-links">
+                    <Link to="/login" className="text text-links">
                       Login Here!
                     </Link>
                   </span>
                 </p>
               </div>
-              <form name="signin" class="form">
-                <div class="input-control">
-                  <label for="email" class="input-label" hidden>
+              <form name="signin" className="form">
+                <div className="input-control">
+                  <label for="email" className="input-label" hidden>
                     Name
                   </label>
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    class="input-field"
+                    className="input-field"
                     placeholder="Name"
                     onChange={(e)=>{
                       setName(e.target.value)
@@ -51,65 +51,65 @@ function SignUp() {
                   />
                 </div>
 
-                <div class="input-control">
-                  <label for="tel" class="input-label" hidden>
+                <div className="input-control">
+                  <label for="tel" className="input-label" hidden>
                     Contact
                   </label>
                   <input
                     type="tel"
                     name="tel"
                     id="tel"
-                    class="input-field"
+                    className="input-field"
                     placeholder="Contact Number"
                   />
                 </div>
 
-                <div class="input-control">
-                  <label for="email" class="input-label" hidden>
+                <div className="input-control">
+                  <label for="email" className="input-label" hidden>
                     Email Address
                   </label>
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    class="input-field"
+                    className="input-field"
                     placeholder="Email Address"
                     onChange={(e)=>{
                       setEmail(e.target.value)
                     }}
                   />
                 </div>
-                <div class="input-control">
-                  <label for="password" class="input-label" hidden>
+                <div className="input-control">
+                  <label for="password" className="input-label" hidden>
                     Password
                   </label>
                   <input
                     type="password"
                     name="password"
                     id="password"
-                    class="input-field"
+                    className="input-field"
                     placeholder="Password"
                     onChange={(e)=>{
                       setPassword(e.target.value)
                     }}
                   />
                 </div>
-                <div class="input-control">
-                  <a href="#" class="text text-links">
+                <div className="input-control">
+                  <a href="#" className="text text-links">
                     Forgot Password
                   </a>
                   <input
                     type="submit"
                     name="submit"
-                    class="input-submit"
+                    className="input-submit"
                     value="Sign In"
                   />
                 </div>
               </form>
-              <div class="striped">
-                <span class="striped-line"></span>
-                <span class="striped-text">Or</span>
-                <span class="striped-line"></span>
+              <div className="striped">
+                <span className="striped-line"></span>
+                <span className="striped-text">Or</span>
+                <span className="striped-line"></span>
               </div>
 
               <div className="button">

@@ -1,0 +1,18 @@
+.NftImage{
+    position: relative;
+    font-weight: bold;
+
+}
+
+.NftImage .tags {
+    position: absolute;
+    font-size: larger;
+    top: 101px;
+    left: 87px;
+}
+
+.NftImage .date{
+    position: absolute;
+    top: 184.5px;
+    left: 84px;
+}
