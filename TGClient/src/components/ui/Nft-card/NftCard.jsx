@@ -7,7 +7,7 @@ import "./nft-card.css";
 import Modal from "../Modal/Modal";
 
 const NftCard = (props) => {
-  const { title, id, currentBid, creatorImg, imgUrl, creator } = props.item;
+  const { title, cid, currentBid, expiredOn, imgUrl, lastUpdate } = props.item;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -19,7 +19,7 @@ const NftCard = (props) => {
 
       <div className="nft__content">
         <h5 className="nft__title">
-          <Link to={`/market/${id}`}>{title}</Link>
+          <Link to={`/market/${cid?.cid}`}>{title}</Link>
         </h5>
 
         <div className="creator__info-wrapper d-flex gap-3">
@@ -32,12 +32,12 @@ const NftCard = (props) => {
 
           <div>
               <h6>Last Updated On: </h6>
-              <p>12-10-2002</p>
+              <p>{lastUpdate}</p>
             </div>
 
             <div>
               <h6>Expiration Date</h6>
-              <p>23-12-2004</p>
+              <p>{expiredOn}</p>
             </div>
           </div>
         </div>
