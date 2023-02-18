@@ -1,39 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import { NFT__DATA } from "../assets/data/data";
-
 import LiveAuction from "../components/ui/Live-auction/LiveAuction";
-
 import "../styles/nft-details.css";
-
 import { Link } from "react-router-dom";
 
-const NftDetails = () => {
-  const { id } = useParams();
+import useFetch from "../hooks/useFetch";
+import axios from "../context/axios";
 
-  const singleNft = NFT__DATA.find((item) => item.id === id);
+const NftDetails = () => {
+  const { cid } = useParams();
+  console.log("from nftdetails",cid)
+
+  // const singleNft = NFT__DATA.find((item) => item.id === "01");
+
+  const { data : singleNft, loading, error } = useFetch(`upload/getAIpfs?cid=${cid}`)
+  console.log(singleNft)
+
+
+  // useEffect(()=>{
+
+  //   async function getData(){
+  //     console.log("rendetiniefnef")
+  //     let data = await axios.get("upload/getAIpfs?cid=Qme4ecqfnzHLG9EbCRwyhrdcNFiqdR5shS8CRKTMt3UMfM")
+  //     console.log(data)
+  //   }
+
+  //   getData()
+  //   return
+
+
+  // },[cid])
 
   return (
     <>
-      <CommonSection title={singleNft.title} />
+      <CommonSection title={singleNft?.medicalTitle} />
 
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6">
               <img
-                src={singleNft.imgUrl}
+                src={singleNft?.imgUrl}
                 alt=""
-                className="w-100 single__nft-img"
+                className="single__nft-img"
               />
             </Col>
 
             <Col lg="6" md="6" sm="6">
               <div className="single__nft__content">
-                <h2>{singleNft.title}</h2>
+                <h2>{singleNft?.title}</h2>
 
                 <div className=" d-flex align-items-center justify-content-between mt-4 mb-4">
                   <div className=" d-flex align-items-center gap-4 single__nft-seen">
@@ -55,18 +74,18 @@ const NftDetails = () => {
                   </div>
                 </div>
 
-                <div className="nft__creator d-flex gap-3 align-items-center">
+                {/* <div className="nft__creator d-flex gap-3 align-items-center">
                   <div className="creator__img">
-                    <img src={singleNft.creatorImg} alt="" className="w-100" />
+                    <img src={singleNft?.creatorImg} alt="" className="w-100" />
                   </div>
 
                   <div className="creator__detail">
                     <p>Created By</p>
-                    <h6>{singleNft.creator}</h6>
+                    <h6>{singleNft?.creator}</h6>
                   </div>
-                </div>
+                </div> */}
 
-                <p className="my-4">{singleNft.desc}</p>
+                <p className="my-4">{singleNft?.desc}</p>
                 <button className="singleNft-btn d-flex align-items-center gap-2 w-100">
                   <i className="ri-shopping-bag-line"></i>
                   <Link to="/wallet">Place a Bid</Link>

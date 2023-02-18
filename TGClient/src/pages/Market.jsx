@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 
@@ -6,12 +6,19 @@ import NftCard from "../components/ui/Nft-card/NftCard";
 
 import { NFT__DATA } from "../assets/data/data";
 
+import useFetch from "../hooks/useFetch";
+
 import { Container, Row, Col } from "reactstrap";
 
 import "../styles/market.css";
 
 const Market = () => {
-  const [data, setData] = useState(NFT__DATA);
+
+
+  // const [data, setData] = useState(null);
+
+  const { data , loading, error } = useFetch('upload/getFilesIpfs')
+  console.log(data)
 
   const handleCategory = () => {};
 
@@ -24,7 +31,7 @@ const Market = () => {
     if (filterValue === "high") {
       const filterData = NFT__DATA.filter((item) => item.currentBid >= 6);
 
-      setData(filterData);
+      // setData(filterData);
     }
 
     if (filterValue === "mid") {
@@ -32,7 +39,7 @@ const Market = () => {
         (item) => item.currentBid >= 5.5 && item.currentBid < 6
       );
 
-      setData(filterData);
+      // setData(filterData);
     }
 
     if (filterValue === "low") {
@@ -40,7 +47,7 @@ const Market = () => {
         (item) => item.currentBid >= 4.89 && item.currentBid < 5.5
       );
 
-      setData(filterData);
+      // setData(filterData);
     }
   };
 
