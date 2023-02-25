@@ -28,6 +28,7 @@ contract SimpleNftLowerGas is ERC721, Ownable {
     setHiddenMetadataUri("ipfs://__CID__/hidden.json");
   }
 
+
   modifier mintCompliance(uint256 _mintAmount) {
     require(_mintAmount > 0 && _mintAmount <= maxMintAmountPerTx, "Invalid mint amount!");
     require(supply.current() + _mintAmount <= maxSupply, "Max supply exceeded!");

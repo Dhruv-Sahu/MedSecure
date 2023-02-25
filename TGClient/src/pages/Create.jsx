@@ -74,21 +74,21 @@ const Create = () => {
     <>
       <CommonSection title="Create Item" />
 
-//       <section>
-//         <Container>
-//           <Row>
-//             <Col lg="3" md="4" sm="6">
-//               <h5 className="mb-4 text-light">Preview Item</h5>
-//               <NftCard item={item} />
-//             </Col>
+      <section>
+        <Container>
+          <Row>
+             <Col lg="3" md="4" sm="6">
+               <h5 className="mb-4 text-light">Preview Item</h5>
+               <NftCard item={item} />
+             </Col>
 
-//             <Col lg="9" md="8" sm="6">
-//               <div className="create__item">
-//                 <form>
-//                   {/* <div className="form__input">
-//                     <label htmlFor="">Upload File</label>
-//                     <input type="file" className="upload__input" />
-//                   </div> */}
+             <Col lg="9" md="8" sm="6">
+               <div className="create__item">
+                 <form>
+                                     {/* <div className="form__input">
+                    <label htmlFor="">Upload File</label>
+                     <input type="file" className="upload__input" />
+                   </div> */}
 
                   <div className="form__input">
                     <label htmlFor="">Medical Issue</label>
