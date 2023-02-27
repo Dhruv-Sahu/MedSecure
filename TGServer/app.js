@@ -9,6 +9,7 @@ const cors = require("cors");
 
 // routes
 const Upload = require("./Routes/Upload.route")
+const Auth = require("./Routes/auth.route")
 
 //DB CONNECTION
 mongoose.connect(
@@ -37,7 +38,8 @@ app.use(
   })
 );
 
-  app.use('/api/v1/upload', Upload)
+app.use('/api/v1/upload', Upload)
+app.use('/api/v1/auth', Auth)
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT} `);
