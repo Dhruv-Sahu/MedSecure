@@ -21,6 +21,27 @@ textarea::placeholder
   margin-bottom: 15px;
 }
 
+
+.submit_form__input button{
+  border: none;
+  outline: none;
+  padding: 5px 22px;
+  background: transparent;
+  border: 1px solid #00337C;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 5px;
+  transition: 0.3s;
+  background: #2684ff;
+}
+
+.submit_form__input button:hover {
+  background: transparent;
+  color: #2684ff;
+  border: 1px solid #00337C;
+}
+
+
 .form__input label {
   color: #00337C;
   margin-bottom: 10px;

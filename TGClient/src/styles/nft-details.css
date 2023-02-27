@@ -1,11 +1,12 @@
 .single__nft-img {
   border-radius: 8px;
-  width: 40vw;
+  width: 30vw;
+  height: 30vw;
 }
 
 .single__nft__content h2{
   width: 80%;
-  overflow-x: scroll;
+  font-size: 23px;
 }
 
 .single__nft-seen span{
