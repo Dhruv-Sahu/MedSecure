@@ -1,40 +1,89 @@
-import React from "react";
+import React, { useState,useContext } from "react";
 import "../styles/NewLogin.css";
 // import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../components/Header/header.css";
 import "font-awesome/css/font-awesome.min.css";
+
+import {AuthContext} from "../context/authContext";
+import axios from "../context/axios";
+
 const Userlogin = () => {
   const navigate = useNavigate();
+  const { userLogin } = useContext(AuthContext);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setlastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const validatePassword = () => {
     var password = document.getElementById("form3Example4"),
       confirm_password = document.getElementById("form3Example5");
     if (password.value !== confirm_password.value) {
       confirm_password.setCustomValidity("Passwords Don't Match");
+      setPassword("");
     } else {
       confirm_password.setCustomValidity("");
+      setPassword(password.value);
     }
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
   };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let data = ""
+    if(password==='')
+    {
+      alert('enter valid password')
+      // console.log('enter valid password')
+    }  
+    else{
+      data = {
+        firstName,
+        lastName,
+        email,
+        password,
+        userType: "Seller"
+      }
+      console.log(data);
+    }
+
+    try {
+      const response = await axios.post('/auth/register',data)
+      userLogin(response.data)
+      navigate("/verification")
+      
+    } catch (error) {
+      
+    }
+
+
+    
+  }
   return (
     <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
-      <div className="card bg-glass" style={{right:"-150px"}}>
+      <div className="card bg-glass" style={{ right: "-150px" }}>
         <div className="card-body px-4 py-5 px-md-5">
           <form>
-            {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
             <div className="row">
               <div className="col-md-6 mb-4">
                 <div className="form-outline">
+                  {/* FIRST NAME */}
                   <input
                     type="text"
                     id="form3Example1"
                     className="form-control"
                     placeholder="First Name"
-                    style={{height:"50px"}}
+                    style={{ height: "50px" }}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
                   />
                 </div>
               </div>
+              {/* LAST NAME */}
               <div className="col-md-6 mb-4">
                 <div className="form-outline">
                   <input
@@ -42,15 +91,26 @@ const Userlogin = () => {
                     id="form3Example2"
                     className="form-control"
                     placeholder="Last Name"
-                    style={{height:"50px"}}
+                    style={{ height: "50px" }}
+                    onChange={(e) => {
+                      setlastName(e.target.value);
+                    }}
                   />
                 </div>
               </div>
             </div>
-
             {/* <!-- Email input --> */}
             <div className="form-outline mb-4">
-              <input type="email" id="form3Example3" placeholder="Email" className="form-control" style={{height:"50px"}}/>
+              <input
+                type="email"
+                id="form3Example3"
+                placeholder="Email"
+                className="form-control"
+                style={{ height: "50px" }}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </div>
             {/* <!-- Password input --> */}
             <div className="form-outline mb-4">
@@ -59,7 +119,9 @@ const Userlogin = () => {
                 id="form3Example4"
                 className="form-control"
                 placeholder="Password"
-                style={{height:"50px"}}
+                style={{ height: "50px" }}
+                required
+                onChange={validatePassword}
               />
             </div>
             {/* <!--Confirm Password input --> */}
@@ -69,16 +131,27 @@ const Userlogin = () => {
                 id="form3Example5"
                 className="form-control"
                 placeholder="Confirm Password"
-                style={{height:"50px"}}
+                style={{ height: "50px" }}
                 required
+                onChange={validatePassword}
               />
             </div>
             {/* <!-- Submit button --> */}
             <div className="styler">
-              <button type="submit"onClick={validatePassword} className="btn btn-primary btn-block mb-4 button_styler">
+              <button
+                type="submit"
+                onClick={
+                  // validatePassword;
+                  (e)=>{handleSubmit(e);}}
+                className="btn btn-primary btn-block mb-4 button_styler"
+                // onSubmit={}
+                // ={(e) => {
+                //   handleSubmit(e);
+                // }}
+              >
                 Sign Up
               </button>
-              </div>
+            </div>
             <div
               style={{
                 display: "flex",
@@ -110,15 +183,12 @@ const Userlogin = () => {
               <button type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fa fa-facebook-f"></i>
               </button>
-
               <button type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fa fa-google"></i>
               </button>
-
               <button type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fa fa-twitter"></i>
               </button>
-
               <button type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fa fa-github"></i>
               </button>

@@ -20,10 +20,9 @@ const Market = () => {
   const { data , loading, error } = useFetch('upload/getFilesIpfs')
   console.log(data)
 
+
   const handleCategory = () => {};
-
   const handleItems = () => {};
-
   // ====== SORTING DATA BY HIGH, MID, LOW RATE =========
   const handleSort = (e) => {
     const filterValue = e.target.value;
@@ -86,6 +85,7 @@ const Market = () => {
                     <option>Sort By</option>
                     <option value="high">High Rate</option>
                     <option value="mid">Mid Rate</option>
+                    
                     <option value="low">Low Rate</option>
                   </select>
                 </div>

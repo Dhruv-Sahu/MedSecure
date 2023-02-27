@@ -1,12 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import Buyerlogin from "./Buyerlogin";
 import "../styles/NewLogin.css";
 import logo from "../assets/images/logomed.jpeg";
 import "font-awesome/css/font-awesome.min.css";
+
+import axios from "../context/axios";
+import { AuthContext } from "../context/authContext";
+import Userlogin from "./Sellerlogin";
+
 const Loginform = () => {
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
   const navigate = useNavigate();
+  const { userLogin } = useContext(AuthContext);
+
+  async function handleSubmit(e){
+    e.preventDefault()
+    let data = {
+      email,
+      password
+    }
+    try {
+      const response = await axios.post("/auth/login",
+      data)
+      console.log(response.data)
+      if(response.data){
+        userLogin(response.data)
+      }
+
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
@@ -53,6 +81,10 @@ const Loginform = () => {
                   className="form-control"
                   placeholder="Email Address"
                   style={{height:"50px"}}
+                  required
+                  onChange={(e)=>{
+                    setEmail(e.target.value)
+                  }}
                 />
               </div>
 
@@ -65,6 +97,9 @@ const Loginform = () => {
                   placeholder="Password"
                   style={{height:"50px"}}
                   required
+                  onChange={(e)=>{
+                    setPassword(e.target.value)
+                  }}
                 />
               </div>
               <div className="row">
@@ -92,8 +127,11 @@ const Loginform = () => {
               {/* <!-- Submit button --> */}
               <div className="styler">
                 <button
-                  type="submit"
+                  type="button"
                   className="btn btn-primary btn-block mb-4 button_styler"
+                  onClick={(e)=>{
+                    handleSubmit(e)
+                  }}
                 >
                   Login up
                 </button>

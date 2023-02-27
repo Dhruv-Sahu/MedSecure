@@ -16,7 +16,7 @@ try{
     cid: result.cid.toString(),
     address : req.body.title
   }
-  const dbRes = await CidModel.findByIdAndUpdate({_id:"63f0a7c748a5eeac58edd3a4"}, {$push: { cids : data}})
+  const dbRes = await CidModel.findByIdAndUpdate({_id:"63e79afa420232c28e9779d1"}, {$push: { cids : data}})
 
   console.log(dbRes)
 }catch(err){
@@ -38,7 +38,7 @@ router.get("/getFilesIpfs", async (req, res) => {
 
   // let cid = req.query.cid
 
-  const dbRes = await CidModel.findById({_id:"63f0a7c748a5eeac58edd3a4"})
+  const dbRes = await CidModel.findById({_id:"63e79afa420232c28e9779d1"})
   const cidRes = dbRes.cids
   let ipfsData = []
 

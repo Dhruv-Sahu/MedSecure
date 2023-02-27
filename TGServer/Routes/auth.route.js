@@ -49,7 +49,7 @@ router.post("/register", async (req, res) => {
 
     if (mailResponse) {
       res.status(200).json({
-        user,
+        ...user._doc,
         status: "successful",
         message: "user created successfully and mailed verified",
       });
