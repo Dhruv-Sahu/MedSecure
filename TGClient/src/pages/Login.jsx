@@ -1,132 +1,86 @@
-import React, { useState } from 'react'
-import "../styles/login.css";
-import 'font-awesome/css/font-awesome.min.css';
-import log from "../assets/images/log.svg"
-import reg from "../assets/images/reg.svg"
-{ <script src="https://kit.fontawesome.com/64d58efce2.js"
-  crossorigin="anonymous"></script>}
-
-// const sign_in_btn = document.querySelector("#sign-in-btn");
-// const sign_up_btn = document.querySelector("#sign-up-btn");
-// const con = document.querySelector(".con");
-
-
-// sign_up_btn.addEventListener("click", () => {
-//   con.classList.add("sign-up-mode");
-// });
-
-// sign_in_btn.addEventListener("click", () => {
-//     con.classList.remove("sign-up-mode");
-  // });
-  // { <script src="app.js"></script> }
-
-
-function Login() {
-  const [isActive, setIsActive] = useState(false);
-  const handleClick = event => {
-    // 👇️ toggle isActive state on click
-    setIsActive(true);
-  };
+import React, { useState } from "react";
+// import {useNavigate} from "react-router-dom";
+// import { Link } from "react-router-dom";
+import "../styles/NewLogin.css";
+import "font-awesome/css/font-awesome.min.css";
+import Loginform from "./Loginform";
+import logo from '../assets/images/logomed.jpeg'
+const Login = () => {
+  // const navigate = useNavigate();
+  // const [buttons, setButtons] = useState([
+  //   { id: 1, text: "Buyer", isDefault: true },
+  //   { id: 2, text: "Seller", isDefault: false },
+  //   { id: 3, text: "Hospital", isDefault: false },
+  // ]);
+  // const validatePassword = () => {
+  //   var password = document.getElementById("form3Example4")
+  // , confirm_password = document.getElementById("form3Example5");
+  // if(password.value !== confirm_password.value) {
+  //   confirm_password.setCustomValidity("Passwords Don't Match");
+  // } else {
+  //   confirm_password.setCustomValidity('');
+  // }
+  // password.onchange = validatePassword;
+  // confirm_password.onkeyup = validatePassword;
+  // }
+// eslint-disable-next-line
+{
+  /* <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    /> */}
+  // const handleClick = (id) => {
+  //   setButtons(
+  //     buttons.map((button) => ({
+  //       ...button,
+  //       isDefault: button.id === id,
+  //     }))
+  //   );
+  // };
   return (
-    <div className="login">
-    <div className="con">
-      <div className="forms-con">
-        <div className="signin-signup">
-          <form action="#" className="sign-in-form">
-            <h2 className="title">Sign in</h2>
-            <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div className="input-field">
-              <i className="fa fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value="Login" className="btn solid" />
-            <p className="social-text">Or Sign in with social platforms</p>
-            <div className="social-media">
-              <a href="#" className="social-icon">
-                <i className="fa fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-linkedin"></i>
-              </a>
-            </div>
-          </form>
-          <form action="#" className="sign-up-form">
-            <h2 className="title">Sign up</h2>
-            <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
-            </div>
-            <div className="input-field">
-              <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div className="input-field">
-              <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
-            </div>
-            <input type="submit" className="btn" value="Sign up" />
-            <p className="social-text">Or Sign up with social platforms</p>
-            <div className="social-media">
-              <a href="#" className="social-icon">
-                <i className="fa fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-twitter"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-google"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fa fa-instagram"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div className="panels-con">
-        <div className="panel left-panel">
-          <div className="content">
-            <h3>New here ?</h3>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
-            </p>
-            <button className={isActive ? 'btn transparent sign-up-mode' : 'btn transparent'} onClick={handleClick} id="sign-up-btn">
-            {/* className={isActive ? 'btn transparent bg-salmon' : 'btn transparent'} onClick={handleClick} */}
-              Sign up
-            </button>
+    <div>
+      
+      <section className="background-radial-gradient overflow-hidden">
+        <div className="container px-4 py-5 px-md-5 text-center text-lg-start">
+          <div className="row gx-lg-5 align-items-center mb-5">
+            {/* <div className="col-lg-6 mb-5 mb-lg-0" style={{ zIndex: "10" }}>
+            <img src={logo} alt="Medsecure Logo"style={{height:"150px",width:"200px"}}/>
+              <div>
+                {buttons.map((button) => (
+                  <button
+                    key={button.id}
+                    className="Buttons"
+                    style={{
+                      backgroundColor: button.isDefault ? "gray" : "white",
+                      padding: "10px 20px",
+                      borderRadius: "5px",
+                      border: "1px solid black",
+                      display: "block",
+                    }}
+                    onClick={() => handleClick(button.id)}
+                  >
+                    {button.text}
+                  </button>
+                ))}
+              </div>
+              <p
+                className="mb-4 opacity-70"
+                style={{ color: "hsl(218, 81%, 85%)" }}
+              >
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                ab ipsum nisi dolorem modi. Quos?
+              </p>
+            </div> */}
+            <Loginform/>
           </div>
-          <img src= "log" className="image" alt="" />
-          <img src={log} className= "image "alt="" />
         </div>
-        <div className="panel right-panel">
-          <div className="content">
-            <h3>One of us ?</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
-            </p>
-            <button className="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
-          </div>
-          <img src="reg" className="image" alt="" />
-          <img src={reg} className= "image "alt="" />
-        </div>
-      </div>
+      </section>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Login
+export default Login;

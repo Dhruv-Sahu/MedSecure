@@ -176,7 +176,7 @@ const Create = () => {
                   </div>
 
 
-                  <div className="form__input">
+                  <div className="submit_form__input">
                     <button onClick={(e)=>{
                       handleSubmit(e)
                     }} > Submit </button>

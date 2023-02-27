@@ -1,125 +1,123 @@
-import google from "../assets/images/google.png";
-import { Link } from "react-router-dom";
-// import akshayLok from "../../assets/img/AkshayLok.png";
+import React, { useState } from "react";
+import "../styles/NewLogin.css";
+import Userlogin from "./Sellerlogin";
+import Buyerlogin from "./Buyerlogin";
+// import Hospitallogin from './Hospitallogin'
+// import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import "../components/Header/header.css";
+import "font-awesome/css/font-awesome.min.css";
 
-import { useState, useContext } from "react";
+const Signup = () => {
+  const [current,Setcurrent]=useState(1);
+  // const navigate = useNavigate();
+  // const [buttons, setButtons] = useState([
+  //   { id: 1, text: "Buyer", isDefault: true },
+  //   { id: 2, text: "User", isDefault: false },
+  //   // { id: 3, text: "Hospital", isDefault: false },
+  // ]);
 
-function SignUp() {
-
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
+  // const handleClick = (id) => {
+  //   setButtons(
+  //     buttons.map((button) => ({
+  //       ...button,
+  //       isDefault: button.id === id,
+  //     }))
+  //   );
+  // };
+  const func1=()=>{
+const button1 = document.getElementById("button1");
+const button2 = document.getElementById("button2");
+Setcurrent(1);
+button1.classList.add("master");
+button2.classList.remove("master");
+button1.style.border = "1px solid black";
+button2.style.border = "None";
+}
+const func2=()=>{
+Setcurrent(2);
+const button1 = document.getElementById("button1");
+const button2 = document.getElementById("button2");
+button2.classList.add("master");
+button1.classList.remove("master");
+button2.style.border = "1px solid black";
+button1.style.border = "None";
+  }
   return (
     <div>
-      <div className="login">
-        <div className="img">
-          {/* <img src={google} alt="logo" /> */}
-          <h3>
-          <span className="h3Span" >Distributing Energy</span>
-          <span>Empowering People</span>
-        </h3>
-        </div>
-        <main className="main">
-          <div className="container">
-            <section className="wrapper">
-              <div className="heading">
-                <h1 className="text text-large">Sign Up</h1>
-                <p className="text text-normal">
-                  Existing User?
-                  <span>
-                    <Link to="/login" className="text text-links">
-                      Login Here!
-                    </Link>
-                  </span>
-                </p>
+      <section className="background-radial-gradient overflow-hidden">
+        <div className="container px-4 py-5 px-md-5 text-center text-lg-start">
+          <div className="row gx-lg-5 align-items-center mb-5">
+            <div className="col-lg-6 mb-5 mb-lg-0" style={{ zIndex: "10" }}>
+              <div style={{ fontSize: "50px" }}>
+                How do you want to use MedSecure?
               </div>
-              <form name="signin" className="form">
-                <div className="input-control">
-                  <label for="email" className="input-label" hidden>
-                    Name
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="input-field"
-                    placeholder="Name"
-                    onChange={(e)=>{
-                      setName(e.target.value)
-                    }}
-                  />
-                </div>
+              <div>
+                <button
+                  className="Buttons master"
+                  id="button1"
+                  onClick={func1}
+                  style={{
+                  padding: "10px 20px",
+                  borderRadius: "5px",
+                  border: "1px solid black",
+                  // border: "None",
+                  display: "block"}}
+                >
+                  <span style={{display:"block",fontWeight:"bold"}}>Buyer</span>
+                  I am here to buy NFTs
+                </button>
+                <button
+                  style={{padding: "10px 20px",
+                  borderRadius: "5px",
+                  // border: "None",
+                  display: "block"}}
+                  id="button2"
+                  className="Buttons"
+                  onClick={func2}
+                >
+                  <span style={{display:"block",fontWeight:"bold"}}>User</span>
+                  I am here as a User
+                </button>
+                
 
-                <div className="input-control">
-                  <label for="tel" className="input-label" hidden>
-                    Contact
-                  </label>
-                  <input
-                    type="tel"
-                    name="tel"
-                    id="tel"
-                    className="input-field"
-                    placeholder="Contact Number"
-                  />
-                </div>
-
-                <div className="input-control">
-                  <label for="email" className="input-label" hidden>
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="input-field"
-                    placeholder="Email Address"
-                    onChange={(e)=>{
-                      setEmail(e.target.value)
+                {/* {buttons.map((button) => (
+                  <button
+                    key={button.id}
+                    className="Buttons"
+                    style={{
+                      backgroundColor: button.isDefault ? "gray" : "white",
+                      padding: "10px 20px",
+                      borderRadius: "5px",
+                      border: "1px solid black",
+                      display: "block",
                     }}
-                  />
-                </div>
-                <div className="input-control">
-                  <label for="password" className="input-label" hidden>
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className="input-field"
-                    placeholder="Password"
-                    onChange={(e)=>{
-                      setPassword(e.target.value)
-                    }}
-                  />
-                </div>
-                <div className="input-control">
-                  <a href="#" className="text text-links">
-                    Forgot Password
-                  </a>
-                  <input
-                    type="submit"
-                    name="submit"
-                    className="input-submit"
-                    value="Sign In"
-                  />
-                </div>
-              </form>
-              <div className="striped">
-                <span className="striped-line"></span>
-                <span className="striped-text">Or</span>
-                <span className="striped-line"></span>
+                    onClick={() => handleClick(button.id)}
+                  >
+                    {button.text+(button.id===1 &&"")}
+                    
+                  </button>
+                ))} */}
               </div>
+              <p
+                className="mb-4 opacity-70"
+                style={{ color: "hsl(218, 81%, 85%)" }}
+              >
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                ab ipsum nisi dolorem modi. Quos?
+              </p>
+            </div>
+            {current===1 && <Buyerlogin />}
+            {current===2 && <Userlogin />}
+            {/* {buttons[2].isDefault && <Hospitallogin/>} */}
 
-              <div className="button">
-              </div>
-            </section>
           </div>
-        </main>
-      </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
 
-export default SignUp;
+export default Signup;
