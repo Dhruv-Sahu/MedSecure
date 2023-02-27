@@ -1,14 +1,18 @@
 const express = require("express");
+
 const router = express.Router();
 
 const bcrypt = require("bcrypt");
+
 const User = require("../Models/User.model");
+const UserOTPVerification = require("../Models/UserOTPVerification.model");
+
+const sendEmail = require("../functions/sendMail");
+
 // const {generateAccessToken, generateRefreshToken, verify} = require('../JWT/jwt')
 // const jwt = require('jsonwebtoken');
 
 // /api/v1/auth/
-
-
 
 // REGISTER USER ROUTE ---------------------------------------------------------------------------------------------------------------------
 router.post("/register", async (req, res) => {
@@ -26,12 +30,36 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       password: encryptPassword,
       organisation: req.body.organisation,
-      userType: req.body.userType
+      userType: req.body.userType,
     });
 
+    //MARK: SENDING MAIL TO USER
+    var val = Math.floor(1000 + Math.random() * 9000);
+    console.log(val);
+    const Subject = "One Time Password";
+    const Body = `Please use this as your OTP ${val}`;
+
+    let mailResponse = await sendEmail(req.body.email, Subject, Body);
+
+    //MARK: CREATING NEW INSTANCE OF OTP VERIFICATION
+    const otpVerification = await UserOTPVerification.create({
+      userId: user._id,
+      otp: `${val}`,
+    });
+
+    if (mailResponse) {
+      res.status(200).json({
+        user,
+        status: "successful",
+        message: "user created successfully and mailed verified",
+      });
+      return;
+    }
+
     res.status(200).json({
+      user,
       status: "successful",
-      message: "user created successfully",
+      message: "user created successfully but mailed not verified",
     });
   } catch (err) {
     console.log(err);
@@ -41,7 +69,6 @@ router.post("/register", async (req, res) => {
     });
   }
 });
-
 
 // LOGIN USER ROUTE ---------------------------------------------------------------------------------------------------------------------
 router.post("/login", async (req, res) => {
@@ -56,13 +83,13 @@ router.post("/login", async (req, res) => {
       if (matchPassword) {
         // const accessToken = generateAccessToken(user);
         // const refreshToken = generateRefreshToken(user);
-        const newUser = {...user._doc};
+        const newUser = { ...user._doc };
         // await user.updateOne({
         //   refreshToken,
         // })
         res.status(200).json({
-          status : "successfull",
-          ...newUser
+          status: "successfull",
+          ...newUser,
         });
       } else {
         res.status(403).json({
@@ -85,11 +112,9 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
-
 // LOGOUT USER ROUTE ---------------------------------------------------------------------------------------------------------------------
-router.get('/logout',async (req, res)=>{
-  const id = req.user.id
+router.get("/logout", async (req, res) => {
+  const id = req.user.id;
   try {
     const user = await User.findById(id);
     // await user.updateOne({
@@ -99,17 +124,14 @@ router.get('/logout',async (req, res)=>{
     res.status(200).json({});
   } catch (error) {
     res.status(404).json({
-      status:404,
-      message:"Can't able to log out"
-    })
+      status: 404,
+      message: "Can't able to log out",
+    });
   }
-})
-
-
+});
 
 // REFRESH USER TOKEN ---------------------------------------------------------------------------------------------------------------------
-router.post("/refresh", async(req, res) => {
-
+router.post("/refresh", async (req, res) => {
   //take refresh token from user through body
   const refreshToken = req.body.token;
 
@@ -117,42 +139,76 @@ router.post("/refresh", async(req, res) => {
   if (!refreshToken) {
     return res.status(401).json({
       status: "error",
-      message:"you are not authenticated"});
-  }   
-    try {
-      const userDB = await User.findOne({refreshToken})
-      if (!userDB) {
-            return res.status(403).json({
-              status :"error",
-              message :"refresh token not valid"});
-          }else{
-              jwt.verify(refreshToken, "refreshSecrectkey", async(err, user) => {
-              if(err){
-                res.status(500).json({
-                  status :"error",
-                  message :"refresh token not valid"})
-              }
-              //generating new access token
-              const newAccessToken = generateAccessToken(userDB);
-              const newRefreshToken = generateRefreshToken(userDB);
-              
-              //updating the refresh token of the user
-              await userDB.updateOne({
-                refreshToken : newRefreshToken
-              })
-
-              //sending new access token and refresh token
-              const newUser = {...userDB._doc, accessToken : newAccessToken, refreshToken : newRefreshToken};
-              res.status(200).json(newUser);
-            });
+      message: "you are not authenticated",
+    });
+  }
+  try {
+    const userDB = await User.findOne({ refreshToken });
+    if (!userDB) {
+      return res.status(403).json({
+        status: "error",
+        message: "refresh token not valid",
+      });
+    } else {
+      jwt.verify(refreshToken, "refreshSecrectkey", async (err, user) => {
+        if (err) {
+          res.status(500).json({
+            status: "error",
+            message: "refresh token not valid",
+          });
         }
-    } catch (error) {
-      res.status(500).json({
-        status:"error",
-        message:"Internal server error"
+        //generating new access token
+        const newAccessToken = generateAccessToken(userDB);
+        const newRefreshToken = generateRefreshToken(userDB);
+
+        //updating the refresh token of the user
+        await userDB.updateOne({
+          refreshToken: newRefreshToken,
+        });
+
+        //sending new access token and refresh token
+        const newUser = {
+          ...userDB._doc,
+          accessToken: newAccessToken,
+          refreshToken: newRefreshToken,
+        };
+        res.status(200).json(newUser);
       });
     }
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Internal server error",
+    });
+  }
 });
 
+router.post("/emailVerification", async (req, res) => {
+  let userId = req.body.id;
+  let otp = req.body.otp;
+
+  try {
+    const userOtp = await UserOTPVerification.find({
+      userId,
+    });
+
+    if (otp == userOtp[0].otp) {
+
+      await User.findByIdAndUpdate(userId,{$set: {verified: true}})
+
+      ~
+
+      res.status(200).json({
+        otp: userOtp[0].otp,
+        userOtp: userOtp[0]._id
+      });
+      return;
+
+    }
+    res.status(400).json({
+      message:"error not verified"
+    })
+  } catch (error) {}
+});
 
 module.exports = router;

@@ -44,6 +44,10 @@ const UserSchema = new mongoose.Schema(
     transaction: {
         type: Array,
         default: []
+    },
+    verified: {
+      type: Boolean,
+      default: false
     }
 
   },
