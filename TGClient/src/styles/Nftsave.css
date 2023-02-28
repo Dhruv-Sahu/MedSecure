@@ -2,21 +2,28 @@
     box-sizing: border-box;
   }
   .Save {
-    font-family: "Hachi Maru Pop", cursive;
+    /* font-family: "Hachi Maru Pop", cursive; */
     display: flex;
     padding: 15px;
+    flex-direction: row;
   }
   .NFTimg{
     height: 25rem;
     /* margin: 25rem; */
     width: 25rem;
   }
+  .Align_Left{
+    /* flex: 50%; */
+  }
   .Save .Meta {
     /* flex-grow: 1; */
     padding-right: 15px;
+    /* flex:70%; */
+
+
   }
   .Save .Meta input {
-    font-family: inherit;
+    /* font-family: inherit; */
     padding: 5px;
     width: 100%;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
@@ -24,15 +31,16 @@
     border-radius: 5px;
   }
   .Save .Meta button {
-    padding: 10px 15px;
+    /* padding: 10px 15px;
     border: 2px solid #87ceeb;
     background-color: #33f3fb;
     font-family: inherit;
     border-radius: 10px;
     cursor: pointer;
-    top: 20rem;
-    position: absolute;
-    margin: 10rem;
+    top: 200px;
+    left: 20px;
+    position: relative;
+    margin: 100rem; */
   }
   .Save #certificateWrapper {
     padding: 20px;
@@ -53,44 +61,63 @@
     margin: 0;
     position: absolute;
     left: 478px;
-    top: 327px;
-    font-size: 35pt;
-  }
-  .Save #certificateWrapper .issue {
-    color: rgba(11, 12, 86, 0.745);
-    z-index: 2;
-    font-family: "Staatliches", cursive;
-    margin: 0;
-    position: absolute;
-    left: 150px;
-    top: 169px;
-    font-size: 35pt;
-  }
-  .Save #certificateWrapper .gender {
-    color: rgba(11, 12, 86, 0.745);
-    z-index: 2;
-    font-family: "Staatliches", cursive;
-    margin: 0;
-    position: absolute;
-    left: 320px;
-    top: 625px;
+    top: 10px;
     font-size: 35pt;
   }
   
-  .Save #certificateWrapper .date {
-    color: rgba(11, 12, 86, 0.745);
+  .Save #certificateWrapper .issue {
+    color: rgba(28, 30, 200, 0.745);
     z-index: 2;
     font-family: "Staatliches", cursive;
     margin: 0;
     position: absolute;
-    left: 320px;
-    top: 750px;
-    font-size: 35pt;
+    left: 140px;
+    top: 180px;
+    font-size: 18pt;
+  }
+  .Save #certificateWrapper .gender {
+    color: rgba(28, 30, 200, 0.745);
+    z-index: 2;
+    font-family: "Staatliches", cursive;
+    margin: 0;
+    position: absolute;
+    left: 140px;
+    top: 259px;
+    font-size: 18pt;
+  }
+  
+  .Save #certificateWrapper .date {
+    color: rgba(28, 30, 200, 0.745);
+    
+    z-index: 2;
+    font-family: "Staatliches", cursive;
+    margin: 0;
+    position: absolute;
+    left: 145px;
+    top: 310px;
+    font-size: 16pt;
   }
 
   #downloadWrapper{
     margin-top: 5rem;
   }
   .downloadImg{
-    
+    border: none;
+    outline: none;
+    padding: 5px 22px;
+    background: transparent;
+    border: 1px solid #00337C;
+    font-size: 1.3rem;
+    color: #fff;
+    border-radius: 5px;
+    transition: 0.3s;
+    background: #2684ff;
+    top: 65px;
+    position: relative;
+    left: 70px
+  }
+  
+  .save__top{
+    top:100px;
+
   }

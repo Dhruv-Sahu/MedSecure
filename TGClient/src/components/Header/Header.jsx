@@ -6,7 +6,7 @@ import { NavLink, Link } from "react-router-dom";
 import { ethers } from "ethers";
 
 import { Web3Context } from "../../context/web3Context";
-import logo from '../../assets/images/logomed.jpeg'
+import logo from "../../assets/images/logomed.jpeg";
 
 const NAV__LINKS = [
   {
@@ -28,7 +28,6 @@ const NAV__LINKS = [
 ];
 
 const Header = () => {
-
   const { userMetamask } = useContext(Web3Context);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -46,7 +45,6 @@ const Header = () => {
 
   //button variale
   const [loading, setLoading] = useState(false);
-
 
   // contract details
   let contract_ABI = [
@@ -103,8 +101,6 @@ const Header = () => {
     });
   }
 
-
-
   const headerRef = useRef(null);
   const menuRef = useRef(null);
 
@@ -159,17 +155,22 @@ const Header = () => {
           </div>
 
           <div className="nav__right d-flex align-items-center gap-5 ">
-            <button className="btn d-flex gap-2 align-items-center">
-              <span>
-                <i class="ri-wallet-line"></i>
-              </span>
-              {/* <Link to="/wallet">Connect Wallet</Link> */}
-              <Link to="#" onClick={(e)=>{
-                connectWalletHandler(e)
-              }} >{connButtonText}</Link>
-
-            </button>
-
+            <div className="connect__button">
+              <button className="btn d-flex gap-2 align-items-center">
+                <span>
+                  <i className="ri-wallet-line"></i>
+                </span>
+                {/* <Link to="/wallet">Connect Wallet</Link> */}
+                <Link
+                  to="#"
+                  onClick={(e) => {
+                    connectWalletHandler(e);
+                  }}
+                >
+                  {connButtonText}
+                </Link>
+              </button>
+            </div>
             <span className="mobile__menu">
               <i class="ri-menu-line" onClick={toggleMenu}></i>
             </span>

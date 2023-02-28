@@ -7,7 +7,7 @@
   left: 0;
   z-index: 111111;
 }
-
+  
 .header__shrink {
   background: rgba(252, 252, 252, 0.904) ;
   box-shadow: 2px 2px 4px -2px #969696;
@@ -70,7 +70,11 @@
 .nav__right .btn span i {
   color: rgb(159, 45, 45);
 }
+.connect__button:hover {
+  
+  color: rgb(56, 149, 73);
 
+}
 
 
 .nav__right .btn:hover {
@@ -81,7 +85,9 @@
   color: rgb(56, 149, 73);
 }
 
-
+.nav__right .btn span i:hover {
+  color: rgb(56, 149, 73);
+}
 
 /* mobile view css */
 .mobile__menu {
