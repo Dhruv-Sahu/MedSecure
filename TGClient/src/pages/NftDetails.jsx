@@ -73,7 +73,15 @@ const NftDetails = () => {
                     </span>
                   </div>
                 </div>
-
+                <div className="Price">
+                  Current Price :
+                </div>
+                <div className="amount">
+                  5.375 ETH
+                </div>
+                <div className="summary">
+                  Report Summary
+                </div>
                 {/* <div className="nft__creator d-flex gap-3 align-items-center">
                   <div className="creator__img">
                     <img src={singleNft?.creatorImg} alt="" className="w-100" />
@@ -85,10 +93,14 @@ const NftDetails = () => {
                   </div>
                 </div> */}
 
-                <p className="my-4">{singleNft?.desc}</p>
-                <button className="singleNft-btn d-flex align-items-center gap-2 w-100">
+                <p className="Details">{singleNft?.desc}</p>
+                <button className="singleNft-btn d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-bag-line"></i>
-                  <Link to="/wallet">Place a Bid</Link>
+                  <Link to="/wallet">Buy Now</Link>
+                </button>
+                <button className="singleNft-btn-cart d-flex align-items-center gap-2 w-50">
+                  <i className="ri-shopping-cart-line"></i>
+                  <Link to="/wallet">Add to Cart</Link>
                 </button>
               </div>
             </Col>

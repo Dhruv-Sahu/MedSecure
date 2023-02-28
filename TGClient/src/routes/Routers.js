@@ -12,6 +12,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/Signup";
 import Myorder from "../pages/Myorder";
 import Verification from "../pages/Verification";
+import BuyerNFT from "../pages/BuyerNFT";
 
 const Routers = () => {
   return (
@@ -26,6 +27,7 @@ const Routers = () => {
       <Route path="/Signup" element={<SignUp />} />
       <Route path="/myorder" element={<Myorder/>} />
       <Route path="/verification" element={<Verification/>} />
+      <Route path="/buyernft" element={<BuyerNFT/>} />
       <Route path="/market/:cid" element={<NftDetails />} />
     </Routes>
   );
