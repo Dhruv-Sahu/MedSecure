@@ -4,6 +4,12 @@
   height: 30vw;
 }
 
+.Details{
+  height: 250px;
+  overflow-y: scroll;
+  width: 700px;
+}
+
 .single__nft__content h2{
   width: 80%;
   font-size: 23px;
@@ -17,7 +23,7 @@
 .single__nft-seen span i {
   color: #fff;
   padding: 5px;
-  background: #000;
+  background: #2D4DD1;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -29,7 +35,7 @@
 }
 
 .single__nft-more span i {
-  background: #343444;
+  background: #2D4DD1;
   padding: 5px;
   cursor: pointer;
   border-radius: 50px;
@@ -45,6 +51,29 @@
 .creator__img {
   width: 40px;
   height: 40px;
+}
+
+
+.Price{
+  width: 80%;
+  font-size: 23px;
+  font-weight: bolder;
+  color: #2D4DD1;
+}
+
+.amount{
+  width: 80%;
+  font-size: 30px;
+  font-weight: bolder;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.summary{
+  width: 80%;
+  font-size: 23px;
+  font-weight: bolder;
+  color: #2D4DD1;
 }
 
 .creator__detail p {
@@ -67,12 +96,30 @@
   border: none;
   outline: none;
   border-radius: 50px;
+  transition: 0.3s;
+  display: flex;
+  margin: 0px;
+  align-items: center;
+  justify-content: center;
+  margin: -12px;
+}
 
+.singleNft-btn-cart {
+  padding: 8px 25px;
+  background: #5142fc;
+  border: none;
+  margin: 0px;
+  outline: none;
+  border-radius: 50px;
   transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: -40px;
+  position: relative;
+  left: 400px;
 }
+
 
 .singleNft-btn a {
   text-decoration: none;
@@ -80,19 +127,44 @@
   font-size: 1rem;
 }
 
+.singleNft-btn-cart a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+}
 .singleNft-btn:hover {
   background: #fff;
+  background: transparent;
 }
 
 .singleNft-btn:hover a {
   color: #5142fc;
 }
 
+.singleNft-btn-cart:hover {
+  background: #fff;
+  background: transparent;
+}
+
+.singleNft-btn-cart:hover a {
+  color: #5142fc;
+}
+
+
+
 .singleNft-btn i {
   color: #fff;
 }
 
 .singleNft-btn:hover i {
+  color: #5142fc;
+}
+
+.singleNft-btn-cart i {
+  color: #fff;
+}
+
+.singleNft-btn-cart:hover i {
   color: #5142fc;
 }
 

@@ -1,0 +1,461 @@
+.single__nft-img {
+    border-radius: 8px;
+    width: 30vw;
+    height: 30vw;
+  }
+  
+  .Details{
+    height: 250px;
+    overflow-y: scroll;
+    width: 700px;
+  }
+  
+  .single__nft__content h2{
+    width: 80%;
+    font-size: 23px;
+  }
+  
+  .single__nft-seen span{
+    color: #000 !important;
+    font-weight: 700;
+  }
+  
+  .single__nft-seen span i {
+    color: #fff;
+    padding: 5px;
+    background: #2D4DD1;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .single__nft-seen span,
+  .single__nft-more span {
+    color: #fff;
+    font-size: 0.8rem;
+  }
+  
+  .single__nft-more span i {
+    background: #2D4DD1;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  
+  .nft__creator {
+    background: #343444;
+    padding: 15px;
+    border-radius: 7px;
+    width: 50%;
+  }
+  
+  .creator__img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  
+  .Price{
+    width: 80%;
+    font-size: 23px;
+    font-weight: bolder;
+    color: #2D4DD1;
+  }
+  
+  .amount{
+    width: 80%;
+    font-size: 30px;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    color: black;
+  }
+  
+  .summary{
+    width: 80%;
+    font-size: 23px;
+    font-weight: bolder;
+    color: #2D4DD1;
+  }
+  
+  .creator__detail p {
+    font-size: 0.7rem;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  .creator__detail h6 {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .singleNft-btn {
+    padding: 8px 25px;
+    background: #5142fc;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    display: flex;
+    margin: 0px;
+    align-items: center;
+    justify-content: center;
+    margin: -12px;
+  }
+  
+  .singleNft-btn-cart {
+    padding: 8px 25px;
+    background: #5142fc;
+    border: none;
+    margin: 0px;
+    outline: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -40px;
+    position: relative;
+    left: 400px;
+  }
+  
+  
+  .singleNft-btn a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .singleNft-btn-cart a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+  }
+  .singleNft-btn:hover {
+    background: #fff;
+    background: transparent;
+  }
+  
+  .singleNft-btn:hover a {
+    color: #5142fc;
+  }
+  
+  .singleNft-btn-cart:hover {
+    background: #fff;
+    background: transparent;
+  }
+  
+  .singleNft-btn-cart:hover a {
+    color: #5142fc;
+  }
+  
+  
+  
+  .singleNft-btn i {
+    color: #fff;
+  }
+  
+  .singleNft-btn:hover i {
+    color: #5142fc;
+  }
+  
+  .singleNft-btn-cart i {
+    color: #fff;
+  }
+  
+  .singleNft-btn-cart:hover i {
+    color: #5142fc;
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .single__nft__content h2 {
+      font-size: 1.3rem;
+    }
+  
+    .single__nft__content p {
+      font-size: 0.8rem;
+      line-height: 28px;
+    }
+  
+    .nft__creator {
+      width: 100%;
+    }
+  
+    .singleNft-btn a {
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media only screen and (max-width: 576px) {
+    .single__nft__content h2 {
+      margin-top: 15px;
+    }
+  }
+
+/* ------------------------------------------------------------------------------------- */
+
+/**************************
+* Standards
+***************************/
+
+/*
+  Box sizing:
+  http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts
+
+  For more extensive normalization, see:
+  http://nicolasgallagher.com/about-normalize-css/
+*/
+
+
+.Report {
+  background: transparent;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  hyphens: auto;
+}
+
+a {
+  color: #fff;
+}
+
+.outbound-link {
+  display: block;
+  margin-top: 1rem;
+}
+
+
+/**************************
+* Specific content elements
+***************************/
+
+/*
+  Ordering CSS:
+  http://flippinawesome.org/2014/06/18/ordering-css-for-everyone
+
+  Flexbox:
+  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+  http://the-echoplex.net/flexyboxes/
+
+  Bezier curves:
+  Try to change a transition with different bezier curves:
+  http://lea.verou.me/2011/09/a-better-tool-for-cubic-bezier-easing/  
+  http://cubic-bezier.com/
+*/
+
+
+    .header__navigation li {
+        display: inline-block;
+        margin: 0 0.5em;
+      }
+
+    .header__navigation a {
+        color: #404d5b;
+        position: relative;
+        text-decoration: none;
+        transform: translate3d(0,0,0);
+        transition: all 0.5s ease;
+    }
+
+        .header__navigation a:hover {
+          color: #e8554e;
+        }
+
+        .header__navigation a::after {
+          background: #f9f7f6;
+          bottom: 0;
+          content: '';
+          height: 2px;
+          left: 0;
+          position: absolute;
+          transform: scaleX(0);
+          transform-origin: left 0;
+          transition: all 0.5s ease;
+          width: 100%;
+          visibility: hidden;
+        }
+
+        .header__navigation a:hover::after {
+          background: #e54b4b;
+          transform: scaleX(1);
+          visibility: visible;
+        }
+
+
+.content {
+  margin-top: 10rem;
+}
+
+  .panel {
+    background: transparent;
+    position: relative;
+  }
+
+    .panel__background {
+      position: absolute;
+      height: 100%;
+      opacity: 0.8;
+      transform: translate3d(0,0,0);
+      transition: all 0.2s ease-out;
+      width: 100%;
+      z-index: 5;
+    }
+
+    .panel:hover .panel__background {
+      opacity: 1;
+    }
+
+
+/**************************
+* Scale effect
+***************************/
+
+    .panel--scale-effect .panel__background {
+      transform: scaleY(1);
+      z-index: 10;
+    }
+
+    .panel--scale-effect:hover .panel__background {
+      transform: scaleY(1.2);
+      opacity: 0.3;
+    }
+.panel__content-figure {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 500px;
+}
+
+  .panel__content-figure img {
+    display: block;
+    opacity: 0.7;
+    position: relative;
+    transition: opacity 0.35s, transform 0.35s;
+    transform: translate3d(-40px,0,0);
+    width: calc(100% + 40px);
+  }
+
+  .panel__content-figure h2,
+  .panel__content-figure p {
+    color: #fff !important;
+    transform: translate3d(0,40px,0);
+  }
+
+  .panel__content-figure h2 {
+    transition: transform 0.35s;
+  }
+
+  .panel__content-figure p {
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.35s;
+  }
+
+  .panel__content-figure a {
+    color: #fff !important;
+    font-size: 1rem;
+    text-transform: none;
+  }
+
+  .panel__content-figure:hover img,
+  .panel__content-figure:hover p {
+    opacity: 1;
+  }
+
+  .panel__content-figure:hover p {
+    transition-delay: 0.05s;
+    transition-duration: 0.35s;
+  }
+
+  .panel__content-figure:hover img,
+  .panel__content-figure:hover h2,
+  .panel__content-figure:hover p {
+    transform: translate3d(0,0,0);
+  }
+
+.panel__content-caption {
+    font-size: 1.25rem;
+    height: 100%;
+    left: 0;
+    padding: 8rem 2rem 0 2rem;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    width: 100%;
+    }
+
+
+/**************************
+* Background colors
+***************************/
+
+    .panel--yellow .panel__background {
+      /* background: #e7ba3a; */
+        background: transparent;
+    }
+
+    .panel--green .panel__background {
+      /* background: #7eb66f; */
+      background: transparent;
+    }
+
+    .panel--grey .panel__background {
+        background: transparent;
+    }
+
+    .panel--grey .panel__content p,
+    .panel--grey .panel__content a {
+      color: #404d5b;
+    }
+
+    .panel__content {
+      margin: 0 auto;
+      max-width: 70rem;
+      padding: 5rem 0;
+      position: relative;
+      width: 90%;
+      z-index: 20;
+    }
+
+      .panel__content p {
+        color: black;
+        font-size: 1.5rem;
+        transform: scale(1);
+      }
+
+      .panel__content p:hover {
+        transform: scale(1.1);
+        transition: all 0.2s ease-out;
+        /* opacity: 0.3; */
+      }
+
+      .Report button{
+        display: inline-block;
+        border: none;
+        outline: none;
+        padding: 5px 22px;
+        background: transparent;
+        /* border: 1px solid #00337C; */
+        font-size: 0.9rem;
+        color: #fff;
+        border-radius: 5px;
+        transition: 0.3s;
+        background: #2684ff;
+        text-decoration: none;
+        justify-content: space-evenly;
+    }
+    
+    .disease{
+        text-decoration: none !important;
+    }
+      
+      .Report button:hover {
+        background: transparent;
+        color: #2684ff;
+        border: 1px solid #00337C;
+      }
+/* 
+      .panel--pattern .panel__background {
+        background-color: #6d695c;
+        background-image:
+        background-size: 70px 120px;
+      } */
