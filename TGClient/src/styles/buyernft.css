@@ -192,7 +192,7 @@
       margin-top: 15px;
     }
   }
-
+  
 /* ------------------------------------------------------------------------------------- */
 
 /**************************
@@ -200,23 +200,38 @@
 ***************************/
 
 /*
-  Box sizing:
-  http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts
+Box sizing:
+http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts
 
-  For more extensive normalization, see:
-  http://nicolasgallagher.com/about-normalize-css/
+For more extensive normalization, see:
+http://nicolasgallagher.com/about-normalize-css/
 */
-
+/* .panel__background::after{
+  padding-bottom: 20px;
+  content: "watermark ";
+  
+  top: 0;
+  height: 20px;
+  background-clip: content-box;
+  position: absolute;
+  transform: rotate(45deg);
+  color: gray;
+  z-index: -1;
+  font-size: x-large;
+  opacity: 0.8;
+  font-size: larger;
+  width: 100%;
+} */
 
 .Report {
-  background: transparent;
+  /* background: transparent; */
   font-family: "Fira Sans", sans-serif;
   font-weight: 300;
   hyphens: auto;
 }
 
 a {
-  color: #fff;
+  color: #fff ;
 }
 
 .outbound-link {
@@ -242,7 +257,6 @@ a {
   http://lea.verou.me/2011/09/a-better-tool-for-cubic-bezier-easing/  
   http://cubic-bezier.com/
 */
-
 
     .header__navigation li {
         display: inline-block;
@@ -289,11 +303,13 @@ a {
   .panel {
     background: transparent;
     position: relative;
+    background-image: url(../assets/images/LnT_watermark.png);
+    background-size: 200px;
   }
 
     .panel__background {
       position: absolute;
-      height: 100%;
+      /* height: 100%; */
       opacity: 0.8;
       transform: translate3d(0,0,0);
       transition: all 0.2s ease-out;
@@ -305,7 +321,6 @@ a {
       opacity: 1;
     }
 
-
 /**************************
 * Scale effect
 ***************************/
@@ -315,25 +330,10 @@ a {
       z-index: 10;
     }
 
-    .panel--scale-effect:hover .panel__background {
+    /* .panel--scale-effect:hover .panel__background {
       transform: scaleY(1.2);
-      opacity: 0.3;
-    }
-.panel__content-figure {
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  width: 500px;
-}
-
-  .panel__content-figure img {
-    display: block;
-    opacity: 0.7;
-    position: relative;
-    transition: opacity 0.35s, transform 0.35s;
-    transform: translate3d(-40px,0,0);
-    width: calc(100% + 40px);
-  }
+      opacity: 0.5;
+    } */
 
   .panel__content-figure h2,
   .panel__content-figure p {
@@ -422,21 +422,23 @@ a {
         transform: scale(1);
       }
 
-      .panel__content p:hover {
+      /* .panel__content p:hover {
         transform: scale(1.1);
         transition: all 0.2s ease-out;
-        /* opacity: 0.3; */
-      }
+        /* opacity: 0.3; 
+      } */
 
       .Report button{
-        display: inline-block;
+        display: inline-flex;
         border: none;
         outline: none;
         padding: 5px 22px;
         background: transparent;
-        /* border: 1px solid #00337C; */
         font-size: 0.9rem;
         color: #fff;
+        margin: 50px;
+        width: 170px;
+        font-size: large;
         border-radius: 5px;
         transition: 0.3s;
         background: #2684ff;
