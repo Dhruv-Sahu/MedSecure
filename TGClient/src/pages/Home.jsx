@@ -13,9 +13,9 @@ const Home = () => {
   return (
     <>
       <HeroSection />
-      <LiveAuction />
-      <SellerSection />
       <Trending />
+      <SellerSection />
+      <LiveAuction />
       <StepSection />
     </>
   );

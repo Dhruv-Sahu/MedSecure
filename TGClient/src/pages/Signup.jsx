@@ -2,47 +2,30 @@ import React, { useState } from "react";
 import "../styles/NewLogin.css";
 import Userlogin from "./Sellerlogin";
 import Buyerlogin from "./Buyerlogin";
-// import Hospitallogin from './Hospitallogin'
-// import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 import "../components/Header/header.css";
 import "font-awesome/css/font-awesome.min.css";
 
 const Signup = () => {
-  const [current,Setcurrent]=useState(1);
-  // const navigate = useNavigate();
-  // const [buttons, setButtons] = useState([
-  //   { id: 1, text: "Buyer", isDefault: true },
-  //   { id: 2, text: "User", isDefault: false },
-  //   // { id: 3, text: "Hospital", isDefault: false },
-  // ]);
+  const [current, Setcurrent] = useState(1);
 
-  // const handleClick = (id) => {
-  //   setButtons(
-  //     buttons.map((button) => ({
-  //       ...button,
-  //       isDefault: button.id === id,
-  //     }))
-  //   );
-  // };
-  const func1=()=>{
-const button1 = document.getElementById("button1");
-const button2 = document.getElementById("button2");
-Setcurrent(1);
-button1.classList.add("master");
-button2.classList.remove("master");
-button1.style.border = "1px solid black";
-button2.style.border = "None";
-}
-const func2=()=>{
-Setcurrent(2);
-const button1 = document.getElementById("button1");
-const button2 = document.getElementById("button2");
-button2.classList.add("master");
-button1.classList.remove("master");
-button2.style.border = "1px solid black";
-button1.style.border = "None";
-  }
+  const func1 = () => {
+    const button1 = document.getElementById("button1");
+    const button2 = document.getElementById("button2");
+    Setcurrent(1);
+    button1.classList.add("master");
+    button2.classList.remove("master");
+    button1.style.border = "1px solid black";
+    button2.style.border = "None";
+  };
+  const func2 = () => {
+    Setcurrent(2);
+    const button1 = document.getElementById("button1");
+    const button2 = document.getElementById("button2");
+    button2.classList.add("master");
+    button1.classList.remove("master");
+    button2.style.border = "1px solid black";
+    button1.style.border = "None";
+  };
   return (
     <div>
       <section className="background-radial-gradient overflow-hidden">
@@ -58,46 +41,33 @@ button1.style.border = "None";
                   id="button1"
                   onClick={func1}
                   style={{
-                  padding: "10px 20px",
-                  borderRadius: "5px",
-                  border: "1px solid black",
-                  // border: "None",
-                  display: "block"}}
+                    padding: "10px 20px",
+                    borderRadius: "5px",
+                    border: "1px solid black",
+                    display: "block",
+                  }}
                 >
-                  <span style={{display:"block",fontWeight:"bold"}}>Buyer</span>
+                  <span style={{ display: "block", fontWeight: "bold" }}>
+                    Buyer
+                  </span>
                   I am here to buy NFTs
                 </button>
                 <button
-                  style={{padding: "10px 20px",
-                  borderRadius: "5px",
-                  // border: "None",
-                  display: "block"}}
+                  style={{
+                    padding: "10px 20px",
+                    borderRadius: "5px",
+                    // border: "None",
+                    display: "block",
+                  }}
                   id="button2"
                   className="Buttons"
                   onClick={func2}
                 >
-                  <span style={{display:"block",fontWeight:"bold"}}>User</span>
+                  <span style={{ display: "block", fontWeight: "bold" }}>
+                    User
+                  </span>
                   I am here as a User
                 </button>
-                
-
-                {/* {buttons.map((button) => (
-                  <button
-                    key={button.id}
-                    className="Buttons"
-                    style={{
-                      backgroundColor: button.isDefault ? "gray" : "white",
-                      padding: "10px 20px",
-                      borderRadius: "5px",
-                      border: "1px solid black",
-                      display: "block",
-                    }}
-                    onClick={() => handleClick(button.id)}
-                  >
-                    {button.text+(button.id===1 &&"")}
-                    
-                  </button>
-                ))} */}
               </div>
               <p
                 className="mb-4 opacity-70"
@@ -109,10 +79,8 @@ button1.style.border = "None";
                 ab ipsum nisi dolorem modi. Quos?
               </p>
             </div>
-            {current===1 && <Buyerlogin />}
-            {current===2 && <Userlogin />}
-            {/* {buttons[2].isDefault && <Hospitallogin/>} */}
-
+            {current === 1 && <Buyerlogin />}
+            {current === 2 && <Userlogin />}
           </div>
         </div>
       </section>

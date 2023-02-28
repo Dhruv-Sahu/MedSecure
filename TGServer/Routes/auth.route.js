@@ -49,7 +49,7 @@ router.post("/register", async (req, res) => {
 
     if (mailResponse) {
       res.status(200).json({
-        user,
+        ...user._doc,
         status: "successful",
         message: "user created successfully and mailed verified",
       });
@@ -196,12 +196,15 @@ router.post("/emailVerification", async (req, res) => {
 
       await User.findByIdAndUpdate(userId,{$set: {verified: true}})
 
-      ~
+      await UserOTPVerification.findByIdAndDelete(userOtp[0]._id)
 
       res.status(200).json({
-        otp: userOtp[0].otp,
-        userOtp: userOtp[0]._id
+        // otp: userOtp[0].otp,
+        // userOtp: userOtp[0]._id,
+        // status: userOtp[0]._id
+        message:"email Verified"
       });
+
       return;
 
     }

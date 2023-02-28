@@ -16,8 +16,12 @@ const NftCard = (props) => {
 
   return (
     <div className="single__nft__card">
-      <div className="nft__img">
+      {/* <div className="nft__img">
         <NftImage img = {imgUrl} />
+      </div> */}
+
+      <div className="nft__img">
+      <img src={imgUrl} alt="" className="w-100" />
       </div>
 
       <div className="nft__content">

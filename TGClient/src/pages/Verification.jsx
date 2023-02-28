@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import "../styles/verification.css";
+
+import { useNavigate } from "react-router-dom";
+import axios from "../context/axios";
+import { AuthContext } from "../context/authContext";
+
+
 const Verification = () => {
+
+  const navigate = useNavigate()
+  const {userData} = useContext(AuthContext)
+  console.log(userData)
+  const [digit1, setDigit1] = useState("")
+  const [digit2, setDigit2] = useState("")
+  const [digit3, setDigit3] = useState("")
+  const [digit4, setDigit4] = useState("")
+
+
     const handleInput=(e)=>{
         console.log(e.nativeEvent.data)
         if(e.nativeEvent.data===null)
@@ -27,6 +43,27 @@ const Verification = () => {
             return nextField && nextField.focus();
             break
         }}
+
+        async function handleSubmit(e){
+          e.preventDefault()
+          let data = {
+            otp : `${digit1}${digit2}${digit3}${digit4}`,
+            id : userData?._id
+          }
+          console.log(`${digit1}${digit2}${digit3}${digit4}`)
+          console.log(userData)
+          try {
+
+            const response = await axios.post('/auth/emailVerification',data)
+            if (response.data){
+              navigate('/')
+            }
+            
+          } catch (error) {
+            console.log(error)
+          }
+        }
+
   return (
     <div style={{height: "100%",
         display: "grid",
@@ -61,7 +98,7 @@ const Verification = () => {
             className="phone-number"
             style={{ display: "block", color: "#093030", fontWeight: "600" }}
           >
-            +20 102 2233 444
+            {userData?.email}
           </span>
         </p>
         <div
@@ -90,6 +127,9 @@ const Verification = () => {
             }}
             onInput={handleInput}
             onKeyDown={keychanger}
+            onChange = {(e)=>{
+              setDigit1(e.target.value)
+            }}
             maxLength="1"
           />
           <input
@@ -110,6 +150,9 @@ const Verification = () => {
             onInput={handleInput}
             onKeyDown={keychanger}
             maxLength="1"
+            onChange = {(e)=>{
+              setDigit2(e.target.value)
+            }}
           />
           <input
             type="text"
@@ -128,6 +171,9 @@ const Verification = () => {
             }}
             onInput={handleInput}
             onKeyDown={keychanger}
+            onChange = {(e)=>{
+              setDigit3(e.target.value)
+            }}
             maxLength="1"
           />
           <input
@@ -147,6 +193,9 @@ const Verification = () => {
             }}
             onInput={handleInput}
             onKeyDown={keychanger}
+            onChange = {(e)=>{
+              setDigit4(e.target.value)
+            }}
             maxLength="1"
           />
         </div>
@@ -164,8 +213,14 @@ const Verification = () => {
           <i className="fa fa-caret-right" style={{ marginLeft: "5px" }}></i>
         </button>
         <div className="styler">
-              <button type="submit" className="btn btn-primary btn-block mb-4 button_styler">
-                Sign Up
+              <button 
+                type="submit" 
+                className="btn btn-primary btn-block mb-4 button_styler"
+                onClick={(e)=>{
+                  handleSubmit(e)
+                }}
+              >
+                Confirm
               </button>
               </div>
             <div
