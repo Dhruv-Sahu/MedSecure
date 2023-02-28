@@ -48,6 +48,11 @@ const UserSchema = new mongoose.Schema(
     verified: {
       type: Boolean,
       default: false
+    },
+
+    aadharNumber:{
+      type: String,
+      unique: true
     }
 
   },

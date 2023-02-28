@@ -31,6 +31,7 @@ router.post("/register", async (req, res) => {
       password: encryptPassword,
       organisation: req.body.organisation,
       userType: req.body.userType,
+      aadharNumber: req.body.aadharNumber
     });
 
     //MARK: SENDING MAIL TO USER

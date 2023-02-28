@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import "../components/Header/header.css";
 import "font-awesome/css/font-awesome.min.css";
 
-import {AuthContext} from "../context/authContext";
+import { AuthContext } from "../context/authContext";
 import axios from "../context/axios";
-
+import { ethers } from "ethers";
 
 const Buyerlogin = () => {
-
   const navigate = useNavigate();
   const { userLogin } = useContext(AuthContext);
 
@@ -34,39 +33,64 @@ const Buyerlogin = () => {
     confirm_password.onkeyup = validatePassword;
   };
 
-  async function handleSubmit(e) {  
-    let data = ""
-    e.preventDefault();
-    if(password==='')
-    {
-      alert('enter valid password')
-      // console.log('enter valid password')
-    }  
-    else{
-      data = {
-        firstName,
-        lastName,
-        organisation,
-        email,
-        password,
-        userType: "Buyer"
-        
-      }
-      console.log(data);
-    }
-
+  async function signRegister() {
     try {
-      const response = await axios.post('/auth/register',data)
-      userLogin(response.data)
-      navigate("/verification")
-      
+      if (!window.ethereum) {
+        alert("No Crypto Wallet Found");
+        return false;
+        throw new Error("No Crypto Wallet Found");
+      } else {
+        await window.ethereum.send("eth_requestAccounts");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+
+        const address = signer.getAddress();
+        const signature = await signer.signMessage(
+          "I Am Authorizing the Account"
+        );
+
+        console.log({
+          signer,
+          address,
+          signature,
+        });
+        return true;
+      }
     } catch (error) {
-      
+      return false;
     }
-
-
-    
   }
+
+  async function handleSubmit(e) {
+    let data = "";
+    e.preventDefault();
+
+    if (password === "") {
+      alert("enter valid password");
+      // console.log('enter valid password')
+    } else {
+      let result = await signRegister();
+      console.log(result)
+      if (result) {
+        data = {
+          firstName,
+          lastName,
+          organisation,
+          email,
+          password,
+          userType: "Buyer",
+        };
+        console.log(data);
+
+        try {
+          const response = await axios.post("/auth/register", data);
+          userLogin(response.data);
+          navigate("/verification");
+        } catch (error) {}
+      }
+    }
+  }
+
   return (
     <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
       <div className="card bg-glass" style={{ right: "-150px" }}>
@@ -159,7 +183,10 @@ const Buyerlogin = () => {
                 type="submit"
                 onClick={
                   // validatePassword;
-                  (e)=>{handleSubmit(e);}}
+                  (e) => {
+                    handleSubmit(e);
+                  }
+                }
                 className="btn btn-primary btn-block mb-4 button_styler"
               >
                 Sign Up

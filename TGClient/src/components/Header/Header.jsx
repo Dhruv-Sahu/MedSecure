@@ -72,6 +72,7 @@ const Header = () => {
         });
     } else {
       setErrorMessage("Metamask Not Present");
+      alert("Metamask Not Present")
     }
   }
 
