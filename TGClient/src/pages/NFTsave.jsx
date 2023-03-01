@@ -1,17 +1,66 @@
-import React, { Component } from "react";
+import React, { Component , useEffect, useContext } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 import "../styles/Nftsave.css";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
+
 class Save extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      Medical: "Kidney kidding me",
+      Uid: "99988394",
+      Date: "12/09/2022",
+      Gender: "Female",
+    };
+  }
+
+  static contextType = AuthContext
+
   certificateWrapper = React.createRef();
-  state = {
-    Medical: "Kidney kidding me",
-    Uid: "99988394",
-    Date: "12/09/2022",
-    Gender: "Female",
-  };
+  
+
+    componentDidMount() {
+    // get all entities - GET
+    fetch(`http://localhost:8080/api/v1/temp/tempData?aadharNumber=${this.context.userData?.aadharNumber}`, {
+      "method": "GET",
+      "headers": {
+        
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      let medicalIssue = ""
+      response[0].reports.map((ele)=>{
+        
+        medicalIssue += ele.reportTitle
+        medicalIssue += ", "
+        console.log(medicalIssue)
+      })
+
+      this.setState({
+        Medical: medicalIssue,
+        Uid: response[0].patientUid,
+        Date: response[0].lastUpdate,
+        Gender: response[0].gender
+      })
+      
+      
+      console.log(response)
+    })
+    .catch(err => { console.log(err); 
+    });
+  }
+
+  
+  
   render() {
+
+    console.log("user Context : ",this.context.userData)
+
     return (
       <>
         <CommonSection title={"Details Verification"} />
@@ -98,8 +147,9 @@ class Save extends Component {
                   html2CanvasOptions: { backgroundColor: null },
                 });
               }}
-            >
-              Download
+            ><Link to='/Uploader' >
+            Download
+            </Link>
             </button>
           </div>
         </div>

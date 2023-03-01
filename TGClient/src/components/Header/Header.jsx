@@ -8,26 +8,68 @@ import { ethers } from "ethers";
 import { Web3Context } from "../../context/web3Context";
 import logo from "../../assets/images/logomed.png";
 
-const NAV__LINKS = [
-  {
-    display: "Home",
-    url: "/home",
-  },
-  {
-    display: "Market",
-    url: "/market",
-  },
-  {
-    display: "Create",
-    url: "/create",
-  },
-  {
-    display: "Contact",
-    url: "/contact",
-  },
-];
+import { AuthContext } from "../../context/authContext";
+
+
+
+
 
 const Header = () => {
+
+
+  const {userData} = useContext(AuthContext)
+  console.log("header:", userData)
+  let NAV__LINKS = []
+
+  if (userData?.userType == 'Buyer'){
+    NAV__LINKS = [
+      {
+        display: "Home",
+        url: "/home",
+      },
+      {
+        display: "Market",
+        url: "/market",
+      },
+      {
+        display: "Contact",
+        url: "/contact",
+      },
+    ];
+  } else if (userData?.userType == 'Seller'){
+    NAV__LINKS = [
+      {
+        display: "Home",
+        url: "/home",
+      },
+      {
+        display: "Market",
+        url: "/market",
+      },
+      {
+        display: "NFT Verify",
+        url: "/save",
+      },
+      {
+        display: "Contact",
+        url: "/contact",
+      },
+    ];
+  } else {
+    NAV__LINKS = [
+      {
+        display: "Create",
+        url: "/create",
+      },
+      {
+        display: "Contact",
+        url: "/contact",
+      },
+    ];
+  }
+
+
+
   const { userMetamask } = useContext(Web3Context);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -70,6 +112,7 @@ const Header = () => {
         });
     } else {
       setErrorMessage("Metamask Not Present");
+      alert("Metamask Not Present")
     }
   }
 

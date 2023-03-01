@@ -30,6 +30,7 @@ const Loginform = () => {
         userLogin(response.data)
       }
 
+      navigate("/")
     } catch (error) {
       
     }

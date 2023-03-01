@@ -12,6 +12,23 @@ import "../styles/create-item.css";
 import ReportDetail from "../components/ReportDetail";
 
 const Create = () => {
+  const func = () => {
+    // let val=document.getElementById(props.number).value
+    // // let val1=document.getElementById().value
+    // let item00=props.desc
+    // // let item1=props.medicalTitle
+    // item00.push(val)
+    // // item1.push(val1)
+    // props.setDesc(item00);
+    // // props.setMedicalTitle(item1);
+    // console.log(props.desc)
+    // // console.log(props.medicalTitle)
+    for (let i = 0; i < medicalIssue; i++) {
+      let val = document.className("description")[i].value;
+      let val1 = document.className("title")[i].value;
+      console.log(val1, val);
+    }
+  };
   let item = {
     id: "01",
     title: "0x2155b499F7FB25031e9991cB1a059e3a15E15031",
@@ -20,11 +37,11 @@ const Create = () => {
     currentBid: 7.89,
   };
 
-  const [id, setId] = useState("01");
+  // const [id, setId] = useState("01");
 
   //user view
   const [img, setImg] = useState("https://i.imgur.com/9YpzuMkh.png");
-  const [title, setTitle] = useState(
+  const [sellerwalletaddress, setsellerwalletaddress] = useState(
     "0x2155b499F7FB25031e9991cB1a059e3a15E15031"
   );
   const [expiredOn, setexpiredOn] = useState("");
@@ -33,43 +50,55 @@ const Create = () => {
   const [medicalIssue, setmedicalIssue] = useState("");
   const [Hospitalname, sethospitalname] = useState("");
   //details stored in IPFS
-  const [medicalTitle, setMedicalTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  const [medicalTitle, setMedicalTitle] = useState([]);
+  const [desc, setDesc] = useState([]);
   const [gender, setGender] = useState("");
   const [arrayform, setarrayform] = useState(false);
+  const [aadhar, setaadhar] = useState("");
+  // const [reports, setReports] = useState([])
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(
-      img,
-      title,
-      expiredOn,
-      lastUpdate,
-      currentBid,
-      medicalIssue,
-      medicalTitle,
-      desc,
-      gender,
-      Hospitalname
-    );
+    let reports1 = [];
+    for (let i = 0; i < medicalIssue; i++) {
+      let val = document.getElementsByClassName("description")[i].value;
+      let val1 = document.getElementsByClassName("title")[i].value;
+      let data = {
+        reportTitle: val1,
+        reportDesc: val,
+      };
+      reports1.push(data);
+    }
+    // console.log(
+    //   img,
+    //   title,
+    //   expiredOn,
+    //   lastUpdate,
+    //   currentBid,
+    //   medicalIssue,
+    //   medicalTitle,
+    //   desc,
+    //   gender,
+    //   Hospitalname,
+    //   reports1
+    // );
 
     let data = {
-      id: id,
-      title: title,
+      // patientUid: id,
+      sellerWalletAddress: sellerwalletaddress,
       currentBid: currentBid,
       imgUrl: `https://i.imgur.com/9YpzuMkh.png`,
       expiredOn: expiredOn,
       lastUpdate: lastUpdate,
-      currentBid: currentBid,
-      medicalIssue: medicalIssue,
-      hospitalname: Hospitalname,
+      aadharNumber:aadhar,
+      numberOfMedicalIssue: medicalIssue,
+      hospitalName: Hospitalname,
       gender: gender,
-      medicalTitle: medicalTitle,
-      desc: desc,
+      patientUid: medicalTitle,
+      reports: reports1,
     };
-
-    const res = await axios.post("/upload/uploadIpfs", data);
+    console.log(data);
+    const res = await axios.post("/temp/tempUpload", data);
     console.log(res);
   }
 
@@ -79,7 +108,7 @@ const Create = () => {
     for (let i = 0; i < medicalIssue; i++) {
       form1.push(i);
     }
-    setarrayform(form1)
+    setarrayform(form1);
   };
   return (
     <>
@@ -105,20 +134,33 @@ const Create = () => {
                     <input
                       type="text"
                       placeholder="Enter title"
+                      required
                       onChange={(e) => {
                         setMedicalTitle(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="form__input">
+                    <label htmlFor="">Hospital Name</label>
+                    <input
+                      type="text"
+                      placeholder="Enter Hospital Name"
+                      required
+                      onChange={(e) => {
+                        sethospitalname(e.target.value);
                       }}
                     />
                   </div>
 
                   <div className="d-flex align-items-center gap-2">
                     <div className="form__input w-50">
-                      <label htmlFor="">Hospital Name</label>
+                      <label htmlFor="">Aadhar Number</label>
                       <input
-                        type="text"
-                        placeholder="Enter Hospital Name"
+                        type="number"
+                        required
+                        placeholder="Enter patient aadhar number"
                         onChange={(e) => {
-                          sethospitalname(e.target.value);
+                          setaadhar(e.target.value);
                         }}
                       />
                     </div>
@@ -126,6 +168,7 @@ const Create = () => {
                       <label htmlFor="">Amount</label>
                       <input
                         type="number"
+                        required
                         placeholder="Enter minimum bid"
                         onChange={(e) => {
                           setCurrentBid(e.target.value);
@@ -133,13 +176,13 @@ const Create = () => {
                       />
                     </div>
                   </div>
-
                   <div className=" d-flex align-items-center gap-4">
                     <div className="form__input w-50">
                       <label htmlFor="">Gender</label>
                       <input
                         type="Text"
                         placeholder="Enter you Gender"
+                        required
                         onChange={(e) => {
                           setGender(e.target.value);
                         }}
@@ -150,6 +193,7 @@ const Create = () => {
                       <label htmlFor=""> Last Update </label>
                       <input
                         type="date"
+                        required
                         onChange={(e) => {
                           setlastUpdate(e.target.value);
                         }}
@@ -160,6 +204,7 @@ const Create = () => {
                       <label htmlFor="">Valid Upto</label>
                       <input
                         type="date"
+                        required
                         onChange={(e) => {
                           setexpiredOn(e.target.value);
                         }}
@@ -171,6 +216,7 @@ const Create = () => {
                       <label htmlFor="">Number of Medical Issue</label>
                       <input
                         type="number"
+                        required
                         placeholder="Enter the medical issue terms"
                         onChange={(e) => {
                           setmedicalIssue(e.target.value);
@@ -188,9 +234,18 @@ const Create = () => {
                       </button>
                     </div>
                   </div>
-                  {arrayform && arrayform.map((e)=>{
-                    return <ReportDetail setMedicalTitle={setMedicalTitle} number={e} setDesc={setDesc}/>
-                  })}
+                  {arrayform &&
+                    arrayform.map((e) => {
+                      return (
+                        <ReportDetail
+                          medicalTitle={medicalTitle}
+                          desc={desc}
+                          setMedicalTitle={setMedicalTitle}
+                          number={e}
+                          setDesc={setDesc}
+                        />
+                      );
+                    })}
 
                   {/* <div className="form__input">
                     <label htmlFor="">Report Details</label>
@@ -206,12 +261,13 @@ const Create = () => {
                     ></textarea>
                   </div> */}
                   <input type="checkbox" name="vehicle1" value="Bike" />
-                  <label for="vehicle1">
+                  <label htmlFor="vehicle1">
                     I accept the following terms and conditions
                   </label>
 
                   <div className="submit_form__input">
                     <button
+                    style={{marginTop:"20px"}}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}

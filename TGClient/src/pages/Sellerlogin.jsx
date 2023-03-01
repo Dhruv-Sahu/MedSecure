@@ -1,12 +1,13 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import "../styles/NewLogin.css";
 // import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../components/Header/header.css";
 import "font-awesome/css/font-awesome.min.css";
 
-import {AuthContext} from "../context/authContext";
+import { AuthContext } from "../context/authContext";
 import axios from "../context/axios";
+import { ethers } from "ethers";
 
 const Userlogin = () => {
   const navigate = useNavigate();
@@ -16,7 +17,13 @@ const Userlogin = () => {
   const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [aadharNumber, setAadharNumber] = useState("")
 
+  //etherJS
+  const [publicAddress, setPublicAddress] = useState("")
+  const [signature, setSignature] = useState("")
+
+  //password validator
   const validatePassword = () => {
     var password = document.getElementById("form3Example4"),
       confirm_password = document.getElementById("form3Example5");
@@ -31,37 +38,73 @@ const Userlogin = () => {
     confirm_password.onkeyup = validatePassword;
   };
 
+  // metamask signature and validation
+  async function signRegister() {
+    try {
+      if (!window.ethereum) {
+        alert("No Crypto Wallet Found");
+        return false;
+        throw new Error("No Crypto Wallet Found");
+      } else {
+        await window.ethereum.send("eth_requestAccounts");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+        const signature = await signer.signMessage(
+          "I Am Authorizing the Account"
+        );
+
+        setPublicAddress(address)
+        setSignature(signature)
+
+        console.log({
+          signer,
+          address,
+          signature,
+        });
+        return {
+          publicAddress,
+          signature
+        };
+      }
+    } catch (error) {
+      return false;
+    }
+  }
+
+  //handling the form submit
   async function handleSubmit(e) {
     e.preventDefault();
-    let data = ""
-    if(password==='')
-    {
-      alert('enter valid password')
+    let data = "";
+    if (password === "") {
+      alert("enter valid password");
       // console.log('enter valid password')
-    }  
-    else{
-      data = {
-        firstName,
-        lastName,
-        email,
-        password,
-        userType: "Seller"
+    } else {
+      let result = await signRegister();
+      if (result) {
+        data = {
+          firstName,
+          lastName,
+          email,
+          password,
+          userType: "Seller",
+          aadharNumber,
+          // check
+          publicAddress : result.publicAddress,
+          signature : result.signature
+        };
+        console.log(data);
+
+        try {
+          const response = await axios.post("/auth/register", data);
+          userLogin(response.data);
+          navigate("/verification");
+        } catch (error) {}
       }
-      console.log(data);
     }
-
-    try {
-      const response = await axios.post('/auth/register',data)
-      userLogin(response.data)
-      navigate("/verification")
-      
-    } catch (error) {
-      
-    }
-
-
-    
   }
+
+  //rendering the page
   return (
     <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
       <div className="card bg-glass" style={{ right: "-150px" }}>
@@ -112,6 +155,18 @@ const Userlogin = () => {
                 }}
               />
             </div>
+            <div className="form-outline mb-4">
+              <input
+                type="aadhar"
+                id="form3Example3"
+                placeholder="Aadhar Number"
+                className="form-control"
+                style={{ height: "50px" }}
+                onChange={(e) => {
+                  setAadharNumber(e.target.value);
+                }}
+              />
+            </div>
             {/* <!-- Password input --> */}
             <div className="form-outline mb-4">
               <input
@@ -142,7 +197,10 @@ const Userlogin = () => {
                 type="submit"
                 onClick={
                   // validatePassword;
-                  (e)=>{handleSubmit(e);}}
+                  (e) => {
+                    handleSubmit(e);
+                  }
+                }
                 className="btn btn-primary btn-block mb-4 button_styler"
                 // onSubmit={}
                 // ={(e) => {
