@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "../styles/NewLogin.css";
 import "font-awesome/css/font-awesome.min.css";
 import Loginform from "./Loginform";
-import logo from '../assets/images/logomed.jpeg'
+import logo from '../assets/images/logomed.png'
 const Login = () => {
   // const navigate = useNavigate();
   // const [buttons, setButtons] = useState([

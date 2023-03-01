@@ -16,11 +16,9 @@ const Uploader = () => {
   return (
     <>
     {/* <CommonSection title={singleNft?.medicalTitle} /> */}
+    {/* <CommonSection title="Uploader" /> */}
     <div className='containerUP'>
         <br></br>
-            {/* <div id="upload-label" style="width: 200px;">
-                            <i class="material-icons">cloud_upload</i>
-                        </div> */}
         <h1>Uploader</h1>
         <Basic/>
         {/* <DragDropFiles/> */}

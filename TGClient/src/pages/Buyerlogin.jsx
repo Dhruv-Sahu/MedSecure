@@ -93,7 +93,7 @@ const Buyerlogin = () => {
 
   return (
     <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
-      <div className="card bg-glass" style={{ right: "-150px" }}>
+      <div className="card bg-glass" style={{ right: "-150px"}}>
         <div className="card-body px-4 py-5 px-md-5">
           <form>
             {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
