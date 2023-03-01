@@ -37,7 +37,7 @@ const NftDetails = () => {
 
   return (
     <>
-      <CommonSection title={singleNft?.medicalTitle} />
+      <CommonSection title={singleNft?.hospitalName} />
 
       <section>
         <Container>

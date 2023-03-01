@@ -19,6 +19,11 @@ const Userlogin = () => {
   const [password, setPassword] = useState("");
   const [aadharNumber, setAadharNumber] = useState("")
 
+  //etherJS
+  const [publicAddress, setPublicAddress] = useState("")
+  const [signature, setSignature] = useState("")
+
+  //password validator
   const validatePassword = () => {
     var password = document.getElementById("form3Example4"),
       confirm_password = document.getElementById("form3Example5");
@@ -33,6 +38,7 @@ const Userlogin = () => {
     confirm_password.onkeyup = validatePassword;
   };
 
+  // metamask signature and validation
   async function signRegister() {
     try {
       if (!window.ethereum) {
@@ -43,24 +49,30 @@ const Userlogin = () => {
         await window.ethereum.send("eth_requestAccounts");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-
-        const address = signer.getAddress();
+        const address = await signer.getAddress();
         const signature = await signer.signMessage(
           "I Am Authorizing the Account"
         );
+
+        setPublicAddress(address)
+        setSignature(signature)
 
         console.log({
           signer,
           address,
           signature,
         });
-        return true;
+        return {
+          publicAddress,
+          signature
+        };
       }
     } catch (error) {
       return false;
     }
   }
 
+  //handling the form submit
   async function handleSubmit(e) {
     e.preventDefault();
     let data = "";
@@ -76,18 +88,23 @@ const Userlogin = () => {
           email,
           password,
           userType: "Seller",
-          aadharNumber
+          aadharNumber,
+          // check
+          publicAddress : result.publicAddress,
+          signature : result.signature
         };
         console.log(data);
-      }
 
-      try {
-        const response = await axios.post("/auth/register", data);
-        userLogin(response.data);
-        navigate("/verification");
-      } catch (error) {}
+        try {
+          const response = await axios.post("/auth/register", data);
+          userLogin(response.data);
+          navigate("/verification");
+        } catch (error) {}
+      }
     }
   }
+
+  //rendering the page
   return (
     <div className="col-lg-6 mb-5 mb-lg-0 position-relative">
       <div className="card bg-glass" style={{ right: "-150px" }}>

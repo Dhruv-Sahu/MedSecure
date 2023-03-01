@@ -1,10 +1,16 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import { useDropzone, onDrop } from "react-dropzone";
-import Axios from "axios";
+import axios from "../context/axios";
 import { Image } from "cloudinary-react";
 import "../styles/Dragger.css";
+import { AuthContext } from "../context/authContext";
+
+
 
 export default function Home() {
+
+  const { userData } = useContext(AuthContext)
+  
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [fData, setFData] = useState([]);
   const [confirm, setConfirm] = useState(false);
@@ -23,6 +29,9 @@ export default function Home() {
       // setUploadedFiles(() => [formData])
     });
   }, []);
+
+
+
   const handleSubmit = async () => {
     // setConfirm(true);
 
@@ -32,10 +41,22 @@ export default function Home() {
     });
 
     const data = await response.json();
-    console.log(data);
+    console.log(data.url);
     console.log(response);
     setUploadedFiles(() => [data]);
+
+    const userMedical = await axios.get(`/temp/tempData?aadharNumber=${userData?.aadharNumber}`)
+    console.log("user medialc data",userMedical.data[0])
+    
+    let finaldata = userMedical?.data[0]
+    finaldata.imgUrl = data.url
+    console.log("final Data : ",finaldata)
+
+    const res = await axios.post('/upload/uploadIpfs', finaldata)
+    console.log(res)
+
   };
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accepts: "image/*",

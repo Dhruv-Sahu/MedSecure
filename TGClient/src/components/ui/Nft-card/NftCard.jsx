@@ -10,7 +10,9 @@ import Modal from "../Modal/Modal";
 import NftImage from '../Nft-image/NftImage'
 
 const NftCard = (props) => {
-  const { title, cid, currentBid, expiredOn, imgUrl, lastUpdate } = props.item;
+  const { patientUid, cid, currentBid, expiredOn, imgUrl, lastUpdate } = props.item;
+
+  console.log(props.item)
 
   const [showModal, setShowModal] = useState(false);
 
@@ -26,7 +28,7 @@ const NftCard = (props) => {
 
       <div className="nft__content">
         <h5 className="nft__title">
-          <Link to={`/market/${cid?.cid}`}>{title}</Link>
+          <Link to={`/market/${cid?.cid}`}>{patientUid}</Link>
         </h5>
 
         <div className="creator__info-wrapper d-flex gap-3">

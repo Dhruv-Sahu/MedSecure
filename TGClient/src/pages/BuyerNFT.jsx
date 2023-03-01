@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import Header from "../components/Header/Header";
+
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
@@ -35,6 +37,7 @@ const BuyerNFT = () => {
 
   return (
     <>
+      <Header/>
       <CommonSection title={/*singleNft?.medicalTitle*/"Scanner"} />
 
       <section>
