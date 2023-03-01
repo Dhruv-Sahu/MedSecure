@@ -55,7 +55,7 @@ const Header = () => {
         url: "/contact",
       },
     ];
-  } else {
+  } else if (userData?.userType == 'Hospital'){
     NAV__LINKS = [
       {
         display: "Create",
@@ -64,6 +64,13 @@ const Header = () => {
       {
         display: "Contact",
         url: "/contact",
+      },
+    ];
+  }else{
+    NAV__LINKS = [
+      {
+        display: " . ",
+        url: " ",
       },
     ];
   }

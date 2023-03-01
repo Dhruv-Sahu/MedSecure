@@ -40,16 +40,15 @@ router.post("/tempUpload", async (req, res) => {
 
 
 router.get("/tempData", async (req, res) => {
-  let aadharNumber = req.params.aadharNumber;
+  let aadharNumber = req.query.aadharNumber;
   console.log(aadharNumber);
 
   try {
     let response = await TempMedicalStorageModal.find({
       aadharNumber: aadharNumber,
     });
-    res.status(200).json({
-      ...response._doc,
-    });
+    console.log(response)
+    res.status(200).json(response);
   } catch (error) {
     res.json(error);
   }
