@@ -422,6 +422,14 @@ a {
         transform: scale(1);
       }
 
+      .panel__content span {
+        color: #2666BA;
+        font-weight: 700;
+        font-size: 2.5rem;
+        display: flex;
+        left: 200px;
+      }
+
       /* .panel__content p:hover {
         transform: scale(1.1);
         transition: all 0.2s ease-out;

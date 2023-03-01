@@ -32,7 +32,7 @@ body {
   background: url(https://image.ibb.co/de6JzG/bitmap_1_1.png) !important;
 }
 .boxes {
-  box-shadow: 1px 4px 7px 7px rgb(0 0 255 / 20%);
+  box-shadow: 1px 4px 7px 7px rgba(52, 49, 77, 0.342);
 }
 .Buttons {
   margin-top: 20px;
@@ -81,6 +81,22 @@ body {
   } */
 
 .bg-glass {
-  background-color: hsla(0, 0%, 100%, 0.9) !important;
-  backdrop-filter: saturate(200%) blur(25px);
+  /* background-color: hsla(0, 0%, 100%, 0.9) !important; */
+  /* backdrop-filter: saturate(200%) blur(25px); */
+  background: transparent !important;
+  border: none !important;
+}
+
+  .tagline{
+  background-image: linear-gradient(90deg, #2666BA, #00337C);
+    font-weight: 700;
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    margin-left: 7px !important;
+    display: inline-block;
+    font-size: 64px;
 }

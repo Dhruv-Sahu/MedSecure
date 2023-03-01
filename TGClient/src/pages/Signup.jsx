@@ -32,8 +32,19 @@ const Signup = () => {
         <div className="container px-4 py-5 px-md-5 text-center text-lg-start">
           <div className="row gx-lg-5 align-items-center mb-5">
             <div className="col-lg-6 mb-5 mb-lg-0" style={{ zIndex: "10" }}>
-              <div style={{ fontSize: "50px" }}>
-                How do you want to use MedSecure?
+              <div classname="tagline" style={{ fontWeight: "700",fontSize: "50px"}}>
+                How do you want to use <span style={{ fontSize: "50px",  backgroundImage: "linear-gradient(90deg, #2666BA, #00337C)",fontWeight: "700",
+    backgroundSize: "100%",
+    backgroundRepeat: "repeat",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    MozBackgroundClip: "text",
+    MozTextFillColor: "transparent",
+    MarginLeft: "7px",
+    display: "inline-block",
+    fontSize: "64px"}}>
+                  MedSecure?
+                  </span>
               </div>
               <div>
                 <button
@@ -71,7 +82,7 @@ const Signup = () => {
               </div>
               <p
                 className="mb-4 opacity-70"
-                style={{ color: "hsl(218, 81%, 85%)" }}
+                style={{color: "rgb(107 139 198)" }}
               >
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Temporibus, expedita iusto veniam atque, magni tempora mollitia

@@ -6,7 +6,7 @@ import { NavLink, Link } from "react-router-dom";
 import { ethers } from "ethers";
 
 import { Web3Context } from "../../context/web3Context";
-import logo from "../../assets/images/logomed.jpeg";
+import logo from "../../assets/images/logomed.png";
 
 const NAV__LINKS = [
   {
