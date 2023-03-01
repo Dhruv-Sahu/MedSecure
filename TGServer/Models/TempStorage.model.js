@@ -51,7 +51,11 @@ const TempMedicalStorageSchema = new mongoose.Schema(
         type: String,
         default: "nil",
         unique: true
-      }
+    },
+
+    PatientWalletAddress:{
+      type: String,
+    }
 
   },
   {

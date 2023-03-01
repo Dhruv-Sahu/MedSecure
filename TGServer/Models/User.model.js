@@ -53,6 +53,15 @@ const UserSchema = new mongoose.Schema(
     aadharNumber:{
       type: String,
       unique: true
+    },
+    
+    publicAddress:{
+      type: String,
+    },
+
+    signature:{
+      type: String,
+      unique: true
     }
 
   },
