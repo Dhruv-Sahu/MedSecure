@@ -4,6 +4,8 @@ import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
 import { ethers } from "ethers";
 
+import { useNavigate } from "react-router-dom";
+
 import "../styles/wallet.css";
 
 const wallet__data = [
@@ -36,6 +38,8 @@ const wallet__data = [
 
 const Wallet = () => {
 
+  const navigate = useNavigate()
+
   async function handleTransaction(e){
     
     try {
@@ -47,29 +51,28 @@ const Wallet = () => {
         await window.ethereum.send("eth_requestAccounts");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-        //dhruv
-        const signer = await provider.getSigner();
-        const address = await signer.getAddress();
+
+         // const address = await signer.getAddress();
         // const signature = await signer.sendTransaction(
         //   "I Am Authorizing the Account"
         // );
+        //dhruv
 
-        const params = [{
-          from: signer,
-          to: "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
-          value: ethers.utils.parseUnits(1, 'ether').toHexString()
-      }];
-  
-      const transactionHash = await provider.send('eth_sendTransaction', params)
-      console.log('transactionHash is ' + transactionHash);
+        const signer = await provider.getSigner();
+        const tx = await signer.sendTransaction({
+          to : "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
+          value : ethers.utils.parseEther("0.2")
+        })
+        console.log("tx ",tx)
+        alert("transaction success")
+        navigate('/myorder')
+      
 
-
-
-        console.log({
-          signer,
-          address,
-          // signature,
-        });
+        // console.log({
+        //   signer,
+        //   address,
+        //   // signature,
+        // });
         return true;
       }
     } catch (error) {
