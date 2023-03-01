@@ -114,7 +114,7 @@ const BuyerNFT = () => {
 
             <Col lg="6" md="6" sm="6">
               <div className="single__nft__content">
-                <h2>{/*singleNft?.title*/ "Title"}</h2>
+                <h2>{/*singleNft?.title*/ "Kidney Stone,Cancer"}</h2>
 
                 <div className=" d-flex align-items-center justify-content-between mt-4 mb-4">
                   <div className=" d-flex align-items-center gap-4 single__nft-seen">
@@ -152,7 +152,7 @@ const BuyerNFT = () => {
                 <p className="Details">{/*singleNft?.desc*/ "Details"}</p>
                 <button className="singleNft-btn d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-bag-line"></i>
-                  <Link to="/wallet">Buy Now</Link>
+                  <Link to="/wallet" >Buy Now</Link>
                 </button>
                 <button className="singleNft-btn-cart d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-cart-line"></i>
@@ -172,10 +172,10 @@ const BuyerNFT = () => {
           </button>
           <button>
             <a data-scroll href="#pattern">
-              Skin
+              Cancer
             </a>
           </button>
-          <button>
+          {/* <button>
             <a data-scroll href="#links">
               Cancer
             </a>
@@ -189,14 +189,14 @@ const BuyerNFT = () => {
             <a data-scroll href="#hover">
               Me
             </a>
-          </button>
+          </button> */}
         </div>
         <main class="content">
         <StyledWatermark
                 text="Watermark Rendering"
                 style={{
                   width: 1280,
-                  height: 2700,
+                  height: 1500,
                 }}
                 multiple
               >
@@ -243,7 +243,7 @@ const BuyerNFT = () => {
             <div class="panel__background"></div>
             <div class="panel__content">
             <span>
-                      Skin
+                      Cancer
                     </span>
               <p>
                 Dreamcatcher american apparel typewriter polaroid, Pinterest
@@ -254,10 +254,12 @@ const BuyerNFT = () => {
               </p>
             </div>
           </section>
-          <section id="links" class="panel panel--grey panel--link-effect">
+          {/* <section id="links" class="panel panel--grey panel--link-effect"> */}
+            {/* -----------------not needed-------------- */}
             {/* <Watermark content={"watermark"} gap={[50,50]} offset={[10,10]} rotate={-22} font={{color:"red",fontSize:10}} zIndex={-10}> */}
             {/* <div class="panel__background" style={styles.Container}> */}
-            <div class="panel__content">
+            {/* -----------------not needed-------------- */}
+            {/* <div class="panel__content">
             <span>
                       Cancer
                     </span>
@@ -284,9 +286,11 @@ const BuyerNFT = () => {
                 trust fund bitters, gluten-free farm-to-table tousled plaid
                 biodiesel actually pork belly roof party polaroid.{" "}
               </p>
-            </div>
+            </div> */}
+            {/* -----------------not needed-------------- */}
             {/* </Watermark> */}
-          </section>
+            {/* -----------------not needed-------------- */}
+          {/* </section>
           <section id="scale" class="panel panel--yellow panel--scale-effect">
             <div class="panel__background"></div>
             <div class="panel__content">
@@ -302,7 +306,7 @@ const BuyerNFT = () => {
                 tousled plaid biodiesel actually pork belly roof party polaroid.
               </p>
             </div>
-          </section>
+          </section> */}
           </div>
               </StyledWatermark>
         </main>

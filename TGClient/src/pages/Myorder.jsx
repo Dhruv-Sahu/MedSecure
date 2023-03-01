@@ -11,10 +11,10 @@ function Myorder() {
               <ul class="responsive-table">
                 <li class="table-header">
                   <div class="topic1">Transaction Id</div>
-                  <div class="topic2">Disease</div>
-                  <div class="col col-3">Date Of Purchase</div>
-                  <div class="col col-4">Amount</div>
-                  <div class="col col-4">Details</div>
+                  <div class="head_col-2">Disease</div>
+                  <div class="head_col-3">Date Of Purchase</div>
+                  <div class="head_col-4">Amount</div>
+                  <div class="head_col-5">Details</div>
                 </li>
                       <li class="table-row">
                         <div class="col col-1" data-label="Job Id">
@@ -29,7 +29,7 @@ function Myorder() {
                           {/* {transaction.details.dateOfStarting} */}
                         dlknsdk</div>
                         <div class="col col-4" data-label="Payment Status">
-                          {/* {transaction.details.years} */},sjbvsjdmv
+                          {/* {transaction.details.years} */}5.375 ETH
                         </div>
     
                         <div class="col_btn" data-label="Payment Status">
@@ -38,6 +38,15 @@ function Myorder() {
                             // target="_blank"
                           >
                             View Details
+                          </a>
+                        </div>
+
+                        <div class="col_btn" data-label="Payment Status">
+                          <a
+                            // href={`https://goerli.etherscan.io/tx/${transaction.transactionHash}`}
+                            // target="_blank"
+                          >
+                            View NFT
                           </a>
                         </div>
                       </li>

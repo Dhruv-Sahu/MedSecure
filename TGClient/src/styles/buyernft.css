@@ -102,6 +102,7 @@
     align-items: center;
     justify-content: center;
     margin: -12px;
+    color: white !important;
   }
   
   .singleNft-btn-cart {
@@ -118,6 +119,7 @@
     margin: -40px;
     position: relative;
     left: 400px;
+       color: white !important;
   }
   
   
@@ -135,19 +137,21 @@
   .singleNft-btn:hover {
     background: #fff;
     background: transparent;
+    border: 1px solid #5142fc ;
   }
   
   .singleNft-btn:hover a {
-    color: #5142fc;
+    color: #5142fc !important;
   }
   
   .singleNft-btn-cart:hover {
     background: #fff;
     background: transparent;
+    border: 1px solid #5142fc ;
   }
   
   .singleNft-btn-cart:hover a {
-    color: #5142fc;
+    color: #5142fc !important;
   }
   
   
