@@ -52,7 +52,6 @@ const UserSchema = new mongoose.Schema(
 
     aadharNumber:{
       type: String,
-      unique: true
     },
     
     publicAddress:{
