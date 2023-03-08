@@ -136,7 +136,7 @@ const BuyerNFT = () => {
                   </div>
                 </div>
                 <div className="Price">Current Price :</div>
-                <div className="amount">5.375 ETH</div>
+                <div className="amount">5 ETH</div>
                 <div className="summary">Report Summary</div>
                 {/* <div className="nft__creator d-flex gap-3 align-items-center">
                   <div className="creator__img">

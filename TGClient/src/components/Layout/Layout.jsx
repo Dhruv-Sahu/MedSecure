@@ -3,14 +3,20 @@ import Routers from "../../routes/Routers";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
+import { AuthContext } from "../../context/authContext";
+import { useContext } from "react";
+
 const Layout = () => {
+
+  const {userData} = useContext(AuthContext)
+
   return (
     <div>
-      <Header />
+      {userData && <Header/> }
       <div>
       <Routers />
       </div>
-      <Footer />
+      {userData && <Footer/> }
     </div>
   );
 };

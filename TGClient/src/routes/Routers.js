@@ -16,18 +16,33 @@ import MyNFT from "../pages/BuyerNFT";
 import Save from "../pages/NFTsave";
 import Uploader from "../pages/Uploader";
 
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
 const Routers = () => {
+
+  const {userData} = useContext(AuthContext)
+  console.log("from route page",userData)
+
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/market" element={<Market />} />
-      <Route path="/create" element={<Create />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route 
+        path="/" 
+        element={ 
+          userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Navigate to="/home"/> :  
+          userData?.userType === "Hospital" ? <Create/> : <Login/>} 
+      />
+
+
+      <Route path="/home" element = { userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Home /> : <Login/> } />
+      <Route path="/market" element = {userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Market/> : <Login/> } /> 
+      <Route path="/create" element={ userData?.userType === "Hospital" ? <Create/> : <Login/> } />
+      <Route path="/contact" element={ userData ? <Contact/> : <Login/> } />
+
       <Route path="/wallet" element={<Wallet />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Signup" element={<SignUp />} />
-      <Route path="/myorder" element={<Myorder/>} />
+      <Route path="/myorder" element={<Myorder/>} /> 
       <Route path="/verification" element={<Verification/>} />
       <Route path="/MyNFT" element={<MyNFT/>} />
       <Route path="/market/:cid" element={<NftDetails />} />

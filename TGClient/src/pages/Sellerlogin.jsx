@@ -43,7 +43,7 @@ const Userlogin = () => {
     try {
       if (!window.ethereum) {
         alert("No Crypto Wallet Found");
-        return false;
+        // return false;`
         throw new Error("No Crypto Wallet Found");
       } else {
         await window.ethereum.send("eth_requestAccounts");
@@ -80,7 +80,8 @@ const Userlogin = () => {
       alert("enter valid password");
       // console.log('enter valid password')
     } else {
-      let result = await signRegister();
+      // let result = await signRegister();
+      let result = true
       if (result) {
         data = {
           firstName,

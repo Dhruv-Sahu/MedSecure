@@ -19,17 +19,17 @@ function Myorder() {
                       <li class="table-row">
                         <div class="col col-1" data-label="Job Id">
                           {/* {transaction.transactionHash} */}
-                          ajdb
+                          0x6fb0eddb056..
                         </div>
                         <div class="col col-2" data-label="Customer Name">
                           {/* {transaction.contractAddr} */}
-                          ljdnvsdl
+                          Kidney Stone, Cancer
                         </div>
                         <div class="col col-3" data-label="Amount">
                           {/* {transaction.details.dateOfStarting} */}
-                        dlknsdk</div>
+                        01-03-23</div>
                         <div class="col col-4" data-label="Payment Status">
-                          {/* {transaction.details.years} */}5.375 ETH
+                          {/* {transaction.details.years} */}5 ETH
                         </div>
     
                         <div class="col_btn" data-label="Payment Status">

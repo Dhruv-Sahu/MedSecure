@@ -60,16 +60,12 @@ const Header = () => {
       {
         display: "Create",
         url: "/create",
-      },
-      {
-        display: "Contact",
-        url: "/contact",
-      },
+      }
     ];
   }else{
     NAV__LINKS = [
       {
-        display: " . ",
+        display: " ",
         url: " ",
       },
     ];
