@@ -5,16 +5,22 @@ function sendEmail(to, subject, text){
       var transporter =  nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "diptanshumandal1@gmail.com",
-          pass: "xktpaytdtudstucw"
+          user: "anishkhot333@gmail.com",
+          pass: "dcljtjvvngevflzi"
+        },
+        secure: false,
+        tls: {
+          rejectUnauthorized: false
         }
       })
+
       const mail_configs = {
-        from: "diptanshumandal1@gmail.com",
+        from: "anishkhot333@gmail.com",
         to: to,
         subject: subject,
         text: text
       }
+
       transporter.sendMail(mail_configs, function(error, info){
   
         if(error){

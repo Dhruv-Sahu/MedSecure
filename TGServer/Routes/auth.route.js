@@ -41,7 +41,7 @@ router.post("/register", async (req, res) => {
     const Body = `Please use this as your OTP ${val}`;
 
     let mailResponse = await sendEmail(req.body.email, Subject, Body);
-
+    // let mailResponse = true
     //MARK: CREATING NEW INSTANCE OF OTP VERIFICATION
     const otpVerification = await UserOTPVerification.create({
       userId: user._id,
