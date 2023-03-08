@@ -59,8 +59,7 @@ const UserSchema = new mongoose.Schema(
     },
 
     signature:{
-      type: String,
-      unique: true
+      type: String
     }
 
   },
