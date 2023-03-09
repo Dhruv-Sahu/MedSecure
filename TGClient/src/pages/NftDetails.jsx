@@ -96,7 +96,7 @@ const NftDetails = () => {
                 <p className="Details">{singleNft?.desc}</p>
                 <button className="singleNft-btn d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-bag-line"></i>
-                  <Link to="/wallet">Buy Now</Link>
+                  <Link to={`/orderSummary/${cid}`}>Buy Now</Link>
                 </button>
                 <button className="singleNft-btn-cart d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-cart-line"></i>
