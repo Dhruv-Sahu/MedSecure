@@ -4,13 +4,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
 }
 
 body {
   background: url(https://image.ibb.co/de6JzG/bitmap_1_1.png) !important;
   font-family: "Roboto", sans-serif;
   background-size: cover;
-
+  overflow-x: hidden;
 }
 
 h1,

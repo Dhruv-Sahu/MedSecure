@@ -16,6 +16,7 @@ import ViewNFT from "../pages/BuyerNFT";
 import Save from "../pages/NFTsave";
 import Uploader from "../pages/Uploader";
 import OrderSummary from "../pages/OrderSummary";
+import MyNFT from "../pages/MyNFT";
 
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
@@ -50,6 +51,8 @@ const Routers = () => {
       <Route path="/Uploader" element={<Uploader />} />
       <Route path="/Save" element={<Save />} />
       <Route path="/orderSummary/:cid" element= {<OrderSummary/>} ></Route>
+
+      <Route path="/MyNFT" element={<MyNFT/>}></Route>
     </Routes>
   );
 };

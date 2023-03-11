@@ -4,15 +4,41 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { ethers } from "ethers";
 
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
+import axios from "../context/axios";
 
 //TODO: need to add cid to the transactio of the user
 
 function OrderSummary() {
+  const { userData } = useContext(AuthContext);
+  console.log(userData);
   const { cid } = useParams();
   const { data, loading, error } = useFetch(`upload/getAIpfs?cid=${cid}`);
   console.log("orderSummary : ", data);
-  async function handleTransaction(e){
-    
+
+  function dateTime() {
+    var currentdate = new Date();
+    var datetime =
+      currentdate.getDate() +
+      "/" +
+      (currentdate.getMonth() + 1) +
+      "/" +
+      currentdate.getFullYear() +
+      " @ " +
+      currentdate.getHours() +
+      ":" +
+      currentdate.getMinutes() +
+      ":" +
+      currentdate.getSeconds();
+
+    return datetime;
+  }
+
+  async function handleTransaction(e) {
+
+    const transactionTime = dateTime();
     try {
       if (!window.ethereum) {
         alert("No Crypto Wallet Found");
@@ -21,35 +47,38 @@ function OrderSummary() {
       } else {
         await window.ethereum.send("eth_requestAccounts");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-
-         // const address = await signer.getAddress();
-        // const signature = await signer.sendTransaction(
-        //   "I Am Authorizing the Account"
-        // );
-        //dhruv
-
         const signer = await provider.getSigner();
-        const tx = await signer.sendTransaction({
-          to : "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
-          value : ethers.utils.parseEther("0.2")
-        })
-        console.log("tx ",tx)
-        alert("transaction success")
-        // navigate('/myorder')
-      
 
-        // console.log({
-        //   signer,
-        //   address,
-        //   // signature,
-        // });
+        //TODO: SMART CONTRACT TRANSACTION
+
+        // const tx = await signer.sendTransaction({
+        //   to : "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
+        //   value : ethers.utils.parseEther("0.2")
+        // })
+        // console.log("tx ",tx)
+        // alert("transaction success")
+
+
+        //TODO: SAVING TRANSACTION TO THE SERVER
+        try {
+          const res = await axios.post("/auth/transaction", {
+            id: userData._id,
+            transaction: {
+              cid: cid,
+              transactionTime,
+            },
+          });
+        } catch (error) {
+          alert(error);
+        }
+
+
+
         return true;
       }
     } catch (error) {
       return false;
     }
-
   }
 
   return (
@@ -68,7 +97,7 @@ function OrderSummary() {
             <div class="plan-box-left">
               <div>
                 {data?.reports &&
-                  data?.reports.map((report,key) => {
+                  data?.reports.map((report, key) => {
                     console.log(key);
                     return (
                       <>
@@ -84,11 +113,8 @@ function OrderSummary() {
             </div>
             {/* <a href="#">Change</a> */}
           </div>
-          <a 
-            href="#" 
-            class="proceed-btn"
-            onClick={(e)=>handleTransaction(e)}>
-            Proceed to Payment
+          <a href="#" class="proceed-btn" onClick={(e) => handleTransaction(e)}>
+            Pay
           </a>
           <a href="#" class="cancel-btn">
             Cancel Order
