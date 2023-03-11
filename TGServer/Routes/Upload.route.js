@@ -3,6 +3,7 @@ const router = express.Router();
 const { ipfsClient, saveText } = require('../Web3_Storage/web3_storage')
 
 const CidModel = require('../Models/cidStorage')
+const User = require('../Models/User.model')
 
 
 router.post("/uploadIpfs", async (req, res) => {
@@ -77,6 +78,45 @@ router.get("/getFilesIpfs", async (req, res) => {
 
 });
 
+
+
+//GETTING THE DATA FROM THE BACKEND SERVER
+router.get("/transaction", async(req,res)=>{
+  const id = req.query.id
+  console.log(id)
+  let ipfsData = []
+
+
+  async function getData(cid) {
+    let ipfs = await ipfsClient();
+    let asyncitr = ipfs.cat(cid)
+
+    for await (const itr of asyncitr){
+      let data = Buffer.from(itr).toString()
+      let jsonData = JSON.parse(data)
+      // console.log(jsonData)
+      // ipfsData.push(jsonData)
+      return jsonData
+    }
+  }
+
+  try {
+    const dbRes = await User.findById(id,'transaction')
+    const ipfsCid = dbRes.transaction
+
+    ipfsData = await Promise.all(
+      ipfsCid.map(async(ele)=>{
+        let info = await getData(ele.cid)
+        return {...info, cid:ele}
+      })
+    )
+    // RETURNING THE ARRAY OF 
+    res.status(200).json(ipfsData)
+
+  } catch (error) {
+    res.json(error)
+  }
+})
 
 
 

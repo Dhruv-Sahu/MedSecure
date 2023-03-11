@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
       password: encryptPassword,
       organisation: req.body.organisation,
       userType: req.body.userType,
-      aadharNumber: req.body.aadharNumber
+      aadharNumber: req.body.aadharNumber,
     });
 
     //MARK: SENDING MAIL TO USER
@@ -194,25 +194,43 @@ router.post("/emailVerification", async (req, res) => {
     });
 
     if (otp == userOtp[0].otp) {
+      await User.findByIdAndUpdate(userId, { $set: { verified: true } });
 
-      await User.findByIdAndUpdate(userId,{$set: {verified: true}})
-
-      await UserOTPVerification.findByIdAndDelete(userOtp[0]._id)
+      await UserOTPVerification.findByIdAndDelete(userOtp[0]._id);
 
       res.status(200).json({
         // otp: userOtp[0].otp,
         // userOtp: userOtp[0]._id,
         // status: userOtp[0]._id
-        message:"email Verified"
+        message: "email Verified",
       });
 
       return;
-
     }
     res.status(400).json({
-      message:"error not verified"
-    })
+      message: "error not verified",
+    });
   } catch (error) {}
 });
+
+router.post("/transaction", async (req, res) => {
+  const id = req.body.id;
+  const transaction = req.body.transaction;
+
+  try {
+    const dbRes = await User.findByIdAndUpdate({ _id: id }, { $push: { transaction : transaction } });
+
+    res.status(200).json({
+      message : "success"
+    })
+
+  } catch (error) {
+    res.json(error)
+  }
+});
+
+
+
+
 
 module.exports = router;
