@@ -10,23 +10,34 @@ import useFetch from "../hooks/useFetch";
 import "../styles/market.css";
 import "../styles/mynft.css";
 
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
 function MyNFT() {
-  const { data, loading, error } = useFetch("upload/transaction?id=640854a799d0f29e2b20550c");
+  const { userData } = useContext(AuthContext);
+  console.log(userData);
+
+  const { data, loading, error } = useFetch(
+    `upload/transaction?id=${userData?._id}`
+  );
 
   return (
     <div className="mynft">
       <CommonSection title={"MY NFT"} />
       <section>
         <Container>
-          <Row>
-            {data?.map((item) => (
-              <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
-                <Link to={"/viewNFT"} >
-                  <NftCard item={item} MyNFT />
-                </Link>
-              </Col>
-            ))}
-          </Row>
+        <Row>
+          {data && data?.map((item) => (
+            <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
+              <Link to={`/viewNFT/${item.cid.cid}`}>
+                <NftCard item={item} MyNFT />
+              </Link>
+            </Col>
+          ))}
+          {data.length == 0 && (
+            <h1>You don't have any NFT</h1>
+          )}
+        </Row>
         </Container>
       </section>
     </div>

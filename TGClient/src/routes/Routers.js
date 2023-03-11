@@ -46,7 +46,7 @@ const Routers = () => {
       <Route path="/Signup" element={<SignUp />} />
       <Route path="/myorder" element={<Myorder/>} /> 
       <Route path="/verification" element={<Verification/>} />
-      <Route path="/viewNFT" element={<ViewNFT/>} />
+      <Route path="/viewNFT/:cid" element={<ViewNFT/>} />
       <Route path="/market/:cid" element={<NftDetails />} />
       <Route path="/Uploader" element={<Uploader />} />
       <Route path="/Save" element={<Save />} />
