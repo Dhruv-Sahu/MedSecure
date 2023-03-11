@@ -11,29 +11,26 @@ import { AuthContext } from "../context/authContext";
 import Userlogin from "./Sellerlogin";
 
 const Loginform = () => {
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const navigate = useNavigate();
   const { userLogin } = useContext(AuthContext);
 
-  async function handleSubmit(e){
-    e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault();
     let data = {
       email,
-      password
-    }
+      password,
+    };
     try {
-      const response = await axios.post("/auth/login",
-      data)
-      console.log(response.data)
-      if(response.data){
-        userLogin(response.data)
+      const response = await axios.post("/auth/login", data);
+      console.log(response.data);
+      if (response.data) {
+        userLogin(response.data);
       }
 
-      navigate("/")
-    } catch (error) {
-      
-    }
+      navigate("/");
+    } catch (error) {}
   }
 
   return (
@@ -44,21 +41,26 @@ const Loginform = () => {
           alt="Medsecure Logo"
           style={{
             position: "relative",
-            right: "-377px",top: "-50px",height: "77px",width:"90px"
+            right: "-377px",
+            top: "-50px",
+            height: "77px",
+            width: "90px",
           }}
         />
         <div
           classname="MedName"
           style={{
-            fontSize: "50px",  backgroundImage: "linear-gradient(90deg, #2666BA, #00337C)",fontWeight: "700",
-    backgroundSize: "100%",
-    backgroundRepeat: "repeat",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    MozBackgroundClip: "text",
-    MozTextFillColor: "transparent",
-    MarginLeft: "7px",
-    display: "inline-block",
+            fontSize: "50px",
+            backgroundImage: "linear-gradient(90deg, #2666BA, #00337C)",
+            fontWeight: "700",
+            backgroundSize: "100%",
+            backgroundRepeat: "repeat",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            MozBackgroundClip: "text",
+            MozTextFillColor: "transparent",
+            MarginLeft: "7px",
+            display: "inline-block",
             position: "relative",
             right: "-387px",
             top: "-33px",
@@ -69,7 +71,9 @@ const Loginform = () => {
       </div>
       <div
         className="col-lg-6 mb-5 mb-lg-0 position-relative"
-        style={{ right: "17px" }}
+        style={{
+          right: "17px",
+        }}
       >
         <div
           className="card bg-glass"
@@ -84,10 +88,10 @@ const Loginform = () => {
                   id="form3Example3"
                   className="form-control"
                   placeholder="Email Address"
-                  style={{height:"50px"}}
+                  style={{ height: "50px" }}
                   required
-                  onChange={(e)=>{
-                    setEmail(e.target.value)
+                  onChange={(e) => {
+                    setEmail(e.target.value);
                   }}
                 />
               </div>
@@ -99,28 +103,26 @@ const Loginform = () => {
                   id="form3Example4"
                   className="form-control"
                   placeholder="Password"
-                  style={{height:"50px"}}
+                  style={{ height: "50px" }}
                   required
-                  onChange={(e)=>{
-                    setPassword(e.target.value)
+                  onChange={(e) => {
+                    setPassword(e.target.value);
                   }}
                 />
               </div>
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
-                    <div
-                   >
-                    <input
-                      type="checkbox"
-                      id="vehicle3"
-                      name="vehicle3"
-                      value="Boat"
-                    />
-                    <label htmlFor="vehicle3">Remember Me</label>
-                  </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        id="vehicle3"
+                        name="vehicle3"
+                        value="Boat"
+                      />
+                      <label htmlFor="vehicle3">Remember Me</label>
                     </div>
-                    
+                  </div>
                 </div>
                 <div className="col-md-6 mb-4">
                   <div className="form-outline" style={{ textAlign: "right" }}>
@@ -131,10 +133,10 @@ const Loginform = () => {
               {/* <!-- Submit button --> */}
               <div className="styler">
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-primary btn-block mb-4 button_styler"
-                  onClick={(e)=>{
-                    handleSubmit(e)
+                  onClick={(e) => {
+                    handleSubmit(e);
                   }}
                 >
                   Login up

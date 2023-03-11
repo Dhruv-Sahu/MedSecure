@@ -1,7 +1,25 @@
-.single__nft-img {
-    border-radius: 8px;
+
+  .buyerNft-img-div{
+    border-radius: 30px;
+    width: 32vw;
+    height: 32vw;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inner-watermark{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none !important;
+    border-radius: 20px !important;
+  }
+
+  .single__nft-img {
     width: 30vw;
     height: 30vw;
+    object-fit: cover;
   }
   
   .Details{
@@ -232,6 +250,7 @@ http://nicolasgallagher.com/about-normalize-css/
   font-family: "Fira Sans", sans-serif;
   font-weight: 300;
   hyphens: auto;
+  margin: 0;
 }
 
 a {
@@ -301,7 +320,7 @@ a {
 
 
 .content {
-  margin-top: 10rem;
+  margin-top: 2rem;
 }
 
   .panel {
@@ -448,7 +467,7 @@ a {
         background: transparent;
         font-size: 0.9rem;
         color: #fff;
-        margin: 50px;
+        margin: 0 20px;
         width: 170px;
         font-size: large;
         border-radius: 5px;
@@ -460,6 +479,7 @@ a {
     
     .disease{
         text-decoration: none !important;
+        margin: 0 100px 0 100px ;
     }
       
       .Report button:hover {

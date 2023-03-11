@@ -68,6 +68,10 @@ const Header = () => {
       {
         display: "Create",
         url: "/create",
+      },
+      {
+        display: "Contact",
+        url: "/contact",
       }
     ];
   }else{
