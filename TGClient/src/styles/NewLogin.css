@@ -13,90 +13,102 @@
         hsl(218, 41%, 19%) 80%,
         transparent 100%);
       } */
-input {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: groove;
-  background-color: #eee;
-  /* height: 50px; */
-}
-.styler {
-  text-align: right;
-}
-.button_styler {
-  width: 130px;
-  height: 60px;
-}
-body {
-  background: url(https://image.ibb.co/de6JzG/bitmap_1_1.png) !important;
-}
-.boxes {
-  box-shadow: 1px 4px 7px 7px rgba(52, 49, 77, 0.342);
-}
-.Buttons {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 400px;
-}
-#button1{
-  border: None;
-}
-#button1:hover{
-  border: 1px solid grey !important;
-}
-#button2{
-  border: None;
-}
-#button2:hover{
-  border: 1px solid grey !important;
-}
-.master{
-  border: 1px solid black;
-}
-.MedName {
-  background-size: 100% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-stroke: 2px transparent;
-  -webkit-text-fill-color: #2666ba;
-  margin-bottom: 0;
-}
-/* #radius-shape-1 {
-    height: 220px;
-    width: 220px;
-    top: -60px;
-    left: -130px;
-    background: radial-gradient(#44006b, #ad1fff);
-    overflow: hidden;
-  }
-  #radius-shape-2 {
-    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-    bottom: -60px;
-    right: -110px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(#44006b, #ad1fff);
-    overflow: hidden;
-  } */
+      input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+        background-color: #eee;
+        /* height: 50px; */
+      }
+      .styler {
+        text-align: right;
+      }
+      .button_styler {
+        width: 130px;
+        height: 60px;
+      }
+      body {
+        background: url(https://image.ibb.co/de6JzG/bitmap_1_1.png) !important;
+        padding-bottom: 0 !important;
+      }
+      .boxes {
+        box-shadow: 1px 4px 7px 7px rgba(52, 49, 77, 0.342);
+      }
+      .Buttons {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 400px;
+      }
+      #button1{
+        border: None;
+      }
+      #button1:hover{
+        border: 1px solid grey !important;
+      }
+      #button2{
+        border: None;
+      }
+      #button2:hover{
+        border: 1px solid grey !important;
+      }
+      .master{
+        border: 1px solid black;
+      }
+      .MedName {
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-stroke: 2px transparent;
+        -webkit-text-fill-color: #2666ba;
+        margin-bottom: 0;
+      }
+      /* #radius-shape-1 {
+          height: 220px;
+          width: 220px;
+          top: -60px;
+          left: -130px;
+          background: radial-gradient(#44006b, #ad1fff);
+          overflow: hidden;
+        }
+        #radius-shape-2 {
+          border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+          bottom: -60px;
+          right: -110px;
+          width: 300px;
+          height: 300px;
+          background: radial-gradient(#44006b, #ad1fff);
+          overflow: hidden;
+        } */
+      
+      .bg-glass {
+        /* background-color: hsla(0, 0%, 100%, 0.9) !important; */
+        /* backdrop-filter: saturate(200%) blur(25px); */
+        background: transparent !important;
+        border: none !important;
+      }
+      
+        .tagline{
+        background-image: linear-gradient(90deg, #2666BA, #00337C);
+          font-weight: 700;
+          background-size: 100%;
+          background-repeat: repeat;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          -moz-background-clip: text;
+          -moz-text-fill-color: transparent;
+          margin-left: 7px !important;
+          display: inline-block;
+          font-size: 64px;
+      }
+      
+      #image{
+        position: relative;
+        width: 60%;
+        left: 100px;
+      }
 
-.bg-glass {
-  /* background-color: hsla(0, 0%, 100%, 0.9) !important; */
-  /* backdrop-filter: saturate(200%) blur(25px); */
-  background: transparent !important;
-  border: none !important;
-}
-
-  .tagline{
-  background-image: linear-gradient(90deg, #2666BA, #00337C);
-    font-weight: 700;
-    background-size: 100%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-    margin-left: 7px !important;
-    display: inline-block;
-    font-size: 64px;
-}
+      #bg{
+        position: relative;
+        width: 80%;
+      }

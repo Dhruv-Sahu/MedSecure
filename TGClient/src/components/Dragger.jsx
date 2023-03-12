@@ -73,7 +73,16 @@ export default function Home() {
       <div>
         <div>
           {showButton ? (
-            <button
+            <button style={{
+              outline: "none",
+              padding: "5px 22px",
+              background: "transparent",
+              border: "1px solid #00337C",
+              fontSize: "1.3rem",
+              color: "#fff",
+              borderRadius: "5px",
+              transition: "0.3s",
+              background: "#2684ff"}}
               onClick={() => {
                 handleSubmit();
               }}
