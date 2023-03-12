@@ -33,6 +33,7 @@
         padding-bottom: 0 !important;
       }
       .boxes {
+        border-radius: 20px;
         box-shadow: 1px 4px 7px 7px rgba(52, 49, 77, 0.342);
       }
       .Buttons {
@@ -107,6 +108,56 @@
         width: 60%;
         left: 100px;
       }
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: #eee;
+  /* height: 50px; */
+}
+.styler {
+  text-align: right;
+}
+.button_styler {
+  width: 130px;
+  height: 60px;
+}
+body {
+  background: url(https://image.ibb.co/de6JzG/bitmap_1_1.png) !important;
+}
+.boxes {
+  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.Buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 400px;
+}
+#button1{
+  border: None;
+}
+#button1:hover{
+  border: 1px solid grey !important;
+}
+#button2{
+  border: None;
+}
+#button2:hover{
+  border: 1px solid grey !important;
+}
+.master{
+  border: 1px solid black;
+}
+.MedName {
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 2px transparent;
+  -webkit-text-fill-color: #2666ba;
+  margin-bottom: 0;
+}
 
       #bg{
         position: relative;

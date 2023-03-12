@@ -17,6 +17,25 @@ export default function Home() {
   const [showButton, setshowButton] = useState(false);
   const url = `https://api.cloudinary.com/v1_1/dpdytq2cb/upload`;
 
+
+  function dateTime() {
+    var currentdate = new Date();
+    var datetime =
+      currentdate.getDate() +
+      "/" +
+      (currentdate.getMonth() + 1) +
+      "/" +
+      currentdate.getFullYear() +
+      " @ " +
+      currentdate.getHours() +
+      ":" +
+      currentdate.getMinutes() +
+      ":" +
+      currentdate.getSeconds();
+
+    return datetime;
+  }
+
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles);
 
@@ -34,6 +53,8 @@ export default function Home() {
 
   const handleSubmit = async () => {
     // setConfirm(true);
+
+    const transactionTime = dateTime();
 
     const response = await fetch(url, {
       method: "post",
@@ -54,6 +75,20 @@ export default function Home() {
 
     const res = await axios.post('/upload/uploadIpfs', finaldata)
     console.log(res)
+
+    const transData = {
+      id: userData._id,
+      transaction : {
+        cid : res.data.imp,
+        transactionTime 
+      }
+    }
+
+    try {
+      const res = await axios.post("/auth/transaction", transData);
+    } catch (error) {
+      alert(error);
+    }
 
   };
 

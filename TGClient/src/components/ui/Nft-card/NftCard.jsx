@@ -23,7 +23,7 @@ const NftCard = (props) => {
 
         <div className="nft__content">
           <h5 className="nft__title">
-            <Link to={`/market/${cid?.cid}`}>{patientUid}</Link>
+            <Link to={`/viewNFT/${cid?.cid}`}>{patientUid}</Link>
           </h5>
 
           <div className="creator__info-wrapper d-flex gap-3">
