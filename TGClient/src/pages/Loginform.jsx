@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
+import log from '../assets/images/log.svg'
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import Buyerlogin from "./Buyerlogin";
 import "../styles/NewLogin.css";
 import logo from "../assets/images/logomed.png";
+
 import "font-awesome/css/font-awesome.min.css";
 
 import axios from "../context/axios";
@@ -35,16 +37,14 @@ const Loginform = () => {
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
+      <img src={log} id='image'></img>     
       <div>
         <img
           src={logo}
           alt="Medsecure Logo"
           style={{
             position: "relative",
-            right: "-377px",
-            top: "-50px",
-            height: "77px",
-            width: "90px",
+            right: "-277px",top: "-34px",height: "77px",width:"90px"
           }}
         />
         <div
@@ -63,7 +63,7 @@ const Loginform = () => {
             display: "inline-block",
             position: "relative",
             right: "-387px",
-            top: "-33px",
+            top: "-110px",
           }}
         >
           MedSecure
@@ -80,6 +80,25 @@ const Loginform = () => {
           style={{ bottom: "-59px", width: "450px" }}
         >
           <div className="card-body px-4 py-5 px-md-5 boxes">
+          <div
+          classname="MedName"
+          style={{
+            fontSize: "50px",  backgroundImage: "linear-gradient(90deg, #2666BA, #00337C)",fontWeight: "700",
+    backgroundSize: "100%",
+    backgroundRepeat: "repeat",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    MozBackgroundClip: "text",
+    MozTextFillColor: "transparent",
+    MarginLeft: "7px",
+    display: "inline-block",
+            position: "relative",
+            right: "-109px",
+            top: "-25px",
+          }}
+        >
+          Login
+        </div>
             <form>
               {/* <!-- Email input --> */}
               <div className="form-outline mb-4">
