@@ -32,6 +32,8 @@ router.post("/register", async (req, res) => {
       organisation: req.body.organisation,
       userType: req.body.userType,
       aadharNumber: req.body.aadharNumber,
+      publicAddress: req.body.publicAddress,
+      signature: req.body.signature
     });
 
     //MARK: SENDING MAIL TO USER
