@@ -4,43 +4,9 @@ import CommonSection from "../components/ui/Common-section/CommonSection";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "../styles/buyernft.css";
-import styled from "styled-components";
-import Watermark from "react-awesome-watermark";
+// import styled from "styled-components";
+import { Watermark } from "@hirohe/react-watermark";
 
-const H1 = styled.h1`
-  text-align: center;
-`;
-
-const H2 = styled.h2`
-  text-align: center;
-  margin-top: 50px;
-`;
-
-const H3 = styled.h3`
-  text-align: center;
-`;
-
-const WatermarkWrapper = styled.div`
-  text-align: center;
-
-  .space-props-test {
-    display: inline-block;
-    margin: 10px;
-  }
-`;
-
-const StyledWatermark = styled(Watermark)`
-  margin: 0 auto;
-
-  .inner-watermark {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ccc;
-    font-size: 20px;
-    text-align: center;
-    line-height: 2;
-  }
-`;
 
 const BuyerNFT = () => {
   const { cid } = useParams();
@@ -70,7 +36,7 @@ const BuyerNFT = () => {
             </Col>
 
             <Col lg="6" md="6" sm="6">
-              <div className="single__nft__content">
+              <div className="single_nft_content">
                 <h2>{`Patient UHID : ${singleNft?.patientUid}`}</h2>
 
                 <div className="Price">
@@ -97,7 +63,7 @@ const BuyerNFT = () => {
         <div className="disease">
           {singleNft?.reports?.map((report) => {
             return (
-              <button>
+              <button  >
                 <a data-scroll href={`#${report?.reportTitle}`}>
                   {report?.reportTitle}
                 </a>
@@ -106,8 +72,28 @@ const BuyerNFT = () => {
           })}
         </div>
 
-        <main class="content">
-          <StyledWatermark
+        <main class="content" style={{width:"90%",position:"relative",right:'-75px'}}>
+          <Watermark text="UID:000001" style={{FontWeight: "800px"}}>
+            <div>
+              {singleNft?.reports?.map((report) => {
+                return (
+                  <>
+                    <section
+                      id={report?.reportTitle}
+                      class="panel panel--pattern"
+                    >
+                      <div class="panel__background"></div>
+                      <div class="panel__content">
+                        <span>{report?.reportTitle}</span>
+                        <p>{report?.reportDesc}</p>
+                      </div>
+                    </section>
+                  </>
+                );
+              })}
+            </div>
+          </Watermark>
+          {/* <StyledWatermark
             text="Watermark Rendering"
             style={{
               width: 1280,
@@ -116,27 +102,9 @@ const BuyerNFT = () => {
             multiple
           >
             <div className="inner-watermark">
-              <div>
-                {singleNft?.reports?.map((report) => {
-                  return (
-                    <>
-                      <section
-                        id={report?.reportTitle}
-                        class="panel panel--pattern"
-                      >
-                        <div class="panel__background"></div>
-                        <div class="panel__content">
-                          <span
-                            >{report?.reportTitle}</span>
-                          <p>{report?.reportDesc}</p>
-                        </div>
-                      </section>
-                    </>
-                  );
-                })}
-              </div>
+              
             </div>
-          </StyledWatermark>
+          </StyledWatermark> */}
         </main>
       </div>
     </>
@@ -144,3 +112,4 @@ const BuyerNFT = () => {
 };
 
 export default BuyerNFT;
+// npm i --save @hirohe/react-watermark
