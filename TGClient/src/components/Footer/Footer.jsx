@@ -75,7 +75,7 @@ const Footer = () => {
                 </span>
                 NFTs
               </h2>
-              <p>
+              <p style={{color:"white"}}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptate, quod repellat! Quis quos dolorum tenetur fuga?
                 Aspernatur rerum quae amet.
