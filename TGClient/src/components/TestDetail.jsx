@@ -4,7 +4,7 @@ const ReportDetail = (props) => {
   return (
     <>
       <div className="form__input">
-        <h1
+        {/* <h1
           style={{
             color: "blue",
             textAlign: "center",
@@ -18,14 +18,18 @@ const ReportDetail = (props) => {
           }}
         >
           {props.number + 1}
-        </h1>
+        </h1> */}
         <div className="d-flex align-items-center gap-2">
-          <div className="form__input w-50">
-            <label htmlFor="">Test Name</label>
+          <div className=" w-50" style={{
+            paddingLeft : "50px"
+          }} >
+            {/* <label htmlFor="" style={{
+              // color:"red"
+            }} >Test Name</label> */}
             <input
               type="text"
               id="hi"
-              placeholder="Enter Test Name"
+              placeholder={`${props.number + 1}. Test Required `}
               className="titley"
             />
           </div>
