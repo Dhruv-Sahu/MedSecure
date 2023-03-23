@@ -77,7 +77,7 @@ const NftDetails = () => {
                   Current Price :
                 </div>
                 <div className="amount">
-                  5 ETH
+                  {singleNft?.currentBid} ETH
                 </div>
                 <div className="summary">
                   Report Summary

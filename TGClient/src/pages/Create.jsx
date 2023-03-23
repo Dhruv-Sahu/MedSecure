@@ -25,7 +25,7 @@ const Create = () => {
   //user view
   const [img, setImg] = useState("https://i.imgur.com/9YpzuMkh.png");
   const [sellerwalletaddress, setsellerwalletaddress] = useState(
-    "0x2155b499F7FB25031e9991cB1a059e3a15E15031"
+    "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca"
   );
   const [expiredOn, setexpiredOn] = useState("");
   const [lastUpdate, setlastUpdate] = useState("");
@@ -43,8 +43,12 @@ const Create = () => {
   const [doubleTest, setDoubleTest] = useState([]);
   const [doublemedicine, setDoubleMedicine] = useState([]);
 
+  const [loading, setLoading] = useState(false)
+
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true)
+
     let reports1 = [];
     let medicinecount = 0;
     let testCount = 0;
@@ -99,6 +103,9 @@ const Create = () => {
     console.log(data);
     const res = await axios.post("/temp/tempUpload", data);
     console.log(res);
+
+    // alert(res.data)
+    setLoading(false)
   }
 
   const creater = (e) => {
@@ -265,9 +272,10 @@ const Create = () => {
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
+                      
                     >
-                      {" "}
-                      Submit{" "}
+                      {!loading && "Submit" } 
+                      {loading && <span class="loader"></span>}
                     </button>
                   </div>
                 </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
-import { NFT__DATA } from "../../../assets/data/data";
+// import { NFT__DATA } from "../../../assets/data/data";
 import "./trending.css";
 import NftCard from "../Nft-card/NftCard";
 
@@ -16,7 +16,7 @@ const Trending = () => {
       <Container>
         <Row>
           <Col lg="12" className="mb-5">
-            <h3 className="trending__title">Trending</h3>
+            <h3 className="trending__title">Newly Updated</h3>
           </Col>
 
           {data?.slice(0, 8).map((item) => (

@@ -37,8 +37,9 @@ function OrderSummary() {
   }
 
   async function handleTransaction(e) {
-
+    e.preventDefault()
     const transactionTime = dateTime();
+    console.log("working")
     try {
       if (!window.ethereum) {
         alert("No Crypto Wallet Found");
@@ -51,12 +52,12 @@ function OrderSummary() {
 
         //TODO: SMART CONTRACT TRANSACTION
 
-        // const tx = await signer.sendTransaction({
-        //   to : "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
-        //   value : ethers.utils.parseEther("0.2")
-        // })
-        // console.log("tx ",tx)
-        // alert("transaction success")
+        const tx = await signer.sendTransaction({
+          to : "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca",
+          value : ethers.utils.parseEther("0.2")
+        })
+        console.log("tx ",tx)
+        alert("transaction success")
 
 
         //TODO: SAVING TRANSACTION TO THE SERVER
@@ -116,6 +117,7 @@ function OrderSummary() {
           <a href="#" class="proceed-btn" onClick={(e) => handleTransaction(e)}>
             Pay
           </a>
+
           <a href="#" class="cancel-btn">
             Cancel Order
           </a>
