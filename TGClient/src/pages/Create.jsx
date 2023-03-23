@@ -33,7 +33,7 @@ const Create = () => {
   const [medicalIssue, setmedicalIssue] = useState("");
   const [Hospitalname, sethospitalname] = useState("");
   //details stored in IPFS
-  const [medicalTitle, setMedicalTitle] = useState([]);
+  const [medicalTitle, setMedicalTitle] = useState("");
   const [desc, setDesc] = useState([]);
   const [gender, setGender] = useState("");
   const [arrayform, setarrayform] = useState(false);

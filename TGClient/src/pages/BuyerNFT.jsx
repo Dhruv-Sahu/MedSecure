@@ -73,7 +73,7 @@ const BuyerNFT = () => {
         </div>
 
         <main class="content" style={{width:"90%",position:"relative",right:'-75px'}}>
-          <Watermark text="UID:000001" style={{FontWeight: "800px"}}>
+          <Watermark text="MedSecure"textColor="#707371" style={{FontWeight: "800px"}}>
             <div>
               {singleNft?.reports?.map((report) => {
                 return (
