@@ -39,46 +39,45 @@ const Create = () => {
   const [arrayform, setarrayform] = useState(false);
   const [aadhar, setaadhar] = useState("");
   const [test, setTest] = useState([]);
-  const [medicine, setMedicine] = useState([]);  
-  const [doubleTest, setDoubleTest] = useState([]);  
-  const [doublemedicine, setDoubleMedicine] = useState([]);  
+  const [medicine, setMedicine] = useState([]);
+  const [doubleTest, setDoubleTest] = useState([]);
+  const [doublemedicine, setDoubleMedicine] = useState([]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     let reports1 = [];
-    let medicinecount=0;
-    let testCount=0;
+    let medicinecount = 0;
+    let testCount = 0;
     for (let i = 0; i < medicalIssue; i++) {
       let val = document.getElementsByClassName("description")[i].value;
       let val1 = document.getElementsByClassName("title")[i].value;
       let val2 = document.getElementsByClassName("title2")[i].value;
       let val3 = document.getElementsByClassName("title3")[i].value;
       let val4 = document.getElementsByClassName("title4")[i].value;
-      let val5=[]
-      let val6=[]
-      for (let j=0;j<doublemedicine[i].length;j++)
-      {
-        let valx = document.getElementsByClassName("titlex")[medicinecount].value;
+      let val5 = [];
+      let val6 = [];
+      for (let j = 0; j < doublemedicine[i].length; j++) {
+        let valx =
+          document.getElementsByClassName("titlex")[medicinecount].value;
         medicinecount++;
-        val5.push(valx)
+        val5.push(valx);
       }
-      for (let j=0;j<doubleTest[i].length;j++)
-      {
+      for (let j = 0; j < doubleTest[i].length; j++) {
         let valy = document.getElementsByClassName("titley")[testCount].value;
         testCount++;
-        val6.push(valy)
+        val6.push(valy);
       }
       // individual data
       let data = {
         reportTitle: val1,
         reportDesc: val,
-        testRequired:val2,
-        issueStartedOn:val3,
-        numberOfMedicine:val4,
-        nameOfMedicines:val5,
-        nameOfTests:val6
+        testRequired: val2,
+        issueStartedOn: val3,
+        numberOfMedicine: val4,
+        nameOfMedicines: val5,
+        nameOfTests: val6,
       };
-      console.log(data)
+      console.log(data);
       reports1.push(data);
     }
 
@@ -89,14 +88,14 @@ const Create = () => {
       imgUrl: `https://i.imgur.com/9YpzuMkh.png`,
       expiredOn: expiredOn,
       lastUpdate: lastUpdate,
-      aadharNumber:aadhar,
+      aadharNumber: aadhar,
       numberOfMedicalIssue: medicalIssue,
       hospitalName: Hospitalname,
       gender: gender,
       patientUid: medicalTitle,
       reports: reports1,
     };
-    console.log("hell")
+    console.log("hell");
     console.log(data);
     const res = await axios.post("/temp/tempUpload", data);
     console.log(res);
@@ -249,15 +248,20 @@ const Create = () => {
                         />
                       );
                     })}
-                    <hr />
-                  <input type="checkbox" name="vehicle1" value="Bike" />
+                  <hr />
+                  <input
+                    type="checkbox"
+                    required
+                    name="vehicle1"
+                    value="Bike"
+                  />
                   <label htmlFor="vehicle1">
                     I accept the following terms and conditions
                   </label>
 
                   <div className="submit_form__input">
                     <button
-                    style={{marginTop:"20px"}}
+                      style={{ marginTop: "20px" }}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}

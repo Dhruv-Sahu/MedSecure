@@ -19,18 +19,22 @@ const ReportDetail = (props) => {
           {props.number + 1}
         </h1> */}
         <div className="d-flex align-items-center gap-2">
-          <div className="w-50" style={{
-            paddingLeft : "50px"
-          }} >
+          <div
+            className="w-50"
+            style={{
+              paddingLeft: "50px",
+            }}
+          >
             {/* <label htmlFor="">Medicine</label> */}
             <input
+              required
               type="text"
               id="hi"
               placeholder={`${props.number + 1}. Medicine Name `}
               className="titlex"
               style={{
                 // borderColor : "#A82222",
-                marginBottom : "5px !important"
+                marginBottom: "5px !important",
               }}
             />
           </div>

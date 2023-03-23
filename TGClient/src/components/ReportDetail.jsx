@@ -5,30 +5,30 @@ import { useState } from "react";
 const ReportDetail = (props) => {
   const creater = (e) => {
     e.preventDefault();
-    let temp=props.medicine
-    let temp1=props.doublemedicine
+    let temp = props.medicine;
+    let temp1 = props.doublemedicine;
     let form1 = [];
     for (let i = 0; i < numberofmedicalIssue; i++) {
       form1.push(i);
-      temp.push(1)
+      temp.push(1);
     }
-    temp1.push(form1)
-    props.setDoubleMedicine(temp1)
-    props.setMedicine(temp)
+    temp1.push(form1);
+    props.setDoubleMedicine(temp1);
+    props.setMedicine(temp);
     setarrayform(form1);
   };
   const creater2 = (e) => {
     e.preventDefault();
-    let temp1=props.test
-    let temp2=props.doubleTest
+    let temp1 = props.test;
+    let temp2 = props.doubleTest;
     let form2 = [];
     for (let i = 0; i < numberOfTest; i++) {
       form2.push(i);
-      temp1.push(1)
+      temp1.push(1);
     }
-    temp2.push(form2)
-    props.setDoubleTest(temp2)
-    props.setTest(temp1)
+    temp2.push(form2);
+    props.setDoubleTest(temp2);
+    props.setTest(temp1);
     setarrayform2(form2);
   };
   const [arrayform, setarrayform] = useState(false);
@@ -61,6 +61,7 @@ const ReportDetail = (props) => {
             id="hi"
             placeholder="Enter title"
             className="title"
+            required
           />
         </div>
         <div className="d-flex align-items-center gap-2">
@@ -68,6 +69,7 @@ const ReportDetail = (props) => {
             <label htmlFor="">Test Required</label>
             <input
               type="text"
+              required
               id="hi2"
               placeholder="Enter The number of Test"
               className="title2"
@@ -87,7 +89,7 @@ const ReportDetail = (props) => {
             </button>
           </div>
         </div>
-              
+
         {arrayform2 &&
           arrayform2.map((e) => {
             return <TestDetail number={e} />;
@@ -98,6 +100,7 @@ const ReportDetail = (props) => {
           <input
             type="date"
             id="hi"
+            required
             placeholder="Enter title"
             className="title3"
           />
@@ -140,6 +143,7 @@ const ReportDetail = (props) => {
           name=""
           id={props.number}
           rows="7"
+          required
           placeholder="Enter description"
           className="w-100 description"
         ></textarea>

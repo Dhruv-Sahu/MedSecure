@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
-
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { Container, Row, Col } from "reactstrap";
-
 import '../styles/create-item.css'
 
 const Contact = () => {

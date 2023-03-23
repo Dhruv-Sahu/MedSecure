@@ -89,6 +89,7 @@ export default function Home() {
     } catch (error) {
       alert(error);
     }
+    setshowButton(false);
 
   };
 
@@ -118,16 +119,18 @@ export default function Home() {
               borderRadius: "5px",
               transition: "0.3s",
               background: "#2684ff"}}
-              onClick={() => {
+              onClick={() => {console.log("button");
                 handleSubmit();
               }}
             >
-              Confirm
+              Proceed
             </button>
           ) : (
             ""
           )}
         </div>
+        <div>
+        
         <ul>
           {uploadedFiles.map((file) => (
             <li key={file.public_id}>
@@ -140,6 +143,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </div>
       </div>
     </>
   );

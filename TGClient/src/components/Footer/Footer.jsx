@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import "./footer.css";
-
+import logo from "../../assets/images/logomed.png";
 import { Link } from "react-router-dom";
 
 const MY__ACCOUNT = [
@@ -70,15 +70,14 @@ const Footer = () => {
           <Col lg="3" md="6" sm="6" className="mb-4">
             <div className="logo">
               <h2 className=" d-flex gap-2 align-items-center ">
-                <span>
+                {/* <span>
                   <i className="ri-fire-fill"></i>
                 </span>
-                NFTs
+                NFTs */}
+                <img src={logo} alt="" />MedSecure
               </h2>
               <p style={{color:"white"}}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptate, quod repellat! Quis quos dolorum tenetur fuga?
-                Aspernatur rerum quae amet.
+              Modern Healthcare has been very beneficial to patients in providing excellent recovery but has lacked ethics and conceded almost 382,262,109 medical data breaches. Our Project MedSecure handles these these problems individually and integrates them together.
               </p>
             </div>
           </Col>
@@ -88,7 +87,7 @@ const Footer = () => {
             <ListGroup className="list__group">
               {MY__ACCOUNT.map((item, index) => (
                 <ListGroupItem key={index} className="list__item">
-                  <Link to={item.url}> {item.display} </Link>
+                  <Link to={item.url}id="foot"> {item.display} </Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
@@ -99,7 +98,7 @@ const Footer = () => {
             <ListGroup className="list__group">
               {RESOURCES.map((item, index) => (
                 <ListGroupItem key={index} className="list__item">
-                  <Link to={item.url}> {item.display} </Link>
+                  <Link to={item.url}id="foot"> {item.display} </Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
@@ -110,7 +109,7 @@ const Footer = () => {
             <ListGroup className="list__group">
               {COMPANY.map((item, index) => (
                 <ListGroupItem key={index} className="list__item">
-                  <Link to={item.url}> {item.display} </Link>
+                  <Link to={item.url}id="foot"> {item.display} </Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
@@ -121,27 +120,27 @@ const Footer = () => {
             <input type="text" className="newsletter" placeholder="Email" />
             <div className="social__links d-flex gap-3 align-items-center ">
               <span>
-                <Link to="#">
+                <Link to="#"id="foot">
                   <i className="ri-facebook-line"></i>
                 </Link>
               </span>
               <span>
-                <Link to="#">
+                <Link to="#"id="foot">
                   <i className="ri-instagram-line"></i>
                 </Link>
               </span>
               <span>
-                <Link to="#">
+                <Link to="#"id="foot">
                   <i className="ri-twitter-line"></i>
                 </Link>
               </span>
               <span>
-                <Link to="#">
+                <Link to="#"id="foot">
                   <i className="ri-telegram-line"></i>
                 </Link>
               </span>
               <span>
-                <Link to="#">
+                <Link to="#"id="foot">
                   <i className="ri-discord-line"></i>
                 </Link>
               </span>
@@ -149,9 +148,9 @@ const Footer = () => {
           </Col>
 
           <Col lg="12" className=" mt-4 text-center">
-            <p className="copyright">
+            <p className="copyright"id="foot">
               {" "}
-              Copyrights 2022, Developed by Muhibur Rahman. @Muhib's Tech Diary
+              Copyrights 2022, Developed by Team MedSecure.
               All Rights Reserved.{" "}
             </p>
           </Col>

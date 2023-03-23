@@ -37,7 +37,13 @@ a {
 a:hover {
   color: unset;
 }
-
+.newsletter::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+#foot{
+  color: white !important;
+}
 ul {
   list-style: none;
   padding: 0;
