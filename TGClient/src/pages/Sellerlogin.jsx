@@ -17,11 +17,11 @@ const Userlogin = () => {
   const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [aadharNumber, setAadharNumber] = useState("")
+  const [aadharNumber, setAadharNumber] = useState("");
 
   //etherJS
-  const [publicAddress, setPublicAddress] = useState("")
-  const [signature, setSignature] = useState("")
+  const [publicAddress, setPublicAddress] = useState("");
+  const [signature, setSignature] = useState("");
 
   //password validator
   const validatePassword = () => {
@@ -48,24 +48,21 @@ const Userlogin = () => {
       } else {
         await window.ethereum.send("eth_requestAccounts");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
+        const signer = await provider.getSigner();
         const address = await signer.getAddress();
         const signature = await signer.signMessage(
           "I Am Authorizing the Account"
         );
 
-        setPublicAddress(address)
-        setSignature(signature)
+        setPublicAddress(address);
+        setSignature(signature);
 
         console.log({
           signer,
           address,
           signature,
         });
-        return {
-          publicAddress,
-          signature
-        };
+        return true;
       }
     } catch (error) {
       return false;
@@ -76,33 +73,55 @@ const Userlogin = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     let data = "";
+
     if (password === "") {
       alert("enter valid password");
       // console.log('enter valid password')
     } else {
-      // let result = await signRegister();
-      let result = true
-      if (result) {
-        data = {
-          firstName,
-          lastName,
-          email,
-          password,
-          userType: "Seller",
-          aadharNumber,
-          // check
-          publicAddress : result.publicAddress,
-          signature : result.signature
-        };
-        console.log(data);
+      try {
+        if (!window.ethereum) {
+          alert("No Crypto Wallet Found");
+          throw new Error("No Crypto Wallet Found");
+      } 
+      else {
+          await window.ethereum.send("eth_requestAccounts");
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = await provider.getSigner();
+          const address = await signer.getAddress();
+          const signature = await signer.signMessage(
+            "I Am Authorizing the Account"
+          );
 
-        try {
-          const response = await axios.post("/auth/register", data);
-          userLogin(response.data);
-          navigate("/verification");
-        } catch (error) {}
+          //creating object for send the data
+          data = {
+            firstName,
+            lastName,
+            email,
+            password,
+            userType: "Seller",
+            aadharNumber,
+            // check
+            publicAddress: address,
+            signature,
+          };
+          console.log(data);
+
+          //sending data to the backend server
+          try {
+            const response = await axios.post("/auth/register", data);
+            userLogin(response.data);
+            navigate("/verification");
+          } catch (error) {
+            console.log(error);
+            alert(error)
+          }
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error);
       }
     }
+    //end of signing the user
   }
 
   //rendering the page

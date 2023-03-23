@@ -87,10 +87,12 @@ const ReportDetail = (props) => {
             </button>
           </div>
         </div>
+              
         {arrayform2 &&
           arrayform2.map((e) => {
             return <TestDetail number={e} />;
           })}
+
         <div className="form__input w-50">
           <label htmlFor="">Issue Started On</label>
           <input

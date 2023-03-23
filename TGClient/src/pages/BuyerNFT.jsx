@@ -86,6 +86,20 @@ const BuyerNFT = () => {
                       <div class="panel__content">
                         <span>{report?.reportTitle}</span>
                         <p>{report?.reportDesc}</p>
+                        <p>Issue Started On: {report?.issueStartedOn}</p>
+                        <p>Medicine Prescribed</p>
+                        {report?.nameOfMedicines && report?.nameOfMedicines.map((medicine)=>{
+                          return(
+                            <p>{medicine}</p>
+                          )
+                        })}
+                        <p>Test Given</p>
+                        {report?.nameOfTests && report?.nameOfTests.map((test)=>{
+                          return(
+                            <p>{test}</p>
+                          )
+                        })}
+              
                       </div>
                     </section>
                   </>

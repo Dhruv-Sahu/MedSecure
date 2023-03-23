@@ -68,6 +68,7 @@ const Create = () => {
         testCount++;
         val6.push(valy)
       }
+      // individual data
       let data = {
         reportTitle: val1,
         reportDesc: val,
@@ -80,6 +81,8 @@ const Create = () => {
       console.log(data)
       reports1.push(data);
     }
+
+    // full health data
     let data = {
       sellerWalletAddress: sellerwalletaddress,
       currentBid: currentBid,
@@ -109,7 +112,7 @@ const Create = () => {
   };
   return (
     <>
-      <CommonSection title="Create Item" />
+      <CommonSection title="New Report" />
       <section>
         <Container>
           <Row>
@@ -246,6 +249,7 @@ const Create = () => {
                         />
                       );
                     })}
+                    <hr />
                   <input type="checkbox" name="vehicle1" value="Bike" />
                   <label htmlFor="vehicle1">
                     I accept the following terms and conditions
