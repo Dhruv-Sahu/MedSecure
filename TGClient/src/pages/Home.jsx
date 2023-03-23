@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect ,useState} from "react";
+import Spinner from "./Spinner";
 import HeroSection from "../components/ui/HeroSection";
 
 import LiveAuction from "../components/ui/Live-auction/LiveAuction";
@@ -12,13 +12,26 @@ import StepSection from "../components/ui/Step-section/StepSection";
 
 
 const Home = () => {
+  const [showComponent, setShowComponent] = useState(false);
+  useEffect(() => {
+      setTimeout(() => {
+        setShowComponent(true);
+      }, 0);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowComponent(false);
+    }, 4000);
+  }, []);
   return (
     <>
-      <HeroSection />
-      <Trending />
-      <SellerSection />
-      <LiveAuction />
-      <StepSection />
+    {showComponent && <Spinner/>}
+    {!showComponent &&<HeroSection />}
+    {!showComponent &&<Trending />}
+    {!showComponent &&<SellerSection />}
+    {!showComponent &&<LiveAuction />}
+    {!showComponent &&<StepSection />}
     </>
   );
 };

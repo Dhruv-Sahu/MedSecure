@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect ,useState} from "react";
+import Heart from "./Heart";
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 
@@ -14,6 +15,18 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
 function MyNFT() {
+  const [showComponent, setShowComponent] = useState(false);
+  useEffect(() => {
+      setTimeout(() => {
+        setShowComponent(true);
+      }, 0);
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowComponent(false);
+    }, 4000);
+  }, []);
   const { userData } = useContext(AuthContext);
   console.log(userData);
 
@@ -22,6 +35,9 @@ function MyNFT() {
   );
 
   return (
+    <>
+    {showComponent && <Heart/>}
+    {!showComponent &&
     <div className="mynft">
       <CommonSection title={"MY NFT"} />
       <section>
@@ -40,7 +56,8 @@ function MyNFT() {
         </Row>
         </Container>
       </section>
-    </div>
+    </div>}
+    </>
   );
 }
 
