@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/spinner.css'
-import loader from './loader.gif'
+import loader from './heart.gif'
 
 const Spinner = () => {
     return (
