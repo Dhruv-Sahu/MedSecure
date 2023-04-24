@@ -10,12 +10,12 @@ import logo from "../../assets/images/logomed.png";
 
 import { AuthContext } from "../../context/authContext";
 
-
+import { useNavigate } from "react-router-dom";
 
 
 
 const Header = () => {
-
+  const navigate = useNavigate();
 
   const {userData} = useContext(AuthContext)
   console.log("header:", userData)
@@ -195,7 +195,6 @@ const Header = () => {
               MedSecure
             </h2>
           </div>
-
           <div className="nav__menu" ref={menuRef}>
             <ul className="nav__list">
               {NAV__LINKS.map((item, index) => (
@@ -212,17 +211,16 @@ const Header = () => {
               ))}
             </ul>
           </div>
-
           <div className="nav__right d-flex align-items-center gap-5 ">
             <p>
-
             {userData?.userType}
             </p>
+            {userData?.userType == 'Hospital'|| userData?.userType === "Buyer" || userData?.userType === "Seller" ?
+            <button type="button" class="btn btn-danger"onClick={()=>{navigate("/");window.location.reload()}}>Logout</button>:<></>}
           </div>
         </div>
       </Container>
     </header>
   );
 };
-
 export default Header;

@@ -19,7 +19,7 @@ const BuyerNFT = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       <CommonSection title={singleNft?.hospitalName} />
 
       <section>
@@ -86,7 +86,7 @@ const BuyerNFT = () => {
                     >
                       <div class="panel__background"></div>
                       <div class="panel__content">
-                        <span>{report?.reportTitle}</span>
+                        <span id="golgol">{report?.reportTitle}</span>
                         <p>{report?.reportDesc}</p>
                         <p>Issue Started On: {report?.issueStartedOn}</p>
                         <p style={{backgroundImage: "linear-gradient(90deg, #2666BA, #00337C)",
