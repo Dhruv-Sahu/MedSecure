@@ -4,9 +4,8 @@
   height: 30vw;
 }
 
-.Details{
+.nft_Details{
   height: 250px;
-  overflow-y: scroll;
   width: 700px;
 }
 

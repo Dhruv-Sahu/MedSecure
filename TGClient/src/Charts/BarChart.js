@@ -84,7 +84,7 @@ const BarChart = () => {
     <div>
       <Bar
         data={data}
-        height={400}
+        height={370}
         options={options}
 
       />

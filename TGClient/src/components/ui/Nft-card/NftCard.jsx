@@ -96,7 +96,6 @@ const NftCard = (props) => {
             </button>
 
             {showModal && <Modal setShowModal={setShowModal} />}
-
             <span className="history__link">
               <Link to="#">
                 Amount:{" "}

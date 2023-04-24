@@ -163,7 +163,7 @@ const Loginform = () => {
                     handleSubmit(e);
                   }}
                 >
-                  Login up
+                  Login
                 </button>
               </div>
               {/* <!-- signup button --> */}
