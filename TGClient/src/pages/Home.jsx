@@ -47,7 +47,10 @@ const Home = () => {
   console.log("Diptanshu bkl");
   let username = userData.firstName + " " + userData.lastName;
   let useremail = userData.email;
+
+
   let publicAddress = userData?.publicAddress ?? ""
+
   let result = "0x....." + publicAddress.slice(36, 42);
   let aadharNumber = userData.aadharNumber;
   console.log(userData);
@@ -57,6 +60,7 @@ const Home = () => {
   };
   return (
     <>
+
       {userData.userType === "Seller" ?
         (!showComponent && (
           <div
