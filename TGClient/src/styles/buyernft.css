@@ -403,59 +403,61 @@ a {
 * Background colors
 ***************************/
 
-.panel--yellow .panel__background {
-  /* background: #e7ba3a; */
-  background: transparent;
-}
 
-.panel--green .panel__background {
-  /* background: #7eb66f; */
-  background: transparent;
-}
+    .panel--yellow .panel__background {
+      /* background: #e7ba3a; */
+        background: transparent;
+    }
 
-.panel--grey .panel__background {
-  background: transparent;
-}
+    .panel--green .panel__background {
+      /* background: #7eb66f; */
+      background: transparent;
+    }
 
-.panel--grey .panel__content p,
-.panel--grey .panel__content a {
-  color: #404d5b;
-}
+    .panel--grey .panel__background {
+        background: transparent;
+    }
 
-.panel__content {
-  margin: 0 auto;
-  max-width: 70rem;
-  padding: 5rem 0;
-  position: relative;
-  width: 90%;
-  z-index: 20;
-  position: relative;
-  /* height: 270px; */
-  /* width: 450px; */
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(3px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  padding-left: 25px;
-}
+    .panel--grey .panel__content p,
+    .panel--grey .panel__content a {
+      color: #404d5b;
+    }
 
-.panel__content p {
-  color: black;
-  font-size: 1.5rem;
-  transform: scale(1);
-}
+    .panel__content {
+      margin: 0 auto;
+      max-width: 70rem;
+      padding: 5rem 0;
+      position: relative;
+      width: 90%;
+      z-index: 20;
+      position: relative;
+      /* height: 120px; */
+      box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
+      padding-left: 10px;
+      border-radius: 25px;
+      background-color: rgba(255, 255, 255, 0.4) !important;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      border: 2px solid rgba(255, 255, 255, 0.1) !important;
+      padding-top: 10px;
+    }
 
-.panel__content span {
-  color: #2666ba;
-  font-weight: 700;
-  font-size: 2.5rem;
-  display: flex;
-  left: 200px;
-}
+      .panel__content p {
+        color: black;
+        font-size: 1.5rem;
+        transform: scale(1);
+      }
 
-/* .panel__content p:hover {
+      .panel__content span {
+        color: #2666BA;
+        font-weight: 700;
+        font-size: 2.5rem;
+        display: flex;
+        left: 200px;
+      }
+
+      /* .panel__content p:hover {
+
         transform: scale(1.1);
         transition: all 0.2s ease-out;
         /* opacity: 0.3; 

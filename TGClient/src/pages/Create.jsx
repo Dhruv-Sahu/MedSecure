@@ -7,6 +7,7 @@ import CommonSection from "../components/ui/Common-section/CommonSection";
 import NftCard from "../components/ui/Nft-card/NftCard";
 import avatar from "../assets/images/ava-01.png";
 import axios from "../context/axios";
+import Alert from "../Alert"
 
 import "../styles/create-item.css";
 import ReportDetail from "../components/ReportDetail";
@@ -42,7 +43,7 @@ const Create = () => {
   const [medicine, setMedicine] = useState([]);
   const [doubleTest, setDoubleTest] = useState([]);
   const [doublemedicine, setDoubleMedicine] = useState([]);
-
+  const [alertTime,setAlertTime]=useState(false);
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e) {
@@ -103,9 +104,9 @@ const Create = () => {
     console.log(data);
     const res = await axios.post("/temp/tempUpload", data);
     console.log(res);
-
     // alert(res.data)
-    setLoading(false)
+    setLoading(false);
+    setAlertTime(true);
   }
 
   const creater = (e) => {
@@ -116,8 +117,11 @@ const Create = () => {
     }
     setarrayform(form1);
   };
+
+  const [alert, setAlert] = useState(null);
   return (
     <>
+    {alertTime && <Alert alert="{alert.msg}"/>}
       <CommonSection title="New Report" />
       <section>
         <Container>
@@ -126,7 +130,6 @@ const Create = () => {
               <h5 className="mb-4 text-light">Preview Item</h5>
               <NftCard item={item} />
             </Col>
-
             <Col lg="9" md="8" sm="6">
               <div className="create__item">
                 <form>
@@ -152,7 +155,6 @@ const Create = () => {
                       }}
                     />
                   </div>
-
                   <div className="d-flex align-items-center gap-2">
                     <div className="form__input w-50">
                       <label htmlFor="">Aadhar Number</label>
@@ -189,7 +191,6 @@ const Create = () => {
                         }}
                       />
                     </div>
-
                     <div className="form__input w-50">
                       <label htmlFor=""> Last Update </label>
                       <input
@@ -200,7 +201,6 @@ const Create = () => {
                         }}
                       />
                     </div>
-
                     <div className="form__input w-50">
                       <label htmlFor="">Valid Upto</label>
                       <input
@@ -265,16 +265,15 @@ const Create = () => {
                   <label htmlFor="vehicle1">
                     I accept the following terms and conditions
                   </label>
-
                   <div className="submit_form__input">
                     <button
+                    id="sabkabaap"
                       style={{ marginTop: "20px" }}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
-                      
                     >
-                      {!loading && "Submit" } 
+                      {!loading && "Submit" }
                       {loading && <span class="loader"></span>}
                     </button>
                   </div>

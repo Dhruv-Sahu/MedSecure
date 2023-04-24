@@ -18,9 +18,16 @@ const NftDetails = () => {
   // const singleNft = NFT__DATA.find((item) => item.id === "01");
 
   const { data : singleNft, loading, error } = useFetch(`upload/getAIpfs?cid=${cid}`)
-  console.log(singleNft)
-
-
+  // console.log(singleNft)
+  let temp=[]
+  for(let i=0;i<singleNft.numberOfMedicalIssue;i++)
+  {
+    temp.push(singleNft.reports[i].reportTitle)
+  }
+  let text = temp.join(", ");
+  console.log(text)
+  // let temp=(singleNft?.reports)
+  // console.log(temp)
   // useEffect(()=>{
 
   //   async function getData(){
@@ -93,7 +100,9 @@ const NftDetails = () => {
                   </div>
                 </div> */}
 
-                <p className="Details">{singleNft?.desc}</p>
+                <p className="nft_Details">
+                <h5>Patient is suffering from {text}. Patient went to {singleNft?.hospitalName} and has last updated his report on {singleNft?.lastUpdate}.The next visit to the hospital will be on {singleNft?.expiredOn}.</h5>
+                </p>
                 <button className="singleNft-btn d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-bag-line"></i>
                   <Link to={`/orderSummary/${cid}`}>Buy Now</Link>

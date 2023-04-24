@@ -10,7 +10,7 @@ import { AuthContext } from "../context/authContext";
 export default function Home() {
 
   const { userData } = useContext(AuthContext)
-  
+
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [fData, setFData] = useState([]);
   const [confirm, setConfirm] = useState(false);
@@ -52,7 +52,7 @@ export default function Home() {
 
 
   const handleSubmit = async () => {
-    // setConfirm(true);
+
 
     const transactionTime = dateTime();
 
@@ -67,20 +67,20 @@ export default function Home() {
     setUploadedFiles(() => [data]);
 
     const userMedical = await axios.get(`/temp/tempData?aadharNumber=${userData?.aadharNumber}`)
-    console.log("user medialc data",userMedical.data[0])
-    
+    console.log("user medialc data", userMedical.data[0])
+
     let finaldata = userMedical?.data[0]
     finaldata.imgUrl = data.url
-    console.log("final Data : ",finaldata)
+    console.log("final Data : ", finaldata)
 
     const res = await axios.post('/upload/uploadIpfs', finaldata)
     console.log(res)
 
     const transData = {
       id: userData._id,
-      transaction : {
-        cid : res.data.imp,
-        transactionTime 
+      transaction: {
+        cid: res.data.imp,
+        transactionTime
       }
     }
 
@@ -90,7 +90,7 @@ export default function Home() {
       alert(error);
     }
     setshowButton(false);
-
+    setConfirm(true);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -100,8 +100,8 @@ export default function Home() {
   });
   // {`${styles.dropzone} ${isDragActive ? styles.active : null}`}
   return (
-    <>
-            <i class="ri-upload-cloud-fill"></i>
+    <>{!confirm ? (<>
+      <i class="ri-upload-cloud-fill"></i>
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />
         Drop Your NFTS Here
@@ -118,8 +118,10 @@ export default function Home() {
               color: "#fff",
               borderRadius: "5px",
               transition: "0.3s",
-              background: "#2684ff"}}
-              onClick={() => {console.log("button");
+              background: "#2684ff"
+            }}
+              onClick={() => {
+                console.log("button");
                 handleSubmit();
               }}
             >
@@ -129,22 +131,24 @@ export default function Home() {
             ""
           )}
         </div>
-        <div>
-        
-        <ul>
-          {uploadedFiles.map((file) => (
-            <li key={file.public_id}>
-              <Image
-                cloudName="dpdytq2cb"
-                publicId={file.public_id}
-                width="300"
-                crop="scale"
-              />
-            </li>
-          ))}
-        </ul>
+
       </div>
-      </div>
+    </>) : (<div>
+
+      <ul>
+        {uploadedFiles.map((file) => (
+          <li key={file.public_id}>
+            <Image
+              cloudName="dpdytq2cb"
+              publicId={file.public_id}
+              width="300"
+              crop="scale"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>)}
+
     </>
   );
 }

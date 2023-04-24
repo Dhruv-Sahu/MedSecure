@@ -91,12 +91,11 @@ const LineChart = () => {
       },
     },
   }
-
   return (
     <div>
       <Line
         data={data}
-        height={400}
+        height={370}
         options={options}
 
       />
