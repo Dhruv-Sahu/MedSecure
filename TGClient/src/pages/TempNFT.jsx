@@ -6,15 +6,26 @@ import { Container, Row, Col } from "reactstrap";
 import "../styles/buyernft.css";
 // import styled from "styled-components";
 import { Watermark } from "@hirohe/react-watermark";
-
+import { useEffect } from "react";
 const TempNFT = () => {
-  const { cid } = useParams();
-  const {
-    data: singleNft,
-    loading,
-    error,
-  } = useFetch(`upload/getAIpfs?cid=${cid}`);
-  console.log(singleNft);
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const myParam = queryParams.get("time");
+    const timeNow = Math.round(Date.now() / 1000);
+
+    if (timeNow > myParam){
+      console.log("the link is expired")
+    }
+    console.log("hiiiiiiiiiiiiiiii",myParam); // prints the value of "myParam" query parameter
+  }, []);
+  let singleNft="hi"
+  // const { cid } = useParams();
+  // const {
+  //   data: singleNft,
+  //   loading,
+  //   error,
+  // } = useFetch(`upload/getAIpfs?cid=${cid}`);
+  // console.log(singleNft);
 
   return (
     <>

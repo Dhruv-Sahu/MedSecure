@@ -13,15 +13,15 @@ import SignUp from "../pages/Signup";
 import Myorder from "../pages/Myorder";
 import Verification from "../pages/Verification";
 import ViewNFT from "../pages/BuyerNFT";
-import TempNFT from "../pages/TempNFT";
+// import TempNFT from "../pages/TempNFT";
 import Save from "../pages/NFTsave";
 import Uploader from "../pages/Uploader";
 import OrderSummary from "../pages/OrderSummary";
 import MyNFT from "../pages/MyNFT";
+import TempNFT from "../pages/TempNFT";
+import Templink from "../pages/Templink";
 
-import Templink from "../pages/Templink"
-
-import Admin from "../pages/Admin";
+// import Admin from "../pages/Admin";
 
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
@@ -51,10 +51,11 @@ const Routers = () => {
       <Route path="/verification" element={<Verification/>} />
       <Route path="/viewNFT/:cid" element={<ViewNFT/>} />
       <Route path="/templink" element={<Templink/>} />
+      <Route path="/tempnft" element={<TempNFT/>} />
       <Route path="/market/:cid" element={<NftDetails />} />
       <Route path="/Uploader" element={<Uploader />} />
       <Route path="/Save" element={<Save />} />
-      <Route path="/admin" element={<Admin />} />
+      {/* <Route path="/admin" element={<Admin />} /> */}
       <Route path="/orderSummary/:cid" element= {<OrderSummary/>} ></Route>
 
       <Route path="/MyNFT" element={<MyNFT/>}></Route>

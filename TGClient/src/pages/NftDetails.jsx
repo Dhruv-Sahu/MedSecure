@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
@@ -13,19 +12,22 @@ import axios from "../context/axios";
 
 const NftDetails = () => {
   const { cid } = useParams();
-  console.log("from nftdetails",cid)
+  console.log("from nftdetails", cid);
 
   // const singleNft = NFT__DATA.find((item) => item.id === "01");
 
-  const { data : singleNft, loading, error } = useFetch(`upload/getAIpfs?cid=${cid}`)
+  const {
+    data: singleNft,
+    loading,
+    error,
+  } = useFetch(`upload/getAIpfs?cid=${cid}`);
   // console.log(singleNft)
-  let temp=[]
-  for(let i=0;i<singleNft.numberOfMedicalIssue;i++)
-  {
-    temp.push(singleNft.reports[i].reportTitle)
+  let temp = [];
+  for (let i = 0; i < singleNft.numberOfMedicalIssue; i++) {
+    temp.push(singleNft.reports[i].reportTitle);
   }
   let text = temp.join(", ");
-  console.log(text)
+  console.log(text);
   // let temp=(singleNft?.reports)
   // console.log(temp)
   // useEffect(()=>{
@@ -39,7 +41,6 @@ const NftDetails = () => {
   //   getData()
   //   return
 
-
   // },[cid])
 
   return (
@@ -50,11 +51,7 @@ const NftDetails = () => {
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6">
-              <img
-                src={singleNft?.imgUrl}
-                alt=""
-                className="single__nft-img"
-              />
+              <img src={singleNft?.imgUrl} alt="" className="single__nft-img" />
             </Col>
 
             <Col lg="6" md="6" sm="6">
@@ -80,15 +77,9 @@ const NftDetails = () => {
                     </span>
                   </div>
                 </div>
-                <div className="Price">
-                  Current Price :
-                </div>
-                <div className="amount">
-                  {singleNft?.currentBid} ETH
-                </div>
-                <div className="summary">
-                  Report Summary
-                </div>
+                <div className="Price">Current Price :</div>
+                <div className="amount">{singleNft?.currentBid} ETH</div>
+                <div className="summary">Report Summary</div>
                 {/* <div className="nft__creator d-flex gap-3 align-items-center">
                   <div className="creator__img">
                     <img src={singleNft?.creatorImg} alt="" className="w-100" />
@@ -101,7 +92,12 @@ const NftDetails = () => {
                 </div> */}
 
                 <p className="nft_Details">
-                <h5>Patient is suffering from {text}. Patient went to {singleNft?.hospitalName} and has last updated his report on {singleNft?.lastUpdate}.The next visit to the hospital will be on {singleNft?.expiredOn}.</h5>
+                  <h5>
+                    Patient is suffering from {text}. Patient went to{" "}
+                    {singleNft?.hospitalName} and has last updated his report on{" "}
+                    {singleNft?.lastUpdate}.The next visit to the hospital will
+                    be on {singleNft?.expiredOn}.
+                  </h5>
                 </p>
                 <button className="singleNft-btn d-flex align-items-center gap-2 w-50">
                   <i className="ri-shopping-bag-line"></i>
