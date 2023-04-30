@@ -4,7 +4,7 @@ import QRCode from "react-qr-code";
 import { ethers } from "ethers";
 import ABI from "../assets/ABI/shipping.json";
 import db from "../components/Firebase";
-import FUpload from "../components/UploadFirebase";
+// import { deleteAllUsersData } from "../components/UploadFirebase";
 // let TxHash = "0x0";
 // const heal = `https://goerli.etherscan.io/tx/${TxHash}`;
 const abi = ABI;
@@ -17,12 +17,37 @@ const signer = provider.getSigner();
 // Create a Contract instance connected to the signer
 const contract = new ethers.Contract(contractAddress, abi, signer);
 
+function deleteAllUsersData() {
+  db.collection("users")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref
+          .collection("data")
+          .get()
+          .then((dataSnapshot) => {
+            dataSnapshot.forEach((dataDoc) => {
+              dataDoc.ref.delete();
+            });
+          })
+          .catch((error) => console.error("Error deleting user data:", error));
+        doc.ref.delete();
+      });
+      console.log("All users and their data deleted successfully!");
+    })
+    .catch((error) =>
+      console.error("Error deleting users and their data:", error)
+    );
+}
+
 // above function
 const Shipping = () => {
+  const [counter, setCounter] = useState(0);
   const [users, setUsers] = useState([]);
   const [hash, setHash] = useState("0x0");
-  const [stage, setstage] = useState(false);
+  const [stage, setStage] = useState(false);
   const [info, setInfo] = useState("");
+
   async function setMessage(message) {
     // Encode the setMessage function call with parameters
     const iface = new ethers.utils.Interface(abi);
@@ -54,22 +79,38 @@ const Shipping = () => {
     // does not work gives undefined:
     // console.log("Tx Hash", result.hash);
 
-    setstage(true);
+    setStage(true);
   }
+  const resetFunction = () => {
+    setStage(false);
+    deleteAllUsersData();
+  };
 
   const handleClick = async () => {
     console.log("Handle Click pressed");
+
+    // Get the first user from users array
+    const firstUser = users[0].data;
+    console.log(firstUser);
+
     // Get and log transaction hash after setting message
-    const txHash = await setMessage(info);
+
+    const txHash = await setMessage(firstUser);
     console.log("Tx Hash onClick Function:", txHash);
     console.log("The Link:", `https://goerli.etherscan.io/tx/${txHash}`);
     setHash(txHash);
+
     const message1 = await getMessage();
+
     // Does not work shows undefined
     // console.log("message onClick Function:", message1);
   };
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setCounter(counter + 1);
+    }, 10000); // Time interval in milliseconds (1000 ms = 1 second)
+
     const fetchData = async () => {
       console.log("fetching data thru function");
       const userCollection = await db.collection("users").get();
@@ -82,7 +123,8 @@ const Shipping = () => {
       );
     };
     fetchData();
-  }, []);
+    return () => clearTimeout(timer);
+  }, [counter]);
   console.log("Users from State after useEffect", users);
   return (
     <>
@@ -91,7 +133,7 @@ const Shipping = () => {
         <br />
         <br />
         <br />
-
+        <p>Counter: {counter}</p>
         {stage ? (
           <div
             style={{
@@ -106,18 +148,28 @@ const Shipping = () => {
               fgColor="black"
               value={`https://goerli.etherscan.io/tx/${hash}`}
             />
-            <p>{info}this is info </p>
+            <p>{info} from qr</p>
+            <button
+              onClick={() => {
+                resetFunction();
+              }}
+            >
+              Reset
+            </button>
           </div>
         ) : (
           <div>
-            <div>
+            {/* <div>
               <FUpload />
-            </div>
+            </div> */}
+            {/* <h3>{users}</h3> */}
             <div>
               {users.map((user, index) => (
                 <div key={index}>
-                  <h3>This is user data</h3>
-                  <h2>{user.data}</h2>
+                  <h2>
+                    data from mapping,{user.data} index is:
+                    {index}
+                  </h2>
                 </div>
               ))}
             </div>

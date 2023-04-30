@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
-function MyModal() {
+function MyModal({cid}) {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
@@ -14,10 +14,17 @@ function MyModal() {
   const handleNumberChange = (e) => {
     setNumber(e.target.value);
   };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setShow(false)
-    console.log(`Email: ${email}, Number: ${number}`);
+
+    console.log(`Email: ${email}, Number: ${number}`, cid);
+
+    // let expirationTime = Date.now()
+
+
   };
   return (
     <>
