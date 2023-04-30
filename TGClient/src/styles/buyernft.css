@@ -499,9 +499,9 @@ a {
       } */
 
 #golgol {
-  /* position: relative; */
-  /* height: 270px; */
-  /* width: 450px; */
+  width: 1098px;
+  color: whitesmoke;
+  padding-left: 5px;
   border-radius: 10px;
   padding-right: 20px;
   background: #2684ff;
@@ -509,4 +509,12 @@ a {
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+}
+
+.panel__content #issue{
+  left: 777px;
+  font-size: 20px;
+  top: -35px;
+  color: whitesmoke;
+  position: relative;
 }

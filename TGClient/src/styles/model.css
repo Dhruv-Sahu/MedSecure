@@ -32,4 +32,21 @@
     text-decoration: none;
     cursor: pointer;
   }
-  
+
+  .share{
+      display: inline-flex;
+  border: none;
+  outline: none;
+  padding: 5px 22px;
+  background: transparent;
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 0 20px;
+  width: 170px;
+  font-size: large;
+  border-radius: 5px;
+  transition: 0.3s;
+  background: #2684ff;
+  text-decoration: none;
+  justify-content: space-evenly;
+  }

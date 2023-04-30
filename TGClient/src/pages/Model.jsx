@@ -33,7 +33,7 @@ function MyModal(props) {
   }
   return (
     <div>
-      <button style={{ marginTop: "100px" }} onClick={handleButtonClick}>
+      <button style={{ marginTop: "100px",display: "inline-flex",border: "none",outline: "none",padding: "5px 22px",background: "transparent",fontsize: "0.9rem",color:" #fff",margin: "0 20px",width: "170px",fontsize: "large",borderRadius: "5px",transition: "0.3s",background: "#2684ff",textDecoration: "none",justifyContent: "space-evenly"}} onClick={handleButtonClick} class="share button">
         <i class="fa fa-share-alt" aria-hidden="true"></i> Share
       </button>
       {showModal && (
@@ -54,7 +54,7 @@ function MyModal(props) {
                 </label>
                 <br />
                 <label>
-                  Time:
+                  To be shared for:
                   <input type="number" value={number} onChange={handleTimeChange} />
                 </label>
                 <br />
