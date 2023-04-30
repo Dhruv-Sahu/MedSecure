@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 
+
 import { Container, Row, Col } from "reactstrap";
 import { useState } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
@@ -12,6 +13,9 @@ import Alert from "../Alert"
 import "../styles/create-item.css";
 import ReportDetail from "../components/ReportDetail";
 
+
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 const Create = () => {
   let item = {
     id: "01",
@@ -22,12 +26,18 @@ const Create = () => {
   };
 
   // const [id, setId] = useState("01");
-
+  const storage = getStorage();
   //user view
+
   const [img, setImg] = useState("https://i.imgur.com/9YpzuMkh.png");
   const [sellerwalletaddress, setsellerwalletaddress] = useState(
     "0x54c4A0192BB29e6ECB8c1C550D7405557c7b59Ca"
   );
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [downloadURL, setDownloadURL] = useState('');
+
+
   const [expiredOn, setexpiredOn] = useState("");
   const [lastUpdate, setlastUpdate] = useState("");
   const [currentBid, setCurrentBid] = useState(7.1);
@@ -46,9 +56,41 @@ const Create = () => {
   const [alertTime,setAlertTime]=useState(false);
   const [loading, setLoading] = useState(false)
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    return new Promise((resolve, reject) => {
+    if (selectedFile) {
+      const storageRef = ref(storage, `images/${selectedFile.name}`);
+
+      uploadBytes(storageRef, selectedFile)
+        .then(() => getDownloadURL(storageRef))
+        .then((url) => {
+          setDownloadURL(url);
+          setSelectedFile(null); // Clear the selected file
+          resolve(url)
+        })
+        .catch((error) => {
+          console.log('Upload error:', error);
+          reject("error")
+        });
+    }
+  })
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true)
+    let url = ""
+    try {
+         url = await handleUpload()
+    } catch (error) {
+      console.log("failed to send image")
+    }
+    
+    console.log("DEBUG AFTER THE HANDLE UPLOAD : ")
 
     let reports1 = [];
     let medicinecount = 0;
@@ -99,7 +141,9 @@ const Create = () => {
       gender: gender,
       patientUid: medicalTitle,
       reports: reports1,
+      url : url
     };
+
     console.log("hell");
     console.log(data);
     const res = await axios.post("/temp/tempUpload", data);
@@ -255,7 +299,11 @@ const Create = () => {
                         />
                       );
                     })}
+
+                  <input type="file" onChange={handleFileChange} />
+
                   <hr />
+
                   <input
                     type="checkbox"
                     required

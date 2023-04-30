@@ -232,6 +232,31 @@ router.post("/transaction", async (req, res) => {
 });
 
 
+router.post("/referMail", async(req, res)=>{
+
+  let name = req.body.name
+  let email = req.body.email
+  let link = req.body.link
+
+  try {
+
+    let body = `Hi, ${name}, Please use the Link Provided to access the NFT 
+    ${link}
+    `
+
+    let mailResponse = sendEmail(email,`You Recieved NFT from ${name}`,body)
+    if (mailResponse) {
+        res.status(200).json({
+          message : "success"
+        })
+    }
+    
+  } catch (error) {
+    res.status(200).json({
+      error : error.message
+    })
+  }
+})
 
 
 

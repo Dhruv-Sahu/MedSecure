@@ -6,32 +6,40 @@ import { Container, Row, Col } from "reactstrap";
 import "../styles/buyernft.css";
 // import styled from "styled-components";
 import { Watermark } from "@hirohe/react-watermark";
+import MyModal from "./Model";
 import { useEffect } from "react";
-const TempNFT = () => {
+
+const BuyerNFT = () => {
+  const queryParams = new URLSearchParams(window.location.search);
+  const myParam = queryParams.get("time");
+  const cid = queryParams.get("cid");
+
   useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const myParam = queryParams.get("time");
     const timeNow = Math.round(Date.now() / 1000);
-
-    if (timeNow > myParam){
-      console.log("the link is expired")
+    if (timeNow > myParam) {
+      console.log("the link is expired");
     }
-    console.log("hiiiiiiiiiiiiiiii",myParam); // prints the value of "myParam" query parameter
+    console.log("hiiiiiiiiiiiiiiii", myParam); // prints the value of "myParam" query parameter
   }, []);
-  let singleNft="hi"
-  // const { cid } = useParams();
-  // const {
-  //   data: singleNft,
-  //   loading,
-  //   error,
-  // } = useFetch(`upload/getAIpfs?cid=${cid}`);
-  // console.log(singleNft);
 
+  const {
+    data: singleNft,
+    loading,
+    error,
+  } = useFetch(`upload/getAIpfs?cid=${cid}`);
+  
+  // console.log("hello............................",singleNft._id);
+  let temp = [];
+  for (let i = 0; i < singleNft.numberOfMedicalIssue; i++) {
+    temp.push(singleNft.reports[i].reportTitle);
+  }
+  let text = temp.join(", ");
+  // console.log(text)
   return (
     <>
       <Header />
       <CommonSection title={singleNft?.hospitalName} />
-
+      <MyModal cid={cid} />
       <section>
         <Container>
           <Row>
@@ -60,9 +68,10 @@ const TempNFT = () => {
 
                 <div className="summary">Report Summary</div>
                 <h5>
-                  Patient is suffering from Cancer,Dengue.Patient went to Srm
-                  Hospital and has last updated his report on 23/03/23.The next
-                  visit to the hospital will be on 30/03/23.
+                  Patient is suffering from {text}. Patient went to{" "}
+                  {singleNft?.hospitalName} and has last updated his report on{" "}
+                  {singleNft?.lastUpdate}.The next visit to the hospital will be
+                  on {singleNft?.expiredOn}
                 </h5>
               </div>
             </Col>
@@ -97,7 +106,7 @@ const TempNFT = () => {
           style={{ width: "90%", position: "relative", right: "-75px" }}
         >
           <Watermark
-            text="MedSecure"
+            text={singleNft?._id}
             textColor="#707371"
             style={{ FontWeight: "800px" }}
           >
@@ -111,9 +120,24 @@ const TempNFT = () => {
                     >
                       <div class="panel__background"></div>
                       <div class="panel__content">
-                        <span id="golgol">{report?.reportTitle}</span>
+                        <span id="golgol">{report?.reportTitle} </span>
+                        <p id ="issue">Issue Started On: {report?.issueStartedOn}</p>
+                        
+                        <p style={{
+                            backgroundImage:
+                              "linear-gradient(90deg, #2666BA, #00337C)",
+                            fontWeight: "750",
+                            fontSize:"30px",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            MozBackgroundClip: "text",
+                            MozTextFillColor: "transparent",
+                            MarginLeft: "7px",
+                            marginTop:"-20px"
+                          }}>Report data</p>
                         <p>{report?.reportDesc}</p>
-                        <p>Issue Started On: {report?.issueStartedOn}</p>
                         <p
                           style={{
                             backgroundImage:
@@ -131,8 +155,8 @@ const TempNFT = () => {
                           Medicine Prescribed
                         </p>
                         {report?.nameOfMedicines &&
-                          report?.nameOfMedicines.map((medicine) => {
-                            return <p>{medicine}</p>;
+                          report?.nameOfMedicines.map((medicine,index) => {
+                            return (report?.testRequired!="0" ?(<p>{index+=1}.{medicine}</p>):"No tests are given");
                           })}
                         <p
                           style={{
@@ -151,8 +175,8 @@ const TempNFT = () => {
                           Test Given
                         </p>
                         {report?.nameOfTests &&
-                          report?.nameOfTests.map((test) => {
-                            return <p>{test}</p>;
+                          report?.nameOfTests.map((test,index) => {
+                            return <p>{index&&index++}{test}</p>;
                           })}
                       </div>
                     </section>
@@ -161,11 +185,23 @@ const TempNFT = () => {
               })}
             </div>
           </Watermark>
+          {/* <StyledWatermark
+            text="Watermark Rendering"
+            style={{
+              width: 1280,
+              height: 1500,
+            }}
+            multiple
+          >
+            <div className="inner-watermark">
+              
+            </div>
+          </StyledWatermark> */}
         </main>
       </div>
     </>
   );
 };
 
-export default TempNFT;
+export default BuyerNFT;
 // npm i --save @hirohe/react-watermark

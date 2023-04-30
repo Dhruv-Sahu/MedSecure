@@ -19,7 +19,7 @@ export default function Templink(props) {
   const [expirationDate, setExpirationDate] = useState(null);
 
   function generateTemporaryLink() {
-    const uniqueId = "subham"; //props.cid
+    const uniqueId = props.cid; //props.cid
     const expirationDate = Math.round(Date.now() / 1000) + 60;
     // expirationDate.setDate(expirationDate.getDate() + 2);
     setLink(`http://localhost:3000/tempNFT?cid=${uniqueId}&time=${expirationDate}`);
