@@ -7,6 +7,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hirohe/react-watermark": "^0.5.0",
     "@openzeppelin/contracts": "^4.8.1",
+    "@react-three/fiber": "^7.0.19",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -15,6 +16,7 @@
     "chart.js": "^3.6.2",
     "cloudinary-react": "^1.8.1",
     "ethers": "5.7",
+    "firebase": "^9.21.0",
     "heroicons": "^2.0.16",
     "imagekitio-react": "^2.0.0",
     "react": "^17.0.2",
@@ -23,6 +25,7 @@
     "react-component-export-image": "^1.0.6",
     "react-dom": "^17.0.2",
     "react-dropzone": "^14.2.3",
+    "react-qr-code": "^2.0.11",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
     "reactstrap": "^9.0.1",
@@ -32,7 +35,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

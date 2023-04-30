@@ -1,8 +1,8 @@
-import React, { useEffect ,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Heart from "./Heart";
 import { Container, Row, Col } from "reactstrap";
 import CommonSection from "../components/ui/Common-section/CommonSection";
-
+// import MyModal from "./Model";
 import { Link } from "react-router-dom";
 
 import NftCard from "../components/ui/Nft-card/NftCard";
@@ -17,9 +17,9 @@ import { AuthContext } from "../context/authContext";
 function MyNFT() {
   const [showComponent, setShowComponent] = useState(false);
   useEffect(() => {
-      setTimeout(() => {
-        setShowComponent(true);
-      }, 0);
+    setTimeout(() => {
+      setShowComponent(true);
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function MyNFT() {
     }, 4000);
   }, []);
   const { userData } = useContext(AuthContext);
-  console.log(userData);
+  // console.log(userData,"diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc");
 
   const { data, loading, error } = useFetch(
     `upload/transaction?id=${userData?._id}`
@@ -36,27 +36,30 @@ function MyNFT() {
 
   return (
     <>
-    {showComponent && <Heart/>}
-    {!showComponent &&
-    <div className="mynft">
-      <CommonSection title={"MY NFT"} />
-      <section>
-        <Container>
-        <Row>
-          {data && data?.map((item) => (
-            <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
-              <Link to={`/viewNFT/${item.cid.cid}`}>
-                <NftCard item={item} MyNFT />
-              </Link>
-            </Col>
-          ))}
-          {data.length == 0 && (
-            <h1>You don't have any NFT</h1>
-          )}
-        </Row>
-        </Container>
-      </section>
-    </div>}
+      {showComponent && <Heart />}
+      {!showComponent && (
+        <>
+        {/* <MyModal/> */}
+          <div className="mynft">
+            <CommonSection title={"MY NFT"} />
+            <section>
+              <Container>
+                <Row>
+                  {data &&
+                    data?.map((item) => (
+                      <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>
+                        <Link to={`/viewNFT/${item.cid.cid}`}>
+                          <NftCard item={item} MyNFT />
+                        </Link>
+                      </Col>
+                    ))}
+                  {data.length == 0 && <h1>You don't have any NFT</h1>}
+                </Row>
+              </Container>
+            </section>
+          </div>
+        </>
+      )}
     </>
   );
 }

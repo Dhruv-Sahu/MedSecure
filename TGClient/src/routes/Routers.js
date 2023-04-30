@@ -11,15 +11,16 @@ import NftDetails from "../pages/NftDetails";
 import Login from "../pages/Login";
 import SignUp from "../pages/Signup";
 import Myorder from "../pages/Myorder";
+import Shipping from "../pages/Shipping";
 import Verification from "../pages/Verification";
 import ViewNFT from "../pages/BuyerNFT";
-import TempNFT from "../pages/TempNFT";
+// import TempNFT from "../pages/TempNFT";
 import Save from "../pages/NFTsave";
 import Uploader from "../pages/Uploader";
 import OrderSummary from "../pages/OrderSummary";
 import MyNFT from "../pages/MyNFT";
-
-import Templink from "../pages/Templink"
+import TempNFT from "../pages/TempNFT";
+import Templink from "../pages/Templink";
 
 import Admin from "../pages/Admin";
 
@@ -48,15 +49,16 @@ const Routers = () => {
       <Route path="/Login" element={<Login />} />
       <Route path="/Signup" element={<SignUp />} />
       <Route path="/myorder" element={<Myorder/>} /> 
+      <Route path="/shipping" element={<Shipping />} />
       <Route path="/verification" element={<Verification/>} />
       <Route path="/viewNFT/:cid" element={<ViewNFT/>} />
       <Route path="/templink" element={<Templink/>} />
+      <Route path="/tempnft" element={<TempNFT/>} />
       <Route path="/market/:cid" element={<NftDetails />} />
       <Route path="/Uploader" element={<Uploader />} />
       <Route path="/Save" element={<Save />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/orderSummary/:cid" element= {<OrderSummary/>} ></Route>
-
       <Route path="/MyNFT" element={<MyNFT/>}></Route>
     </Routes>
   );
