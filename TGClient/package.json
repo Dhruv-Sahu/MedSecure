@@ -21,6 +21,7 @@
     "imagekitio-react": "^2.0.0",
     "react": "^17.0.2",
     "react-awesome-watermark": "^1.0.3",
+    "react-bootstrap": "^2.7.4",
     "react-chartjs-2": "^4.0.0",
     "react-component-export-image": "^1.0.6",
     "react-dom": "^17.0.2",
@@ -35,7 +36,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
