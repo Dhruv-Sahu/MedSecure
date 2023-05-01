@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "../styles/buyernft.css";
 // import styled from "styled-components";
+import { AuthContext } from "../context/authContext";
 import { Watermark } from "@hirohe/react-watermark";
 import MyModal from "./Model";
-
+import { useContext } from "react";
 const BuyerNFT = () => {
   const { cid } = useParams();
   const {
@@ -15,6 +16,9 @@ const BuyerNFT = () => {
     loading,
     error,
   } = useFetch(`upload/getAIpfs?cid=${cid}`);
+  const { userData } = useContext(AuthContext);
+  console.log("sabka baap",userData);
+  console.log("diptanshu mkc",singleNft);
   // console.log("hello............................",singleNft._id);
   let temp = [];
   for (let i = 0; i < singleNft.numberOfMedicalIssue; i++) {
@@ -26,7 +30,7 @@ const BuyerNFT = () => {
     <>
       <Header />
       <CommonSection title={singleNft?.hospitalName} />
-      <MyModal cid={cid} />
+      {userData.userType=='Seller'&&<MyModal cid={cid} />}
       <section>
         <Container>
           <Row>
@@ -50,9 +54,8 @@ const BuyerNFT = () => {
                 <h2>{`Patient UHID : ${singleNft?.patientUid}`}</h2>
 
                 <div className="Price">
-                  Bought For : <span>5 Eth</span>{" "}
+                  Bought For : <span>{singleNft?.currentBid}</span>{" "}
                 </div>
-
                 <div className="summary">Report Summary</div>
                 <h5>
                   Patient is suffering from {text}. Patient went to{" "}
