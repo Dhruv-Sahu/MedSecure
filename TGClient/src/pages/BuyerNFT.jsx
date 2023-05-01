@@ -9,6 +9,7 @@ import { AuthContext } from "../context/authContext";
 import { Watermark } from "@hirohe/react-watermark";
 import MyModal from "./Model";
 import { useContext } from "react";
+
 const BuyerNFT = () => {
   const { cid } = useParams();
   const {
@@ -17,8 +18,8 @@ const BuyerNFT = () => {
     error,
   } = useFetch(`upload/getAIpfs?cid=${cid}`);
   const { userData } = useContext(AuthContext);
-  console.log("sabka baap",userData);
-  console.log("diptanshu mkc",singleNft);
+  console.log("sabka baap", userData);
+  console.log("diptanshu mkc", singleNft);
   // console.log("hello............................",singleNft._id);
   let temp = [];
   for (let i = 0; i < singleNft.numberOfMedicalIssue; i++) {
@@ -30,7 +31,7 @@ const BuyerNFT = () => {
     <>
       <Header />
       <CommonSection title={singleNft?.hospitalName} />
-      {userData.userType=='Seller'&&<MyModal cid={cid} />}
+      {userData.userType == "Seller" && <MyModal cid={cid} name = {`${userData.firstName}` +" "+`${userData.lastName}` } />}
       <section>
         <Container>
           <Row>
@@ -111,13 +112,16 @@ const BuyerNFT = () => {
                       <div class="panel__background"></div>
                       <div class="panel__content">
                         <span id="golgol">{report?.reportTitle} </span>
-                        <p id ="issue">Issue Started On: {report?.issueStartedOn}</p>
-                        
-                        <p style={{
+                        <p id="issue">
+                          Issue Started On: {report?.issueStartedOn}
+                        </p>
+
+                        <p
+                          style={{
                             backgroundImage:
                               "linear-gradient(90deg, #2666BA, #00337C)",
                             fontWeight: "750",
-                            fontSize:"30px",
+                            fontSize: "30px",
                             backgroundSize: "100%",
                             backgroundRepeat: "repeat",
                             WebkitBackgroundClip: "text",
@@ -125,8 +129,11 @@ const BuyerNFT = () => {
                             MozBackgroundClip: "text",
                             MozTextFillColor: "transparent",
                             MarginLeft: "7px",
-                            marginTop:"-20px"
-                          }}>Report data</p>
+                            marginTop: "-20px",
+                          }}
+                        >
+                          Report data
+                        </p>
                         <p>{report?.reportDesc}</p>
                         <p
                           style={{
@@ -145,8 +152,14 @@ const BuyerNFT = () => {
                           Medicine Prescribed
                         </p>
                         {report?.nameOfMedicines &&
-                          report?.nameOfMedicines.map((medicine,index) => {
-                            return (report?.testRequired!="0" ?(<p>{index+=1}.{medicine}</p>):"No tests are given");
+                          report?.nameOfMedicines.map((medicine, index) => {
+                            return report?.testRequired != "0" ? (
+                              <p>
+                                {(index += 1)}.{medicine}
+                              </p>
+                            ) : (
+                              "No tests are given"
+                            );
                           })}
                         <p
                           style={{
@@ -165,8 +178,13 @@ const BuyerNFT = () => {
                           Test Given
                         </p>
                         {report?.nameOfTests &&
-                          report?.nameOfTests.map((test,index) => {
-                            return <p>{index&&index++}{test}</p>;
+                          report?.nameOfTests.map((test, index) => {
+                            return (
+                              <p>
+                                {index && index++}
+                                {test}
+                              </p>
+                            );
                           })}
                       </div>
                     </section>
