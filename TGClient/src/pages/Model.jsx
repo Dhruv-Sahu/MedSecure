@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import { axios } from '../context/axios'
 
 function MyModal({cid}) {
   const [show, setShow] = useState(false);
@@ -22,14 +23,20 @@ function MyModal({cid}) {
 
     console.log(`Email: ${email}, Number: ${number}`, cid);
 
-    // let expirationTime = Date.now()
+    let expirationTime = Date.now() + (number * 24 * 60 * 60 * 1000 )
+    let linkGenerated = `http://localhost:3000/tempNFT?cid=${cid}&time=${expirationTime}`
+
+    
+
+
+    console.log(linkGenerated)
 
 
   };
   return (
     <>
       <Button variant="primary" class="sharebtn" onClick={handleShow} style={{position:"relative",left:"85%",top:"100px",padding:"10px 40px"}}>
-      <i class="fa fa-share-alt" aria-hidden="true"></i> Share
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
