@@ -9,7 +9,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import shortid from "shortid";
+// import shortid from "shortid";
 
 // Props are not used to get data from backend
 export default function Templink(props) {

@@ -5,8 +5,10 @@ import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import "../styles/buyernft.css";
 // import styled from "styled-components";
+import { AuthContext } from "../context/authContext";
 import { Watermark } from "@hirohe/react-watermark";
 import MyModal from "./Model";
+import { useContext } from "react";
 
 const BuyerNFT = () => {
   const { cid } = useParams();
@@ -15,6 +17,9 @@ const BuyerNFT = () => {
     loading,
     error,
   } = useFetch(`upload/getAIpfs?cid=${cid}`);
+  const { userData } = useContext(AuthContext);
+  console.log("sabka baap", userData);
+  console.log("diptanshu mkc", singleNft);
   // console.log("hello............................",singleNft._id);
   let temp = [];
   for (let i = 0; i < singleNft.numberOfMedicalIssue; i++) {
@@ -26,7 +31,7 @@ const BuyerNFT = () => {
     <>
       <Header />
       <CommonSection title={singleNft?.hospitalName} />
-      <MyModal cid={cid} />
+      {userData.userType == "Seller" && <MyModal cid={cid} name = {`${userData.firstName}` +" "+`${userData.lastName}` } />}
       <section>
         <Container>
           <Row>
@@ -50,9 +55,8 @@ const BuyerNFT = () => {
                 <h2>{`Patient UHID : ${singleNft?.patientUid}`}</h2>
 
                 <div className="Price">
-                  Bought For : <span>{singleNft?.currentBid} Eth</span>{" "}
+                  Bought For : <span>{singleNft?.currentBid}</span>{" "}
                 </div>
-
                 <div className="summary">Report Summary</div>
                 <h5>
                   Patient is suffering from {text}. Patient went to{" "}
@@ -108,31 +112,29 @@ const BuyerNFT = () => {
                       <div class="panel__background"></div>
                       <div class="panel__content">
                         <span id="golgol">{report?.reportTitle} </span>
-                        <p id="issue">Issue Started On: {report?.issueStartedOn}</p>
+                        <p id="issue">
+                          Issue Started On: {report?.issueStartedOn}
+                        </p>
 
-                        <p style={{
-                          backgroundImage:
-                            "linear-gradient(90deg, #2666BA, #00337C)",
-                          fontWeight: "750",
-                          // fontSize: "30px",
-                          backgroundSize: "100%",
-                          backgroundRepeat: "repeat",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          MozBackgroundClip: "text",
-                          MozTextFillColor: "transparent",
-                          MarginLeft: "7px",
-                          marginTop: "-20px"
-                        }}>Description
-                          <hr
-                            style={{
-                              width: "95%",
-                              borderTop: "4px solid #8c8b8b",
-                              borderRadius: "40px",
-                              marginTop:"-5px"
-                            }}
-                          /></p>
-                        <p style={{ fontSize: "18px" }}>{report?.reportDesc}</p>
+                        <p
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(90deg, #2666BA, #00337C)",
+                            fontWeight: "750",
+                            fontSize: "30px",
+                            backgroundSize: "100%",
+                            backgroundRepeat: "repeat",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            MozBackgroundClip: "text",
+                            MozTextFillColor: "transparent",
+                            MarginLeft: "7px",
+                            marginTop: "-20px",
+                          }}
+                        >
+                          Report data
+                        </p>
+                        <p>{report?.reportDesc}</p>
                         <p
                           style={{
                             backgroundImage:
@@ -159,7 +161,13 @@ const BuyerNFT = () => {
                         </p>
                         {report?.nameOfMedicines &&
                           report?.nameOfMedicines.map((medicine, index) => {
-                            return (report?.testRequired != "0" ? (<p style={{ fontSize: "18px" }}>{index += 1}.{medicine}</p>) : "No tests are given");
+                            return report?.testRequired != "0" ? (
+                              <p>
+                                {(index += 1)}.{medicine}
+                              </p>
+                            ) : (
+                              "No tests are given"
+                            );
                           })}
                         <p
                           style={{
@@ -187,7 +195,12 @@ const BuyerNFT = () => {
                         </p>
                         {report?.nameOfTests &&
                           report?.nameOfTests.map((test, index) => {
-                            return <p style={{ fontSize: "18px" }}>{index && index++}.{test}</p>;
+                            return (
+                              <p>
+                                {index && index++}
+                                {test}
+                              </p>
+                            );
                           })}
                       </div>
                     </section>

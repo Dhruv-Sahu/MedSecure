@@ -15,18 +15,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
 function MyNFT() {
-  const [showComponent, setShowComponent] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(true);
-    }, 0);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(false);
-    }, 4000);
-  }, []);
   const { userData } = useContext(AuthContext);
   // console.log(userData,"diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc diptanshu mkc");
 
@@ -36,8 +24,8 @@ function MyNFT() {
 
   return (
     <>
-      {showComponent && <Heart />}
-      {!showComponent && (
+      {loading && <Heart />}
+      {!loading && (
         <>
         {/* <MyModal/> */}
           <div className="mynft">

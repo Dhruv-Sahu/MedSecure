@@ -13,23 +13,11 @@ import Heart from "./Heart";
 import "../styles/market.css";
 
 const Market = () => {
-  const [showComponent, setShowComponent] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(true);
-    }, 0);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(false);
-    }, 4000);
-  }, []);
 
   // const [data, setData] = useState(null);
 
   const { data, loading, error } = useFetch("upload/getFilesIpfs");
-  console.log(data);
+  // console.log(data);
 
   const handleCategory = () => {};
   const handleItems = () => {};
@@ -62,8 +50,8 @@ const Market = () => {
 
   return (
     <>
-      {showComponent && <Heart />}
-      {!showComponent && (
+      {loading && <Heart />}
+      {!loading && (
         <>
         <CommonSection title={"MarketPlace"} />
         <section>

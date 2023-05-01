@@ -27,7 +27,7 @@ const NftDetails = () => {
     temp.push(singleNft.reports[i].reportTitle);
   }
   let text = temp.join(", ");
-  console.log(text);
+  // console.log(text);
   // let temp=(singleNft?.reports)
   // console.log(temp)
   // useEffect(()=>{
