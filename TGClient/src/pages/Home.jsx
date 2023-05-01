@@ -26,25 +26,16 @@ import dnft from "../assets/images/Dummy.png";
 
 
 const Home = () => {
-  const { data, loading, error } = useFetch('upload/getFilesIpfs')
-  console.log("data")
-  let temp = data.slice(0, 1)
-  console.log(temp)
-  const [showComponent, setShowComponent] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(true);
-    }, 0);
-  }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowComponent(false);
-    }, 4000);
-  }, []);
+
+  // async function getData(){}
+
+  const { data , loading, error } = useFetch('upload/getFilesIpfs')
+
+  const [showComponent, setShowComponent] = useState(false);
   const { userData } = useContext(AuthContext);
-  console.log(userData);
-  console.log("Diptanshu bkl");
+  // console.log(userData);
+  // console.log("Diptanshu bkl");
   let username = userData.firstName + " " + userData.lastName;
   let useremail = userData.email;
 
@@ -53,16 +44,18 @@ const Home = () => {
 
   let result = "0x....." + publicAddress.slice(36, 42);
   let aadharNumber = userData.aadharNumber;
+  
   console.log(userData);
   const navigate = useNavigate();
   const navigateToMyNft = () => {
     navigate("/MyNFT");
   };
+  
   return (
     <>
 
       {userData.userType === "Seller" ?
-        (!showComponent && (
+        (!loading && (
           <div
             className="container"
             style={{ display: "flex", flexDirection: "row", marginTop: "120px" }}
@@ -292,14 +285,14 @@ const Home = () => {
             </div>
           </div>
         )) : <></>}
-      {showComponent && <Spinner />}
+      {loading && <Spinner />}
       {/* {!showComponent && <HeroSection />} */}
-      {userData.userType === "Buyer" ? !showComponent && <HeroSection /> : <></>}
-      {userData.userType === "Buyer" ? !showComponent && <Trending /> : <></>}
+      {userData.userType === "Buyer" ? !loading && <HeroSection /> : <></>}
+      {userData.userType === "Buyer" ? !loading && <Trending data={data}/> : <></>}
 
-      {!showComponent && <SellerSection />}
-      {!showComponent && <LiveAuction />}
-      {!showComponent && <StepSection />}
+      {!loading && <SellerSection />}
+      {!loading && <LiveAuction />}
+      {!loading && <StepSection />}
     </>
   );
 };
