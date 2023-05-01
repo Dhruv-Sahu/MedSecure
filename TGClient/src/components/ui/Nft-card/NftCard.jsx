@@ -90,9 +90,11 @@ const NftCard = (props) => {
           <div className=" mt-3 d-flex align-items-center justify-content-between">
             <button
               className="bid__btn d-flex align-items-center gap-1"
-              onClick={() => setShowModal(true)}
+              onClick={() => {
+
+              }}
             >
-              <i className="ri-shopping-bag-line"></i> Place Bid
+              <i className="ri-shopping-bag-line"></i> <Link to={`/orderSummary/${cid?.cid}`}>Buy Now</Link>
             </button>
 
             {showModal && <Modal setShowModal={setShowModal} />}

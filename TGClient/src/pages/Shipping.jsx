@@ -88,6 +88,11 @@ const Shipping = () => {
 
   const handleClick = async () => {
     console.log("Handle Click pressed");
+    document.querySelector(".checkpoint-3").style.display = "block";
+    // document.querySelector('.checkpoint-2').style.width = '25%';
+    // document.querySelector('.checkpoint-3').style.left = '75%';
+    document.querySelector(".line").style.width = "100%";
+    document.querySelector(".line").style.backgroundColor = "#00ff00"; // Set line color to green
 
     // Get the first user from users array
     const firstUser = users[0].data;
@@ -104,6 +109,12 @@ const Shipping = () => {
 
     // Does not work shows undefined
     // console.log("message onClick Function:", message1);
+    console.log("Handle Click pressed");
+    document.querySelector(".checkpoint-3").style.display = "block";
+    // document.querySelector('.checkpoint-2').style.width = '25%';
+    // document.querySelector('.checkpoint-3').style.left = '75%';
+    document.querySelector(".line").style.width = "100%";
+    document.querySelector(".line").style.backgroundColor = "#  "; // Set line color to green
   };
 
   useEffect(() => {
@@ -133,7 +144,7 @@ const Shipping = () => {
         <br />
         <br />
         <br />
-        <p>Counter: {counter}</p>
+        {/* <p>Counter: {counter}</p> */}
         {stage ? (
           <div
             style={{
@@ -158,7 +169,15 @@ const Shipping = () => {
             </button>
           </div>
         ) : (
-          <div>
+          <div
+            style={{
+              // margin: "50px",
+              // outline: "solid 1px black",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             {/* <div>
               <FUpload />
             </div> */}
@@ -167,25 +186,23 @@ const Shipping = () => {
               {users.map((user, index) => (
                 <div key={index}>
                   <h2>
-                    data from mapping,{user.data} index is:
-                    {index}
+                    District - {user.data.split("-")[0]}
+                    <br />
+                    Time - {user.data.split("-")[1]}
+                    <br />
+                    Temperature - {user.data.split("-")[2]}
+                    <br />
+                    index is:{index}
                   </h2>
                 </div>
               ))}
             </div>
-            <button
-              onClick={() => {
-                handleClick();
-              }}
-            >
-              Confirm Tx
-            </button>
           </div>
         )}
       </div>
-      <div className="row px-3">
-        <div className="col">
-          <ul id="progressbar">
+      {/* <div className="row px-3"> */}
+        {/* <div className="col"> */}
+          {/* <ul id="progressbar">
             <li className="step0 active " id="step1">
               PLACED
             </li>
@@ -195,8 +212,31 @@ const Shipping = () => {
             <li className="step0  text-muted text-right" id="step3">
               DELIVERED
             </li>
-          </ul>
-        </div>
+          </ul> */}
+          
+        {/* </div> */}
+      {/* </div> */}
+      <div class="loader">
+            <div class="checkpoint checkpoint-1"></div>
+            <div class="checkpoint checkpoint-2"></div>
+            <div class="checkpoint checkpoint-3"></div>
+            <div class="line"></div>
+          </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
+      >
+        <button
+          style={{ width: "200px" }}
+          onClick={() => {
+            handleClick();
+          }}
+        >
+          Confirm Tx
+        </button>
       </div>
     </>
   );
