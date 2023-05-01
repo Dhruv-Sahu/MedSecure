@@ -1,20 +1,19 @@
 import React, { Component, useEffect } from "react";
 import { exportComponentAsPNG } from "react-component-export-image";
 
-
+import { Form, Button } from "react-bootstrap";
 import { Container, Row, Col } from "reactstrap";
 import { useState } from "react";
 import CommonSection from "../components/ui/Common-section/CommonSection";
 import NftCard from "../components/ui/Nft-card/NftCard";
 import avatar from "../assets/images/ava-01.png";
 import axios from "../context/axios";
-import Alert from "../Alert"
+import Alert from "../Alert";
 
 import "../styles/create-item.css";
 import ReportDetail from "../components/ReportDetail";
 
-
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Create = () => {
   let item = {
@@ -35,8 +34,7 @@ const Create = () => {
   );
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [downloadURL, setDownloadURL] = useState('');
-
+  const [downloadURL, setDownloadURL] = useState("");
 
   const [expiredOn, setexpiredOn] = useState("");
   const [lastUpdate, setlastUpdate] = useState("");
@@ -53,8 +51,8 @@ const Create = () => {
   const [medicine, setMedicine] = useState([]);
   const [doubleTest, setDoubleTest] = useState([]);
   const [doublemedicine, setDoubleMedicine] = useState([]);
-  const [alertTime,setAlertTime]=useState(false);
-  const [loading, setLoading] = useState(false)
+  const [alertTime, setAlertTime] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -62,35 +60,35 @@ const Create = () => {
 
   const handleUpload = () => {
     return new Promise((resolve, reject) => {
-    if (selectedFile) {
-      const storageRef = ref(storage, `images/${selectedFile.name}`);
+      if (selectedFile) {
+        const storageRef = ref(storage, `images/${selectedFile.name}`);
 
-      uploadBytes(storageRef, selectedFile)
-        .then(() => getDownloadURL(storageRef))
-        .then((url) => {
-          setDownloadURL(url);
-          setSelectedFile(null); // Clear the selected file
-          resolve(url)
-        })
-        .catch((error) => {
-          console.log('Upload error:', error);
-          reject("error")
-        });
-    }
-  })
+        uploadBytes(storageRef, selectedFile)
+          .then(() => getDownloadURL(storageRef))
+          .then((url) => {
+            setDownloadURL(url);
+            setSelectedFile(null); // Clear the selected file
+            resolve(url);
+          })
+          .catch((error) => {
+            console.log("Upload error:", error);
+            reject("error");
+          });
+      }
+    });
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true)
-    let url = ""
+    setLoading(true);
+    let url = "";
     try {
-         url = await handleUpload()
+      url = await handleUpload();
     } catch (error) {
-      console.log("failed to send image")
+      console.log("failed to send image");
     }
-    
-    console.log("DEBUG AFTER THE HANDLE UPLOAD : ")
+
+    console.log("DEBUG AFTER THE HANDLE UPLOAD : ");
 
     let reports1 = [];
     let medicinecount = 0;
@@ -141,7 +139,7 @@ const Create = () => {
       gender: gender,
       patientUid: medicalTitle,
       reports: reports1,
-      url : url
+      url: url,
     };
 
     console.log("hell");
@@ -165,7 +163,7 @@ const Create = () => {
   const [alert, setAlert] = useState(null);
   return (
     <>
-    {alertTime && <Alert alert="{alert.msg}"/>}
+      {alertTime && <Alert alert="{alert.msg}" />}
       <CommonSection title="New Report" />
       <section>
         <Container>
@@ -300,8 +298,22 @@ const Create = () => {
                       );
                     })}
 
-                  <input type="file" onChange={handleFileChange} />
-
+                  {/* <input type="file" onChange={handleFileChange} /> */}
+                  <div style={{display:"flex",flexDirection:"row"}}>
+                  <label for="imageInput" className="form__input"style={{color: "#00337c",marginRight:"10px",marginTop:"4px"}}>Upload Prescription</label>
+                    <div className="mb-3 w-15">
+                  <input
+                  // title="Upload Prescription"
+                    type="file"
+                    accept="image/*"
+                    className="form-control"
+                    id="imageInput"
+                    // style={{ marginTop: "-2px" }}
+                    // style={{display: "none"}}
+                    onChange={handleFileChange}
+                  />
+                  </div>
+	</div>                
                   <hr />
 
                   <input
@@ -315,13 +327,13 @@ const Create = () => {
                   </label>
                   <div className="submit_form__input">
                     <button
-                    id="sabkabaap"
+                      id="sabkabaap"
                       style={{ marginTop: "20px" }}
                       onClick={(e) => {
                         handleSubmit(e);
                       }}
                     >
-                      {!loading && "Submit" }
+                      {!loading && "Submit"}
                       {loading && <span class="loader"></span>}
                     </button>
                   </div>

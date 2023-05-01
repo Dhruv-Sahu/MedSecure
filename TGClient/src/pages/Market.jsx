@@ -57,7 +57,7 @@ const Market = () => {
         <section>
           <Container>
             <Row>
-              <Col lg="12" className="mb-5">
+              {/* <Col lg="12" className="mb-5">
                 <div className="market__product__filter d-flex align-items-center justify-content-between">
                   <div className="filter__left d-flex align-items-center gap-5">
                     <div className="all__category__filter">
@@ -90,7 +90,7 @@ const Market = () => {
                     </select>
                   </div>
                 </div>
-              </Col>
+              </Col> */}
 
               {data?.map((item) => (
                 <Col lg="3" md="4" sm="6" className="mb-4" key={item.id}>

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "./hero-section.css";
 
-import heroImg from "../../assets/images/Lnt-logo.png";
+import heroImg from "../../assets/images/Lnt-logo.gif";
 
 const HeroSection = () => {
   return (
