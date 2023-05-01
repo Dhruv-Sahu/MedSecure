@@ -149,7 +149,15 @@ const BuyerNFT = () => {
                             MarginLeft: "7px",
                           }}
                         >
-                          Medicine Prescribed
+                          Medicine
+                          <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-5px"
+                            }}
+                          />
                         </p>
                         {report?.nameOfMedicines &&
                           report?.nameOfMedicines.map((medicine, index) => {
@@ -175,7 +183,15 @@ const BuyerNFT = () => {
                             MarginLeft: "7px",
                           }}
                         >
-                          Test Given
+                          Lab Test
+                          <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-5px"
+                            }}
+                          />
                         </p>
                         {report?.nameOfTests &&
                           report?.nameOfTests.map((test, index) => {

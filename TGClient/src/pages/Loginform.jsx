@@ -137,15 +137,6 @@ const Loginform = () => {
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
-                    <div>
-                      <input
-                        type="checkbox"
-                        id="vehicle3"
-                        name="vehicle3"
-                        value="Boat"
-                      />
-                      <label htmlFor="vehicle3">Remember Me</label>
-                    </div>
                   </div>
                 </div>
                 <div className="col-md-6 mb-4">
@@ -181,13 +172,12 @@ const Loginform = () => {
                   >
                     <p
                       style={{
-                        marginBottom: 0,
-                        color: "#ad3232",
-                        marginLeft: "auto",
-                        marginRight: "auto",
+                        fontSize:"15px",
+                        color: "black",
+                        marginTop:"-20px"
                       }}
                     >
-                      New User? SignUp
+                    SignUp
                     </p>
                   </button>
                 </div>

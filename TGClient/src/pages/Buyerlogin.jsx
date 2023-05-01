@@ -206,13 +206,12 @@ const Buyerlogin = () => {
                 >
                   <p
                     style={{
-                      marginBottom: 0,
-                      color: "#ad3232",
-                      marginLeft: "auto",
-                      marginRight: "auto",
+                      fontSize:"15px",
+                      color: "black",
+                      marginTop:"-20px"
                     }}
                   >
-                    Already A user? Login
+                    Already A user?
                   </p>
                 </button>
               </div>
