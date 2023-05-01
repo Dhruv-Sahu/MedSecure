@@ -7,9 +7,10 @@ import NftCard from "../Nft-card/NftCard";
 
 import useFetch from "../../../hooks/useFetch";
 
-const Trending = () => {
-
-  const { data , loading, error } = useFetch('upload/getFilesIpfs')
+const Trending = ({data}) => {
+  
+ 
+ 
 
   return (
     <section>
