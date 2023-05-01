@@ -4,13 +4,14 @@
 .orderSummary {
     font-family: 'Red Hat Display',
         sans-serif;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-image: url(https://www.digitshack.com/codepen/mentor1/pattern-background-desktop.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-color: hsl(225, 100%, 94%);
     position: relative;
     font-size: 16px;
+    height: 850px;
 }
 
 .orderSummary img{
@@ -23,7 +24,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -48%);
     max-width: 450px;
     background: white;
     border-radius: 20px;
