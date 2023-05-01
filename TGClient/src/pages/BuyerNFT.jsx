@@ -121,7 +121,6 @@ const BuyerNFT = () => {
                             backgroundImage:
                               "linear-gradient(90deg, #2666BA, #00337C)",
                             fontWeight: "750",
-                            fontSize: "30px",
                             backgroundSize: "100%",
                             backgroundRepeat: "repeat",
                             WebkitBackgroundClip: "text",
@@ -134,7 +133,15 @@ const BuyerNFT = () => {
                         >
                           Report data
                         </p>
-                        <p>{report?.reportDesc}</p>
+                        <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-20px"
+                            }}
+                          />
+                        <p style={{fontSize:"18px"}}>{report?.reportDesc}</p>
                         <p
                           style={{
                             backgroundImage:
@@ -162,7 +169,7 @@ const BuyerNFT = () => {
                         {report?.nameOfMedicines &&
                           report?.nameOfMedicines.map((medicine, index) => {
                             return report?.testRequired != "0" ? (
-                              <p>
+                              <p style={{fontSize:"18px"}}>
                                 {(index += 1)}.{medicine}
                               </p>
                             ) : (
@@ -196,8 +203,8 @@ const BuyerNFT = () => {
                         {report?.nameOfTests &&
                           report?.nameOfTests.map((test, index) => {
                             return (
-                              <p>
-                                {index && index++}
+                              <p style={{fontSize:"18px"}}>
+                                {index && index++}. 
                                 {test}
                               </p>
                             );
