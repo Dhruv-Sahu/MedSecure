@@ -54,7 +54,6 @@ const Signup = () => {
                   style={{
                     padding: "10px 20px",
                     borderRadius: "5px",
-                    border: "1px solid black",
                     display: "block",
                   }}
                 >

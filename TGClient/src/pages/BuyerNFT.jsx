@@ -50,7 +50,7 @@ const BuyerNFT = () => {
                 <h2>{`Patient UHID : ${singleNft?.patientUid}`}</h2>
 
                 <div className="Price">
-                  Bought For : <span>5 Eth</span>{" "}
+                  Bought For : <span>{singleNft?.currentBid} Eth</span>{" "}
                 </div>
 
                 <div className="summary">Report Summary</div>
@@ -108,23 +108,31 @@ const BuyerNFT = () => {
                       <div class="panel__background"></div>
                       <div class="panel__content">
                         <span id="golgol">{report?.reportTitle} </span>
-                        <p id ="issue">Issue Started On: {report?.issueStartedOn}</p>
-                        
+                        <p id="issue">Issue Started On: {report?.issueStartedOn}</p>
+
                         <p style={{
-                            backgroundImage:
-                              "linear-gradient(90deg, #2666BA, #00337C)",
-                            fontWeight: "750",
-                            fontSize:"30px",
-                            backgroundSize: "100%",
-                            backgroundRepeat: "repeat",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            MozBackgroundClip: "text",
-                            MozTextFillColor: "transparent",
-                            MarginLeft: "7px",
-                            marginTop:"-20px"
-                          }}>Report data</p>
-                        <p>{report?.reportDesc}</p>
+                          backgroundImage:
+                            "linear-gradient(90deg, #2666BA, #00337C)",
+                          fontWeight: "750",
+                          // fontSize: "30px",
+                          backgroundSize: "100%",
+                          backgroundRepeat: "repeat",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          MozBackgroundClip: "text",
+                          MozTextFillColor: "transparent",
+                          MarginLeft: "7px",
+                          marginTop: "-20px"
+                        }}>Description
+                          <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-5px"
+                            }}
+                          /></p>
+                        <p style={{ fontSize: "18px" }}>{report?.reportDesc}</p>
                         <p
                           style={{
                             backgroundImage:
@@ -139,11 +147,19 @@ const BuyerNFT = () => {
                             MarginLeft: "7px",
                           }}
                         >
-                          Medicine Prescribed
+                          Medicine
+                          <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-5px"
+                            }}
+                          />
                         </p>
                         {report?.nameOfMedicines &&
-                          report?.nameOfMedicines.map((medicine,index) => {
-                            return (report?.testRequired!="0" ?(<p>{index+=1}.{medicine}</p>):"No tests are given");
+                          report?.nameOfMedicines.map((medicine, index) => {
+                            return (report?.testRequired != "0" ? (<p style={{ fontSize: "18px" }}>{index += 1}.{medicine}</p>) : "No tests are given");
                           })}
                         <p
                           style={{
@@ -159,11 +175,19 @@ const BuyerNFT = () => {
                             MarginLeft: "7px",
                           }}
                         >
-                          Test Given
+                          Lab Test
+                          <hr
+                            style={{
+                              width: "95%",
+                              borderTop: "4px solid #8c8b8b",
+                              borderRadius: "40px",
+                              marginTop:"-5px"
+                            }}
+                          />
                         </p>
                         {report?.nameOfTests &&
-                          report?.nameOfTests.map((test,index) => {
-                            return <p>{index&&index++}{test}</p>;
+                          report?.nameOfTests.map((test, index) => {
+                            return <p style={{ fontSize: "18px" }}>{index && index++}.{test}</p>;
                           })}
                       </div>
                     </section>
