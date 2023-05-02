@@ -13,8 +13,9 @@ const Auth = require("./Routes/auth.route")
 const TempStorage = require("./Routes/TempStorage.route")
 
 //DB CONNECTION
+mongoose.set('strictQuery', true)
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/techgium",
+  "mongodb+srv://diptanshumandal1:A8fB2Z2uOUvQ4eQm@cluster0.z9ccpnx.mongodb.net/test",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
