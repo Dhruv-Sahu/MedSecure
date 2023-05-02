@@ -6,7 +6,7 @@ import ABI from "../assets/ABI/shipping.json";
 import db from "../components/Firebase";
 import Header from "../components/Header/Header";
 import MultiStepProgressBar from "../components/MultiStepProgressBar";
-
+import Spinner from "./Spinner";
 // import { deleteAllUsersData } from "../components/UploadFirebase";
 // let TxHash = "0x0";
 // const heal = `https://goerli.etherscan.io/tx/${TxHash}`;
@@ -114,9 +114,9 @@ const Shipping = () => {
 
   //MARK: HANDLE CLICK----------------
   const handleClick = async () => {
-    console.log("Handle Click pressed");
+    // console.log("Handle Click pressed");
     setLoading(true);
-
+    console.log(page, "before");
     // Get the first user from users array
     const firstUser = users[0].data;
     console.log(firstUser);
@@ -137,7 +137,7 @@ const Shipping = () => {
         return prev + 1;
       }
     });
-
+    console.log(page, "after");
     setLoading(false);
   };
 
@@ -164,46 +164,84 @@ const Shipping = () => {
 
   return (
     <>
-      {loading ? <h1>loading</h1> : <></>}
-      <Header />
+      {/* {!loading &&} */}
+      {loading && <Spinner/>}
+      {!loading &&(<><Header />
       <br />
       <br />
       <br />
       <br />
-      <div id="shipme">
-        <div
-          style={{
-            width: "50%",
-            margin: "auto",
-            textAlign: "center",
-            height: "176px",
-            fontSize: "50px",
-          }}
-        >
-          Shipping
-        </div>
+      <div
+        id="shipme"
+        style={{
+          margin: "auto",
+          width: "50%",
+          textAlign: "center",
+          marginLeft: "27%",
+          marginRight: "50%",
+        }}
+      >
+        {page === 3 && (
+          <div
+            style={{
+              // width: "50%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
+              height: "176px",
+              fontSize: "50px",
+            }}
+          >
+            Shipping
+          </div>
+        )}
+        {page === 4 && (
+          <div
+            style={{
+              // width: "50%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
+              position: "relative",
+              height: "20px",
+              fontSize: "50px",
+              marginTop: "100px",
+            }}
+          >
+            Shipping
+          </div>
+        )}
+        {/* {page===4 &&(
+          <div style={{height:"100px"}}></div>
+        )} */}
         <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
         <div>
           <br />
           <br />
-          <br />
-          <br />
+          {/* <br />
+          <br /> */}
           {/* <p>Counter: {counter}</p> */}
           {stage ? (
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                marginLeft: "650px",
+                margin: "auto",
+                flexDirection: "column",
               }}
             >
+              {/* <div> */}
               <QRCode
                 size={200}
                 bgColor="white"
                 fgColor="black"
                 value={`https://goerli.etherscan.io/tx/${hash}`}
               />
+              {/* </div> */}
+              <br />
+              <br />
               <button
+                id="shipperbutton"
                 onClick={() => {
                   resetFunction();
                 }}
@@ -227,20 +265,23 @@ const Shipping = () => {
               {/* <h3>{users}</h3> */}
               <div>
                 {users.map((user, index) => (
-                  <div key={index} style={{position:"relative",bottom:"75px"}}>
+                  <div
+                    key={index}
+                    style={{ position: "relative", bottom: "75px" }}
+                  >
                     <h2>
-                      <span style={{fontWeight:"700",color:"#664DE5"}}>
-                      Location
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Location
                       </span>
-                       : {user.data.split("-")[0]}
+                      : {user.data.split("-")[0]}
                       <br />
-                      <span style={{fontWeight:"700",color:"#664DE5"}}>
-                      Time 
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Time
                       </span>
                       : {user.data.split("-")[1]}
                       <br />
-                      <span style={{fontWeight:"700",color:"#664DE5"}}>
-                      Temperature
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Temperature
                       </span>
                       : {user.data.split("-")[2]}
                       <br />
@@ -258,7 +299,7 @@ const Shipping = () => {
                 }}
               >
                 <button
-                  style={{ width: "200px" }}
+                  id="shipperbutton"
                   onClick={() => {
                     handleClick();
                   }}
@@ -269,7 +310,7 @@ const Shipping = () => {
             </div>
           )}
         </div>
-      </div>
+      </div></>)}
     </>
   );
 };
