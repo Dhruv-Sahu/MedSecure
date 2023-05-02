@@ -38,7 +38,7 @@ const Routers = () => {
         path="/" 
         element={ 
           userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Navigate to="/home"/> :  
-          userData?.userType === "Hospital" ? <Create/> :userData.userType==='admin'? <Admin />:<Login/>} 
+          userData?.userType === "Hospital" ? <Create/> :userData?.userType==='admin'? <Admin />:<Login/>} 
       />
       <Route path="/home" element = { userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Home /> : <Login/> } />
       <Route path="/market" element = {userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Market/> : <Login/> } /> 
