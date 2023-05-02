@@ -39,7 +39,7 @@ const BuyerNFT = () => {
     <>
       <Header />
       <CommonSection title={singleNft?.hospitalName} />
-      <MyModal cid={cid} />
+      {/* <MyModal cid={cid} /> */}
       <section>
         <Container>
           <Row>
