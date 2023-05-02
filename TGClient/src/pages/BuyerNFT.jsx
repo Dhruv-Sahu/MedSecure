@@ -30,8 +30,13 @@ const BuyerNFT = () => {
   return (
     <>
       <Header />
-      <CommonSection title={singleNft?.hospitalName} />
-      {userData.userType == "Seller" && <MyModal cid={cid} name = {`${userData.firstName}` +" "+`${userData.lastName}` } />}
+      <CommonSection title={userData?.hospitalName} />
+      {userData.userType == "Seller" && (
+        <MyModal
+          cid={cid}
+          name={`${userData.firstName}` + " " + `${userData.lastName}`}
+        />
+      )}
       <section>
         <Container>
           <Row>
@@ -134,14 +139,14 @@ const BuyerNFT = () => {
                           Report data
                         </p>
                         <hr
-                            style={{
-                              width: "95%",
-                              borderTop: "4px solid #8c8b8b",
-                              borderRadius: "40px",
-                              marginTop:"-20px"
-                            }}
-                          />
-                        <p style={{fontSize:"18px"}}>{report?.reportDesc}</p>
+                          style={{
+                            width: "95%",
+                            borderTop: "4px solid #8c8b8b",
+                            borderRadius: "40px",
+                            marginTop: "-20px",
+                          }}
+                        />
+                        <p style={{ fontSize: "18px" }}>{report?.reportDesc}</p>
                         <p
                           style={{
                             backgroundImage:
@@ -162,14 +167,14 @@ const BuyerNFT = () => {
                               width: "95%",
                               borderTop: "4px solid #8c8b8b",
                               borderRadius: "40px",
-                              marginTop:"-5px"
+                              marginTop: "-5px",
                             }}
                           />
                         </p>
                         {report?.nameOfMedicines &&
                           report?.nameOfMedicines.map((medicine, index) => {
                             return report?.testRequired != "0" ? (
-                              <p style={{fontSize:"18px"}}>
+                              <p style={{ fontSize: "18px" }}>
                                 {(index += 1)}.{medicine}
                               </p>
                             ) : (
@@ -196,16 +201,15 @@ const BuyerNFT = () => {
                               width: "95%",
                               borderTop: "4px solid #8c8b8b",
                               borderRadius: "40px",
-                              marginTop:"-5px"
+                              marginTop: "-5px",
                             }}
                           />
                         </p>
                         {report?.nameOfTests &&
                           report?.nameOfTests.map((test, index) => {
                             return (
-                              <p style={{fontSize:"18px"}}>
-                                {index && index++}. 
-                                {test}
+                              <p style={{ fontSize: "18px" }}>
+                                {index && index++}.{test}
                               </p>
                             );
                           })}
@@ -214,20 +218,11 @@ const BuyerNFT = () => {
                   </>
                 );
               })}
+              <div className="patientLab">
+                <img src={singleNft.url} alt="patient lab report" />
+              </div>
             </div>
           </Watermark>
-          {/* <StyledWatermark
-            text="Watermark Rendering"
-            style={{
-              width: 1280,
-              height: 1500,
-            }}
-            multiple
-          >
-            <div className="inner-watermark">
-              
-            </div>
-          </StyledWatermark> */}
         </main>
       </div>
     </>

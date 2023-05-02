@@ -519,3 +519,16 @@ a {
   color: whitesmoke;
   position: relative;
 }
+
+
+.patientLab{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.patientLab img {
+  width: 60vw;
+  height: 60vw;
+}
