@@ -209,7 +209,7 @@ const BuyerNFT = () => {
                           report?.nameOfTests.map((test, index) => {
                             return (
                               <p style={{ fontSize: "18px" }}>
-                                {index && index++}.{test}
+                                {test}
                               </p>
                             );
                           })}
@@ -218,7 +218,24 @@ const BuyerNFT = () => {
                   </>
                 );
               })}
-              <div className="patientLab">
+              <div
+                className="patientLab"
+                style={{
+                  width: "87%",
+                  display: "flex",
+                  justifyContent: "center",
+                  color: "whitesmoke",
+                  borderRadius: "10px",
+                  backdropFilter: "blur(3px)",
+                  border: "2px solid rgba(255, 255, 255, 0.1)",
+                  boxShadow: "0 0 80px rgba(0, 0, 0, 0.2)",
+                  overflow: "hidden",
+                  paddingTop:"10%",
+                  paddingBottom:"10%",
+                  marginLeft:"auto",
+                  marginRight:"auto"
+                }}
+              >
                 <img src={singleNft.url} alt="patient lab report" />
               </div>
             </div>
