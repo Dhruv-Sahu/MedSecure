@@ -38,7 +38,7 @@ const Routers = () => {
         path="/" 
         element={ 
           userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Navigate to="/home"/> :  
-          userData?.userType === "Hospital" ? <Create/> : <Login/>} 
+          userData?.userType === "Hospital" ? <Create/> :userData.userType==='admin'? <Admin />:<Login/>} 
       />
       <Route path="/home" element = { userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Home /> : <Login/> } />
       <Route path="/market" element = {userData?.userType === "Buyer" || userData?.userType === "Seller" ? <Market/> : <Login/> } /> 
@@ -57,7 +57,7 @@ const Routers = () => {
       <Route path="/market/:cid" element={<NftDetails />} />
       <Route path="/Uploader" element={<Uploader />} />
       <Route path="/Save" element={<Save />} />
-      <Route path="/admin" element={<Admin />} />
+      {/* <Route path="/admin" element={<Admin />} /> */}
       <Route path="/orderSummary/:cid" element= {<OrderSummary/>} ></Route>
       <Route path="/MyNFT" element={<MyNFT/>}></Route>
     </Routes>

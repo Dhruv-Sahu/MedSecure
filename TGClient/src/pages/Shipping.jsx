@@ -166,7 +166,6 @@ const Shipping = () => {
   console.log("Users from State after useEffect", users);
   return (
     <>
-    <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       <div>
         <br />
         <br />
@@ -250,6 +249,7 @@ const Shipping = () => {
             <div class="checkpoint checkpoint-3"></div>
             <div class="line"></div>
           </div> */}
+          <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       <div
         style={{
           display: "flex",
