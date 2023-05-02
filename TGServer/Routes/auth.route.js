@@ -244,7 +244,7 @@ router.post("/referMail", async(req, res)=>{
     ${link}
     `
 
-    let mailResponse = sendEmail(email,`You Recieved NFT from ${name}`,body)
+    let mailResponse = sendEmail(email,`You Recieved NFT from MedSecure`,body)
     if (mailResponse) {
         res.status(200).json({
           message : "success"
