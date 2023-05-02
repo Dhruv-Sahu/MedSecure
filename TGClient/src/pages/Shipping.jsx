@@ -4,6 +4,9 @@ import QRCode from "react-qr-code";
 import { ethers } from "ethers";
 import ABI from "../assets/ABI/shipping.json";
 import db from "../components/Firebase";
+
+import MultiStepProgressBar from "../components/MultiStepProgressBar";
+
 // import { deleteAllUsersData } from "../components/UploadFirebase";
 // let TxHash = "0x0";
 // const heal = `https://goerli.etherscan.io/tx/${TxHash}`;
@@ -47,6 +50,17 @@ const Shipping = () => {
   const [hash, setHash] = useState("0x0");
   const [stage, setStage] = useState(false);
   const [info, setInfo] = useState("");
+
+
+
+  const [page, setPage] = useState(3);
+
+  const nextPageNumber = "1"
+
+  function handleSubmit(){
+    
+  }
+
 
   async function setMessage(message) {
     // Encode the setMessage function call with parameters
@@ -94,6 +108,19 @@ const Shipping = () => {
     document.querySelector(".line").style.width = "100%";
     document.querySelector(".line").style.backgroundColor = "#00ff00"; // Set line color to green
 
+
+
+
+    setPage((prev)=>{
+      if (prev === 4){
+        return 1
+      }else{
+        return prev+1
+      }
+      
+    })
+
+
     // Get the first user from users array
     const firstUser = users[0].data;
     console.log(firstUser);
@@ -139,6 +166,7 @@ const Shipping = () => {
   console.log("Users from State after useEffect", users);
   return (
     <>
+    <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       <div>
         <br />
         <br />
@@ -216,12 +244,12 @@ const Shipping = () => {
           
         {/* </div> */}
       {/* </div> */}
-      <div class="loader">
+      {/* <div class="loader">
             <div class="checkpoint checkpoint-1"></div>
             <div class="checkpoint checkpoint-2"></div>
             <div class="checkpoint checkpoint-3"></div>
             <div class="line"></div>
-          </div>
+          </div> */}
       <div
         style={{
           display: "flex",
