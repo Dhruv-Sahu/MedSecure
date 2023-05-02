@@ -7,11 +7,14 @@ import {
 } from 'chart.js';
 
 import { Bar } from 'react-chartjs-2';
-
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 ChartJS.register(
   BarElement,
 );
 const BarChart = () => {
+  const { userData } = useContext(AuthContext);
+  const currentmonth=userData?.transaction.length??0
   const [chart, setChart] = useState({})
 //   var baseUrl = "https://api.coinranking.com/v2/coins/?limit=10";
 //   var proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -43,12 +46,11 @@ const BarChart = () => {
 //   }, [baseUrl, proxyUrl, apiKey])
 
 //   console.log("chart", chart);
-  let n = 10;
   var data = {
     labels: ['December','January','February','March','April','May'],
     datasets: [{
       label: 'Number of NFTs Uploaded',
-      data: [12,19,5,n,2,3,],
+      data: [12,19,5,5,2,currentmonth],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
