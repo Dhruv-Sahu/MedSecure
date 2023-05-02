@@ -4,9 +4,9 @@ import QRCode from "react-qr-code";
 import { ethers } from "ethers";
 import ABI from "../assets/ABI/shipping.json";
 import db from "../components/Firebase";
-
+import Header from "../components/Header/Header";
 import MultiStepProgressBar from "../components/MultiStepProgressBar";
-
+import Spinner from "./Spinner";
 // import { deleteAllUsersData } from "../components/UploadFirebase";
 // let TxHash = "0x0";
 // const heal = `https://goerli.etherscan.io/tx/${TxHash}`;
@@ -42,7 +42,7 @@ const Shipping = () => {
   const [stage, setStage] = useState(false);
   const [info, setInfo] = useState("");
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function connectWallet() {
@@ -73,8 +73,6 @@ const Shipping = () => {
   const [page, setPage] = useState(3);
 
   const nextPageNumber = "1";
-
-
 
   async function setMessage(message) {
     // Encode the setMessage function call with parameters
@@ -114,14 +112,11 @@ const Shipping = () => {
     deleteAllUsersData();
   };
 
-
   //MARK: HANDLE CLICK----------------
   const handleClick = async () => {
-    console.log("Handle Click pressed");
-    setLoading(true)
-
-    
-
+    // console.log("Handle Click pressed");
+    setLoading(true);
+    console.log(page, "before");
     // Get the first user from users array
     const firstUser = users[0].data;
     console.log(firstUser);
@@ -142,10 +137,9 @@ const Shipping = () => {
         return prev + 1;
       }
     });
-
-    setLoading(false)
+    console.log(page, "after");
+    setLoading(false);
   };
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -168,90 +162,155 @@ const Shipping = () => {
   }, [counter]);
   console.log("Users from State after useEffect", users);
 
-
-
-
   return (
     <>
-      {loading ? <h1>loading</h1> : <></>}
-      <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
-      <div>
-        <br />
-        <br />
-        <br />
-        <br />
-        {/* <p>Counter: {counter}</p> */}
-        {stage ? (
+      {/* {!loading &&} */}
+      {loading && <Spinner/>}
+      {!loading &&(<><Header />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div
+        id="shipme"
+        style={{
+          margin: "auto",
+          width: "50%",
+          textAlign: "center",
+          marginLeft: "27%",
+          marginRight: "50%",
+        }}
+      >
+        {page === 3 && (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              marginLeft: "650px",
+              // width: "50%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
+              height: "176px",
+              fontSize: "50px",
             }}
           >
-            <QRCode
-              size={200}
-              bgColor="white"
-              fgColor="black"
-              value={`https://goerli.etherscan.io/tx/${hash}`}
-            />
-            <button
-              onClick={() => {
-                resetFunction();
-              }}
-            >
-              Reset
-            </button>
+            Shipping
           </div>
-        ) : (
+        )}
+        {page === 4 && (
           <div
             style={{
-              // margin: "50px",
-              // outline: "solid 1px black",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              // width: "50%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "center",
+              position: "relative",
+              height: "20px",
+              fontSize: "50px",
+              marginTop: "100px",
             }}
           >
-            {/* <div>
-              <FUpload />
-            </div> */}
-            {/* <h3>{users}</h3> */}
-            <div>
-              {users.map((user, index) => (
-                <div key={index}>
-                  <h2>
-                    District - {user.data.split("-")[0]}
-                    <br />
-                    Time - {user.data.split("-")[1]}
-                    <br />
-                    Temperature - {user.data.split("-")[2]}
-                    <br />
-                    index is:{index}
-                  </h2>
-                </div>
-              ))}
-            </div>
-
+            Shipping
+          </div>
+        )}
+        {/* {page===4 &&(
+          <div style={{height:"100px"}}></div>
+        )} */}
+        <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
+        <div>
+          <br />
+          <br />
+          {/* <br />
+          <br /> */}
+          {/* <p>Counter: {counter}</p> */}
+          {stage ? (
             <div
               style={{
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
+                alignItems: "center",
+                margin: "auto",
+                flexDirection: "column",
               }}
             >
+              {/* <div> */}
+              <QRCode
+                size={200}
+                bgColor="white"
+                fgColor="black"
+                value={`https://goerli.etherscan.io/tx/${hash}`}
+              />
+              {/* </div> */}
+              <br />
+              <br />
               <button
-                style={{ width: "200px" }}
+                id="shipperbutton"
                 onClick={() => {
-                  handleClick();
+                  resetFunction();
                 }}
               >
-                Confirm Tx
+                Reset
               </button>
             </div>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div
+              style={{
+                // margin: "50px",
+                // outline: "solid 1px black",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              {/* <div>
+              <FUpload />
+            </div> */}
+              {/* <h3>{users}</h3> */}
+              <div>
+                {users.map((user, index) => (
+                  <div
+                    key={index}
+                    style={{ position: "relative", bottom: "75px" }}
+                  >
+                    <h2>
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Location
+                      </span>
+                      : {user.data.split("-")[0]}
+                      <br />
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Time
+                      </span>
+                      : {user.data.split("-")[1]}
+                      <br />
+                      <span style={{ fontWeight: "700", color: "#664DE5" }}>
+                        Temperature
+                      </span>
+                      : {user.data.split("-")[2]}
+                      <br />
+                      {/* index is:{index} */}
+                    </h2>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <button
+                  id="shipperbutton"
+                  onClick={() => {
+                    handleClick();
+                  }}
+                >
+                  Confirm Tx
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div></>)}
     </>
   );
 };

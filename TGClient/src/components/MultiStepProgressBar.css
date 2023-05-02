@@ -22,7 +22,7 @@
 
 .RSPBprogressBar {
     height: 2px;
-    width: 30%;
+    width: 120%;
     line-height: 1;
     border-radius: 10px;
     position: relative;
@@ -32,6 +32,8 @@
     align-items: center;
     z-index: 0;
     margin: 20px auto;
+    bottom: 66px;
+    right: 33px;
 }
 
 .RSPBprogressBar .RSPBstep {
