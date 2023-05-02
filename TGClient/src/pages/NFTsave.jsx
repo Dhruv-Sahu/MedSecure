@@ -34,6 +34,7 @@ class Save extends Component {
     .then(response => response.json())
     .then(response => {
       let medicalIssue = ""
+      console.log(response)
       response[0].reports.map((ele)=>{
         
         medicalIssue += ele.reportTitle
