@@ -183,6 +183,7 @@ const Header = () => {
   // const toggleMenu = () => menuRef.current.classList.toggle("active__menu");
 
   return (
+    userData?.userType!='admin'?
     <header className="header header__shrink" ref={headerRef}>
       <Container>
         <div className="navigation">
@@ -220,7 +221,7 @@ const Header = () => {
           </div>
         </div>
       </Container>
-    </header>
+    </header>:<></>
   );
 };
 export default Header;

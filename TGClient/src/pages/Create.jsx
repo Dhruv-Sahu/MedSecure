@@ -80,6 +80,8 @@ const Create = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     setLoading(true);
     let url = "";
     try {
