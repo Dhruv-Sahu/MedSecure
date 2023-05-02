@@ -9,9 +9,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-
+import { useContext } from "react";
 import { Line } from 'react-chartjs-2';
-
+import { AuthContext } from "../context/authContext";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,6 +24,8 @@ ChartJS.register(
 
 
 const LineChart = () => {
+  const { userData } = useContext(AuthContext);
+  const currentmonth=userData?.transaction.length??0
   const [chart, setChart] = useState({})
 //   var baseUrl = "https://api.coinranking.com/v2/coins/?limit=10";
 //   var proxyUrl = "https://cors-anywhere.herokuapp.com/";
@@ -60,10 +62,10 @@ const LineChart = () => {
     labels: ['December','January','February','March','April','May'],
     datasets: [{
       label: 'Amount Earned',
-      data: [12,19,5,5,2,3],
+      data: [12,19,5,5,2,currentmonth],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 99, 132, 0.2)',   
+        'rgba(255, 99, 132, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
         'rgba(153, 102, 255, 0.2)',

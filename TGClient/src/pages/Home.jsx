@@ -259,8 +259,8 @@ const Home = () => {
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                     }}
                   >
-                    <h2>Revenue</h2>
-                    <p>50$</p>
+                    <h3>Revenue</h3>
+                    <p style={{fontSize:"18px"}}>50$</p>
                   </div>
                 </div>
                 <div class="part4" style={{ flex: "1" }}>
@@ -271,8 +271,8 @@ const Home = () => {
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                     }}
                   >
-                    <h2>NFTs Uploaded</h2>
-                    <p>15</p>
+                    <h3>NFTs Uploaded</h3>
+                    <p style={{fontSize:"18px"}}>15</p>
                   </div>
                 </div>
                 <div
@@ -290,10 +290,11 @@ const Home = () => {
                     style={{
                       flex: "1",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
+                      cursor:"pointer"
                     }}
                   >
-                    <h2>Need any help?</h2>
-                    <p>Contact Us</p>
+                    <h3>Need any help?</h3>
+                    <p style={{fontSize:"18px"}}>Contact Us</p>
                   </div>
                 </div>
               </div>
@@ -329,7 +330,7 @@ const Home = () => {
                         boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                       }}
                     >
-                      {!showComponent && <LineChart style={{}} />}
+                      {!showComponent && <LineChart />}
                     </div>
                     <div
                       class="mygraph2"
