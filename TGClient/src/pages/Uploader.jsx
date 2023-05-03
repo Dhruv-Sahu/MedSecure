@@ -19,7 +19,7 @@ const Uploader = () => {
     {/* <CommonSection title="Uploader" /> */}
     <div className='containerUP'>
         <br></br>
-        <h1>Uploader</h1>
+        <h1>Uploaded</h1>
         <Basic/>
         {/* <DragDropFiles/> */}
     </div>

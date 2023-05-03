@@ -94,7 +94,7 @@ const NftCard = (props) => {
 
               }}
             >
-              <i className="ri-shopping-bag-line"></i> <Link to={`/orderSummary/${cid?.cid}`}>Buy Now</Link>
+              <Link to={`/orderSummary/${cid?.cid}`}>Buy Now</Link>
             </button>
 
             {showModal && <Modal setShowModal={setShowModal} />}

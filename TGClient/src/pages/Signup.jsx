@@ -74,19 +74,16 @@ const Signup = () => {
                   onClick={func2}
                 >
                   <span style={{ display: "block", fontWeight: "bold" }}>
-                    User
+                    Patient
                   </span>
-                  I am here as a User
+                  I am here as a Patient
                 </button>
               </div>
               <p
                 className="mb-4 opacity-70"
                 style={{color: "rgb(107 139 198)" }}
               >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Temporibus, expedita iusto veniam atque, magni tempora mollitia
-                dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-                ab ipsum nisi dolorem modi. Quos?
+                Guarding Patient Privacy, Unlocking Data Value: Rest easy knowing your health information is shielded from illegal trade, and explore the possibilities of selling your data ethically for research and innovation.
               </p>
             </div>
             {current === 1 && <Buyerlogin />}

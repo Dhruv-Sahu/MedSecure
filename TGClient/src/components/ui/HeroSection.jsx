@@ -18,9 +18,7 @@ const HeroSection = () => {
                 <span>MedSecure</span>
               </h2>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Deleniti excepturi omnis neque adipisci sequi ullam unde in
-                minus quis quos.
+              Our platform ensures your sensitive medical records remain confidential while offering you the opportunity to control and profit from your own data.
               </p>
 
               <div className="hero__btns d-flex align-items-center gap-4">

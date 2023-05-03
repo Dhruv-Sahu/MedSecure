@@ -214,7 +214,7 @@ const Header = () => {
           </div>
           <div className="nav__right d-flex align-items-center gap-5 ">
             <p>
-            {userData?.userType}
+            {userData?.userType == "Seller" ? "Patient" : userData?.userType}
             </p>
             {userData?.userType == 'Hospital'|| userData?.userType === "Buyer" || userData?.userType === "Seller" ?
             <button type="button" class="btn btn-danger"onClick={()=>{navigate("/");window.location.reload()}}>Logout</button>:<></>}
