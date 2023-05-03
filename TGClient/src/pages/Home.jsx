@@ -259,8 +259,8 @@ const Home = () => {
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                     }}
                   >
-                    <h3>Revenue</h3>
-                    <p style={{fontSize:"18px"}}>50$</p>
+                    <h3 style={{marginLeft:"30px",marginTop:"10px"}}>Revenue</h3>
+                    <p style={{fontSize:"23px",marginLeft:"30px"}}>50$</p>
                   </div>
                 </div>
                 <div class="part4" style={{ flex: "1" }}>
@@ -271,8 +271,8 @@ const Home = () => {
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                     }}
                   >
-                    <h3>NFTs Uploaded</h3>
-                    <p style={{fontSize:"18px"}}>15</p>
+                    <h3 style={{marginLeft:"15px",marginTop:"10px"}}>NFTs Uploaded</h3>
+                    <p style={{fontSize:"23px",marginLeft:"15px"}}>15</p>
                   </div>
                 </div>
                 <div
@@ -291,11 +291,11 @@ const Home = () => {
                       flex: "1",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
                       cursor:"pointer",
-                      backgroundColor : "#00337C"
+                      // color : "#00337C"
                     }}
                   >
-                    <h3>Need any help?</h3>
-                    <p style={{fontSize:"18px"}}>Contact Us</p>
+                    <h3 style={{marginLeft:"10px",marginTop:"10px"}}>Need any help?</h3>
+                    <p style={{fontSize:"23px",marginLeft:"10px"}}>Contact Us</p>
                   </div>
                 </div>
               </div>
