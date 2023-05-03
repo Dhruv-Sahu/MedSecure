@@ -290,7 +290,8 @@ const Home = () => {
                     style={{
                       flex: "1",
                       boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
-                      cursor:"pointer"
+                      cursor:"pointer",
+                      backgroundColor : "#00337C"
                     }}
                   >
                     <h3>Need any help?</h3>

@@ -63,7 +63,7 @@ const BuyerNFT = () => {
                 <h2>{`Patient UHID : ${singleNft?.patientUid}`}</h2>
 
                 <div className="Price">
-                  Bought For : <span>5 Eth</span>{" "}
+                  Bought For : <span>{`${singleNft?.currentBid}`}</span>{" "}
                 </div>
 
                 <div className="summary">Report Summary</div>
