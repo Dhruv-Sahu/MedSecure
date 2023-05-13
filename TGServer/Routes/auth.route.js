@@ -222,6 +222,20 @@ router.post("/transaction", async (req, res) => {
   try {
     const dbRes = await User.findByIdAndUpdate({ _id: id }, { $push: { transaction : transaction } });
 
+    const Buyer = await User.findById(id)
+    console.log("Buyer",Buyer)
+
+    let buyerName = `${Buyer.firstName} ${Buyer.lastName}`
+    let organisation = `${Buyer.organisation}`
+    let date = new Date();
+
+    let mailId = "sg2903@srmist.edu.in"
+    let Subject = "No-Reply : NFT Sold"
+    let Body = `Hi Subham 
+    ${buyerName} from ${organisation} has bought your data `
+
+    let mailResponse = await sendEmail(mailId, Subject, Body);
+
     res.status(200).json({
       message : "success"
     })
